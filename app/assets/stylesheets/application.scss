@@ -1,0 +1,15 @@
+// 1. Include functions & variables first
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+
+$custom-colors: (
+  "bootstrap": #563d7c,
+  "simpleform": #00617f
+);
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap";
+
+// simple_form helpers
+@import "simple_form-bootstrap/simple_form-bootstrap";

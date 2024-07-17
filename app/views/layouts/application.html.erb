@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Open GAS" %></title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, interactive-widget=resizes-content">
+    <meta name="view-transition" content="same-origin">
+    <meta name="turbo-cache-control" content="no-cache">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/app-icon.png">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body data-controller="fullscreen lightbox">
+    <header>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Open GAS</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+              <li class="nav-item">
+                <a href="#" class="nav-link text-secondary">
+                  <%= image_tag "add.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+                  Giocatori
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%= image_tag "add.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+                  Staff
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link text-secondary">
+                  <%= image_tag "add.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+                  Società
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link text-secondary">
+                  <%= image_tag "add.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+                  Certificati
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link text-secondary">
+                  <%= image_tag "add.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+                  Tessere
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%= image_tag "add.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+                  Pagamenti
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%= image_tag "add.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+                  Campionati
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%= image_tag "add.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+                  Tornei
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link text-secondary">
+                  <%= image_tag "add.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+                  Programmazione
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link text-secondary">
+                  <%= image_tag "add.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+                  Mail
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%= image_tag "add.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+                  Report
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div id="toolbar">
+  </div>
+  <main id="main" class="<%= @layout_class %>">
+    <%= yield %>
+  </main>
+  <footer id="footer">
+  </footer>
+</body>
+</html>

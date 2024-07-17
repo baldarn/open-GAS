@@ -1,0 +1,9 @@
+// optional vertical & horizontal form spacing
+.form-check-inline {
+  .form-check-label {
+    &.collection_check_boxes,
+    &.collection_radio_buttons {
+      margin-right: .265625rem;
+    }
+  }
+}
