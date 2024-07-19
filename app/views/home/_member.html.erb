@@ -1,0 +1,15 @@
+<%= simple_form_for member, html: { class: 'row' } do |f| %>
+  <%= f.input :first_name, wrapper_html: { class: 'col-6' } %>
+  <%= f.input :last_name, wrapper_html: { class: 'col-6' } %>
+  <%= f.input :born_at %>
+  <%= f.input :born_in %>
+  <%= f.input :tax_code %>
+  <%= f.input :citizenship, wrapper_html: { class: 'col-6' } %>
+  <%= f.input :address, wrapper_html: { class: 'col-6' } %>
+  <%= f.input :postal_code, wrapper_html: { class: 'col-2' } %>
+  <%= f.input :municipality, wrapper_html: { class: 'col-8' } %>
+  <%= f.input :province, wrapper_html: { class: 'col-2' } %>
+  <%= f.input :telephone, wrapper_html: { class: 'col-6' } %>
+  <%= f.input :email, wrapper_html: { class: 'col-6' } %>
+  <%= f.submit 'Save', class: 'd-none' %>
+<% end %>

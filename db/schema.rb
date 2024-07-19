@@ -19,15 +19,16 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_18_060539) do
   end
 
   create_table "members", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "surname", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
     t.date "born_at", null: false
     t.string "born_in", null: false
     t.string "tax_code"
     t.string "citizenship", null: false
     t.string "address", null: false
     t.string "postal_code", null: false
-    t.string "province"
+    t.string "municipality", null: false
+    t.string "province", null: false
     t.string "telephone"
     t.string "email"
     t.text "notes"

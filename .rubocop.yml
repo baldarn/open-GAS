@@ -17,6 +17,7 @@ Style/Documentation:
 Metrics/BlockLength:
   Exclude:
     - config/environments/*
+    - config/initializers/simple_form_bootstrap.rb
 
 Metrics/MethodLength:
   Max: 35

@@ -4,7 +4,14 @@ class Member < ApplicationRecord
   has_many :payments, dependent: :destroy
   has_many :memberships, dependent: :destroy
 
-  validates :name, :surname, :born_at, :born_in, :citizenship, :address, :postal_code, presence: true
+  validates :first_name,
+            :last_name,
+            :born_at,
+            :born_in,
+            :citizenship,
+            :address,
+            :postal_code,
+            :municipality, presence: true
 
   def status
     %w[ok warning error].sample
