@@ -1,1 +1,17 @@
-asdasd
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <% @members.each do |member| %>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="<%= member.name.parameterize  %>-tab" data-bs-toggle="tab" data-bs-target="#<%= member.name.parameterize  %>" type="button" role="tab" aria-controls="<%= member.name %>" aria-selected="true">
+        <span class="dot-<%= member.status %>"></span>
+        <%= member.name %>
+      </button>
+    </li>
+  <% end %>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <% @members.each do |member| %>
+    <div class="tab-pane fade show" id="<%= member.name.parameterize  %>" role="tabpanel" aria-labelledby="<%= member.name.parameterize  %>-tab">
+      <%= member.name %>
+    </div>
+  <% end %>
+</div>

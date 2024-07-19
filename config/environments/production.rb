@@ -1,5 +1,7 @@
-require "active_support/core_ext/integer/time"
-require "active_support/core_ext/numeric/bytes"
+# frozen_string_literal: true
+
+require 'active_support/core_ext/integer/time'
+require 'active_support/core_ext/numeric/bytes'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -30,24 +32,24 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Log to STDOUT by default
-  config.logger = ActiveSupport::Logger.new(STDOUT)
-    .tap  { |logger| logger.formatter = ::Logger::Formatter.new }
-    .then { |logger| ActiveSupport::TaggedLogging.new(logger) }
+  config.logger = ActiveSupport::Logger.new($stdout)
+                                       .tap  { |logger| logger.formatter = Logger::Formatter.new }
+                                       .then { |logger| ActiveSupport::TaggedLogging.new(logger) }
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Info include generic and useful information about system operation, but avoids logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII). Use "debug"
   # for everything.
-  config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
+  config.log_level = ENV.fetch('RAILS_LOG_LEVEL', 'info')
 
   # Cache in memory for now
   config.cache_store = :redis_cache_store
 
   # Assets are cacheable
   config.public_file_server.headers = {
-    "Cache-Control" => "public, max-age=#{1.year.to_i}"
+    'Cache-Control' => "public, max-age=#{1.year.to_i}"
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
@@ -55,8 +57,8 @@ Rails.application.configure do
   config.i18n.fallbacks = true
 
   # Always be SSL'ing (unless told not to)
-  config.assume_ssl = ENV["DISABLE_SSL"].blank?
-  config.force_ssl  = ENV["DISABLE_SSL"].blank?
+  config.assume_ssl = ENV['DISABLE_SSL'].blank?
+  config.force_ssl  = ENV['DISABLE_SSL'].blank?
 
   # Don't log any deprecations.
   config.active_support.report_deprecations = false

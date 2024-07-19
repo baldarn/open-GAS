@@ -1,5 +1,7 @@
-Rails.application.routes.draw do
-  root to: "home#index"
+# frozen_string_literal: true
 
-  get "up" => "rails/health#show", as: :rails_health_check
+Rails.application.routes.draw do
+  root to: 'home#index'
+
+  get 'up' => 'rails/health#show', as: :rails_health_check
 end

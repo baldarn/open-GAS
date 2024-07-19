@@ -1,1 +1,3 @@
-Dir["#{Rails.root}/lib/rails_ext/*"].each { |path| require "rails_ext/#{File.basename(path)}" }
+# frozen_string_literal: true
+
+Dir[Rails.root.join('lib/rails_ext/*').to_s].each { |path| require "rails_ext/#{File.basename(path)}" }

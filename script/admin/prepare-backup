@@ -1,11 +1,13 @@
 #!/usr/bin/env ruby
-require File.expand_path("../../config/environment", File.dirname(__FILE__))
+# frozen_string_literal: true
+
+require File.expand_path('../../config/environment', File.dirname(__FILE__))
 
 class Backup
   class << self
     def create
       dest = SQLite3::Database.new(backup_filename)
-      backup = SQLite3::Backup.new(dest, "main", User.connection.raw_connection, "main")
+      backup = SQLite3::Backup.new(dest, 'main', User.connection.raw_connection, 'main')
 
       backup.step(-1)
       backup.finish
@@ -13,14 +15,15 @@ class Backup
     end
 
     private
-      def backup_filename
-        Rails.root.join("storage", "backups").tap(&:mkpath).join(primary_database_filename)
-      end
 
-      def primary_database_filename
-        path = Rails.application.config.database_configuration[Rails.env]["primary"]["database"]
-        File.basename(path)
-      end
+    def backup_filename
+      Rails.root.join('storage/backups').tap(&:mkpath).join(primary_database_filename)
+    end
+
+    def primary_database_filename
+      path = Rails.application.config.database_configuration[Rails.env]['primary']['database']
+      File.basename(path)
+    end
   end
 end
 
