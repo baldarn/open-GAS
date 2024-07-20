@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_07_18_060539) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_18_060539) do
   create_table "medical_certificates", force: :cascade do |t|
     t.integer "kind", null: false
     t.date "expires_at", null: false
@@ -50,4 +50,5 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_18_060539) do
     t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_payments_on_member_id"
   end
+
 end
