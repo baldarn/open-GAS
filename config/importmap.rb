@@ -10,3 +10,4 @@ pin_all_from 'app/javascript/controllers', under: 'controllers'
 
 pin 'bootstrap', to: 'bootstrap.min.js', preload: true
 pin 'popper', to: 'popper.js', preload: true
+pin 'jquery', to: 'jquery.js', preload: true

@@ -1,0 +1,5 @@
+<%= simple_form_for @event do |f| %>
+  <%= f.select_recurring :recurring, nil, :allow_blank => true %>
+
+  <%= f.submit 'Save' %>
+<% end %>

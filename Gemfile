@@ -20,9 +20,14 @@ gem 'resque-pool', '~> 0.7.1'
 # Front-end
 gem 'bootstrap', '~> 5.1'
 gem 'importmap-rails'
+gem 'simple_calendar'
 gem 'simple_form', '~> 5.3'
 gem 'stimulus-rails'
 gem 'turbo-rails'
+
+# recurring events
+gem 'ice_cube'
+gem 'recurring_select', github: 'gregschmit/recurring_select', branch: 'master'
 
 # Other
 gem 'bcrypt', '~> 3.1.7'

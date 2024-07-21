@@ -14,6 +14,10 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 // simple_form helpers
 @import "simple_form-bootstrap/simple_form-bootstrap";
 
+@import "simple_calendar";
+
+@import "recurring_select";
+
 .dot-ok {
   height: 10px;
   width: 10px;

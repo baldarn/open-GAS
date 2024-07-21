@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Member < ApplicationRecord
+  has_one_attached :picture
+
   has_many :payments, dependent: :destroy
   has_many :memberships, dependent: :destroy
 
