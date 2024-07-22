@@ -28,7 +28,9 @@ class MembersController < ApplicationController
             :province,
             :telephone,
             :email,
-            :picture
+            :picture,
+            :medical_certificate_kind,
+            :medical_certificate_expires_at
           )
   end
 end

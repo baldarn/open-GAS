@@ -57,13 +57,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_22_083713) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "medical_certificates", force: :cascade do |t|
-    t.integer "kind", null: false
-    t.date "expires_at", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "member_groups", force: :cascade do |t|
     t.integer "member_id"
     t.integer "group_id"
@@ -86,6 +79,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_22_083713) do
     t.string "province", null: false
     t.string "telephone"
     t.string "email"
+    t.integer "medical_certificate_kind"
+    t.date "medical_certificate_expires_at"
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

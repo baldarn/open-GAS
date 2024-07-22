@@ -16,6 +16,9 @@ class CreateMember < ActiveRecord::Migration[7.1]
       t.string :telephone
       t.string :email
 
+      t.integer :medical_certificate_kind
+      t.date :medical_certificate_expires_at
+
       t.text :notes
 
       t.timestamps

@@ -18,7 +18,44 @@ class Member < ApplicationRecord
             :postal_code,
             :municipality, presence: true
 
+  # TODO: validity of medical certificate if exists
+  enum :medical_certificate_kind, %i[regular competitive]
+
   def status
-    %w[ok warning error].sample
+    return 'error' if statuses.find { |s| s == 'error' }
+    return 'warning' if statuses.find { |s| s == 'warning' }
+
+    'ok'
+  end
+
+  def statuses
+    [membership_status, medical_status, payments_status]
+  end
+
+  def membership_status
+    last_membership = memberships.last
+
+    return 'error' if last_membership.blank?
+
+    # TODO: logic
+
+    'ok'
+  end
+
+  def medical_status
+    return 'error' if medical_certificate_expires_at.blank? || medical_certificate_expires_at <= Time.zone.now
+    return 'warning' if medical_certificate_expires_at <= 2.months.from_now
+
+    'ok'
+  end
+
+  def payments_status
+    last_payment = payments.last
+
+    return 'error' if last_payment.blank?
+
+    # TODO: logic
+
+    'ok'
   end
 end
