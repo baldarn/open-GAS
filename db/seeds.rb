@@ -32,6 +32,4 @@ Faker::Config.locale = 'it'
   )
 
   Membership.create!(member:)
-
-  Payment.create!(member:, amount: 55)
 end

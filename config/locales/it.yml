@@ -28,6 +28,9 @@
 #       enabled: "ON"
 
 it:
+  payments:
+    created: Pagamento creato
+    updated: Pagamento aggiornato
   recurring_select:
     not_recurring: "- non ricorrente -"
     change_schedule: "Cambia ricorrenza..."
@@ -35,3 +38,9 @@ it:
     new_custom_schedule: "Nuova ricorrenza personalizzata..."
     custom_schedule: "Ricorrenza personalizzata..."
     or: o
+  activerecord:
+    attributes:
+      member/medical_certificate_kind:
+        regular: "Normale"
+        competitive: "Agonistico"
+

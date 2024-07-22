@@ -1,27 +1,29 @@
 <%= simple_form_for member, html: { class: 'row' } do |f| %>
   <div class="col-sm-8 card">
-    <h3>
-      Dati
-    </h3>
-    <%= f.input :first_name, wrapper_html: { class: 'col-sm-6' } %>
-    <%= f.input :last_name, wrapper_html: { class: 'col-sm-6' } %>
-    <%= f.input :born_at %>
-    <%= f.input :born_in %>
-    <%= f.input :tax_code %>
-    <%= f.input :citizenship, wrapper_html: { class: 'col-sm-6' } %>
-    <%= f.input :address, wrapper_html: { class: 'col-sm-6' } %>
-    <%= f.input :postal_code, wrapper_html: { class: 'col-sm-2' } %>
-    <%= f.input :municipality, wrapper_html: { class: 'col-sm-8' } %>
-    <%= f.input :province, wrapper_html: { class: 'col-sm-2' } %>
-    <%= f.input :telephone, wrapper_html: { class: 'col-sm-6' } %>
-    <%= f.input :email, wrapper_html: { class: 'col-sm-6' } %>
-    <%= f.file_field :picture %>
-    <%= 
-      if member.picture.present?
-        image_tag member.picture, class: 'img-fluid img-thumbnail rounded mx-auto d-block', style: 'max-width: 200px'
-      end 
-      %>
-    <%= f.submit 'Save', class: 'd-none' %>
+    <div class="row">
+      <h3>
+        Dati
+      </h3>
+      <%= f.input :first_name, wrapper_html: { class: 'col-sm-6' } %>
+      <%= f.input :last_name, wrapper_html: { class: 'col-sm-6' } %>
+      <%= f.input :born_at %>
+      <%= f.input :born_in %>
+      <%= f.input :tax_code %>
+      <%= f.input :citizenship, wrapper_html: { class: 'col-sm-6' } %>
+      <%= f.input :address, wrapper_html: { class: 'col-sm-6' } %>
+      <%= f.input :postal_code, wrapper_html: { class: 'col-sm-2' } %>
+      <%= f.input :municipality, wrapper_html: { class: 'col-sm-8' } %>
+      <%= f.input :province, wrapper_html: { class: 'col-sm-2' } %>
+      <%= f.input :telephone, wrapper_html: { class: 'col-sm-6' } %>
+      <%= f.input :email, wrapper_html: { class: 'col-sm-6' } %>
+      <%= f.file_field :picture %>
+      <%= 
+        if member.picture.present?
+          image_tag member.picture, class: 'img-fluid img-thumbnail rounded mx-auto d-block', style: 'max-width: 200px'
+        end 
+        %>
+      <%= f.submit 'Save', class: 'd-none' %>
+    </div>
   </div>
   <div class="col-sm-4">
     <div class="" style="height: 100%;">
@@ -35,11 +37,28 @@
           Certificato medico <span class="dot-<%= member.medical_status %>"></span>
         </h3>
         <%= f.input :medical_certificate_expires_at %>
-        <%= f.input :medical_certificate_kind, collection: Member.medical_certificate_kinds.keys %>
+        <%= f.input :medical_certificate_kind do %>
+          <%= 
+          f.select(
+            :medical_certificate_kind, 
+            Member.medical_certificate_kinds.map { |kind, v| [Member.human_attribute_name("medical_certificate_kind.#{kind}"), kind] },
+            { prompt: 'Seleziona tipo' }, 
+            class: 'form-control'
+          )
+        %>
+        <% end %>
       </div>
       <div class="card">
         <h3>
           Pagamenti <span class="dot-<%= member.payments_status %>"></span>
+          <%= link_to "Nuovo pagamento",
+            new_member_payment_path(member),
+            data: { turbo_frame: dom_id(Payment.new) },
+            class: "btn btn-primary" %>
+          <%= turbo_frame_tag Payment.new %>
+          <%= turbo_frame_tag "payments" do %>
+            <%= render member.payments, locals: { member: member} %>
+          <% end %>
         </h3>
       </div>
     </div>

@@ -18,7 +18,7 @@ class Member < ApplicationRecord
             :postal_code,
             :municipality, presence: true
 
-  # TODO: validity of medical certificate if exists
+  # TODO: model validation of medical certificate if exists
   enum :medical_certificate_kind, %i[regular competitive]
 
   def status

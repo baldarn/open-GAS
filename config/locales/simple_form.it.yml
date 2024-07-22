@@ -22,6 +22,8 @@ it:
         province: Provincia
         telephone: Telefono
         email: Email
+        medical_certificate_expires_at: Scadenza
+        medical_certificate_kind: Tipo
     #   user:
     #     new:
     #       email: 'E-mail to sign in.'

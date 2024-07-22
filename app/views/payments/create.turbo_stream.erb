@@ -1,0 +1,5 @@
+<%= turbo_stream.update Payment.new, "" %>
+
+<%= turbo_stream.prepend "payments" do %>
+  <%= render @payment, member: @member %>
+<% end %>
