@@ -27,7 +27,8 @@ class MembersController < ApplicationController
             :municipality,
             :province,
             :telephone,
-            :email
+            :email,
+            :picture
           )
   end
 end

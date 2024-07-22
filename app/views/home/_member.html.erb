@@ -11,6 +11,11 @@
   <%= f.input :province, wrapper_html: { class: 'col-sm-2' } %>
   <%= f.input :telephone, wrapper_html: { class: 'col-sm-6' } %>
   <%= f.input :email, wrapper_html: { class: 'col-sm-6' } %>
-  <%= f.file_field :picature %>
+  <%= f.file_field :picture %>
+  <%= 
+  if member.picture.present?
+    image_tag member.picture, class: 'img-fluid img-thumbnail rounded mx-auto d-block', style: 'max-width: 200px'
+  end 
+  %>
   <%= f.submit 'Save', class: 'd-none' %>
 <% end %>
