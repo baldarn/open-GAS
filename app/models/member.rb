@@ -6,6 +6,9 @@ class Member < ApplicationRecord
   has_many :payments, dependent: :destroy
   has_many :memberships, dependent: :destroy
 
+  has_many :member_groups, dependent: :destroy
+  has_many :groups, through: :member_groups, dependent: :nullify
+
   validates :first_name,
             :last_name,
             :born_at,
