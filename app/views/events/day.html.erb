@@ -1,4 +1,4 @@
-<%= month_calendar(events: @events) do |date, events| %>
+<%= calendar(number_of_days: 1, events: @events) do |date, events| %>
   <%= date.day %>
   <% events.each do |event| %>
     <div>

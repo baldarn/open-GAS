@@ -18,4 +18,9 @@ class Event < ApplicationRecord
       super(nil)
     end
   end
+
+  # for simple-calendar
+  def start_time
+    date_from
+  end
 end

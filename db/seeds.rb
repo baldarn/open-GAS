@@ -33,3 +33,13 @@ Faker::Config.locale = 'it'
 
   Membership.create!(member:)
 end
+
+5.times do
+  date_from = Faker::Date.forward(days: 30)
+
+  Event.create!(
+    kind: :training,
+    date_from:,
+    date_to: date_from + 2.hours
+  )
+end

@@ -1,5 +1,5 @@
-<%= month_calendar(events: @events) do |date, events| %>
-  <%= date.day %>
+<%= calendar(number_of_days: 1, events: @events, partial: '/simple_calendar/agenda') do |date, events| %>
+  AGENDA
   <% events.each do |event| %>
     <div>
       <%= event.kind %>
