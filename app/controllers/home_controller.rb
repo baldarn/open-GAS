@@ -2,6 +2,7 @@
 
 class HomeController < ApplicationController
   def index
-    @members = Member.all
+    @club = Club.first
+    @members = @club.members
   end
 end

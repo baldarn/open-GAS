@@ -12,7 +12,7 @@
   <div class="tab-content" id="myTabContent">
     <% @members.each do |member| %>
       <div class="tab-pane fade show" id="<%= member.first_name.parameterize  %>" role="tabpanel" aria-labelledby="<%= member.first_name.parameterize  %>-tab">
-        <%= render partial: 'dashboard', locals: { member: member } %>
+        <%= render partial: 'dashboard', locals: { club: @club, member: member } %>
       </div>
     <% end %>
   </div>

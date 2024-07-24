@@ -6,6 +6,7 @@ class MemberTest < ActiveSupport::TestCase
   test 'valudates presence' do
     member = Member.create
 
+    assert(member.errors.key?('club'))
     assert(member.errors.key?('first_name'))
     assert(member.errors.key?('last_name'))
     assert(member.errors.key?('born_at'))

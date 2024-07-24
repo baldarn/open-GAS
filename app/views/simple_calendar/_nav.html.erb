@@ -2,8 +2,8 @@
   <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
   <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view %>
   <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
-  <%= link_to t('simple_calendar.month', default: 'Month'), events_url(start_date: params[:start_date]) %>
-  <%= link_to t('simple_calendar.week', default: 'Week'), events_url(start_date: params[:start_date], view: 'week') %>
-  <%= link_to t('simple_calendar.day', default: 'Day'), events_url(start_date: params[:start_date], view: 'day') %>
-  <%= link_to t('simple_calendar.agenda', default: 'Agenda'), events_url(start_date: params[:start_date], view: 'agenda') %>
+  <%= link_to t('simple_calendar.month', default: 'Month'), club_events_url(club: @club, start_date: params[:start_date]) %>
+  <%= link_to t('simple_calendar.week', default: 'Week'), club_events_url(club: @club, start_date: params[:start_date], view: 'week') %>
+  <%= link_to t('simple_calendar.day', default: 'Day'), club_events_url(club: @club, start_date: params[:start_date], view: 'day') %>
+  <%= link_to t('simple_calendar.agenda', default: 'Agenda'), club_events_url(club: @club, start_date: params[:start_date], view: 'agenda') %>
 </nav>

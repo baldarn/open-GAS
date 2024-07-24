@@ -1,4 +1,4 @@
-<%= simple_form_for member, html: { class: 'row' } do |f| %>
+<%= simple_form_for [club, member], html: { class: 'row' } do |f| %>
   <div class="col-sm-8 card">
     <div class="row">
       <h3>
@@ -52,7 +52,7 @@
         <h3>
           Pagamenti <span class="dot-<%= member.payments_status %>"></span>
           <%= link_to "Nuovo pagamento",
-            new_member_payment_path(member),
+            new_club_member_payment_path(club, member),
             data: { turbo_frame: "new_payment_#{member.id}" },
             class: "btn btn-primary" %>
           <%= turbo_frame_tag "new_payment_#{member.id}" %>

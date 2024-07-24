@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class EventsController < ApplicationController
+class EventsController < BaseController
   def index
     start_date = params.fetch(:start_date, Time.zone.today).to_date
 

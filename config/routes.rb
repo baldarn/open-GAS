@@ -3,11 +3,13 @@
 Rails.application.routes.draw do
   root to: 'home#index'
 
-  resources :members do
-    resources :payments
-  end
+  resources :clubs do
+    resources :members do
+      resources :payments
+    end
 
-  resources :events
+    resources :events
+  end
 
   get 'up' => 'rails/health#show', as: :rails_health_check
 end

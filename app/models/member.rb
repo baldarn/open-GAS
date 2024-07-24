@@ -3,6 +3,8 @@
 class Member < ApplicationRecord
   has_one_attached :picture
 
+  belongs_to :club
+
   has_many :payments, dependent: :destroy
   has_many :memberships, dependent: :destroy
 

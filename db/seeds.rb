@@ -14,6 +14,8 @@ require 'faker'
 
 Faker::Config.locale = 'it'
 
+club = Club.create(name: 'The Club')
+
 10.times do
   member = Member.create!(
     first_name: Faker::Name.first_name,
@@ -28,7 +30,8 @@ Faker::Config.locale = 'it'
     telephone: Faker::PhoneNumber.cell_phone,
     email: Faker::Internet.email,
     medical_certificate_kind: %i[regular competitive].sample,
-    medical_certificate_expires_at: Faker::Date.forward
+    medical_certificate_expires_at: Faker::Date.forward,
+    club:
   )
 
   Membership.create!(member:)

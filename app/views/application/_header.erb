@@ -14,7 +14,7 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="<%= root_url %>">Lista</a></li>
-            <li><a class="dropdown-item" href="<%= new_member_path %>">Nuovo</a></li>
+            <li><a class="dropdown-item" href="<%= new_club_member_path(@club) %>">Nuovo</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -30,7 +30,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link text-secondary">
+          <a href="<%= edit_club_path(@club) %>" class="nav-link text-secondary">
             <%= image_tag "add.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
             Società
           </a>
@@ -48,7 +48,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="<%= events_url %>" class="nav-link text-secondary">
+          <a href="<%= club_events_url(@club) %>" class="nav-link text-secondary">
             <%= image_tag "add.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
             Calendario
           </a>

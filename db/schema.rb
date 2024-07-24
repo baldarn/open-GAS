@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_22_083713) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_24_113600) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,6 +39,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_22_083713) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "clubs", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.integer "kind", null: false
     t.datetime "date_from", null: false
@@ -52,9 +58,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_22_083713) do
   end
 
   create_table "groups", force: :cascade do |t|
+    t.integer "club_id"
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["club_id"], name: "index_groups_on_club_id"
   end
 
   create_table "member_groups", force: :cascade do |t|
@@ -67,6 +75,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_22_083713) do
   end
 
   create_table "members", force: :cascade do |t|
+    t.integer "club_id"
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.date "born_at", null: false
@@ -84,6 +93,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_22_083713) do
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["club_id"], name: "index_members_on_club_id"
   end
 
   create_table "memberships", force: :cascade do |t|

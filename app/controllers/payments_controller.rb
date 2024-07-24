@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PaymentsController < ApplicationController
+class PaymentsController < BaseController
   before_action :set_member
 
   def new
@@ -44,6 +44,6 @@ class PaymentsController < ApplicationController
   end
 
   def set_member
-    @member = Member.find(params[:member_id])
+    @member = @club.members.find(params[:member_id])
   end
 end

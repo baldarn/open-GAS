@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-class AddGroup < ActiveRecord::Migration[7.1]
+class AddClubs < ActiveRecord::Migration[7.1]
   def change
-    create_table :groups do |t|
-      t.belongs_to :club
-
+    create_table :clubs do |t|
       t.string :name, null: false
 
       t.timestamps

@@ -3,6 +3,8 @@
 class CreateMember < ActiveRecord::Migration[7.1]
   def change
     create_table :members do |t|
+      t.belongs_to :club
+
       t.string :first_name, null: false
       t.string :last_name, null: false
       t.date :born_at, null: false

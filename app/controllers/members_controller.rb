@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-class MembersController < ApplicationController
+class MembersController < BaseController
   def new
     @member = Member.new
   end
 
   def create
-    @member = Member.create(member_params)
+    @member = @club.payments.build(member_params)
 
-    if @member.valid?
+    if @member.save
       respond_to do |format|
         format.turbo_stream
       end
@@ -28,6 +28,8 @@ class MembersController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  private
 
   def member_params
     params.require(:member)
