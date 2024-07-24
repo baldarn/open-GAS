@@ -48,6 +48,12 @@ it:
     week: Settimana
     month: Mese
     giorno: Giorno
+  medical_certificate:
+    expiring_email:
+      subject: Certificato medico in scadenza!
+      hello: Ciao
+      expiring_text: Il tuo certificato medico sta per scadere!
+      remember_text: Ricordati di farlo e consegnarlo in copia originale!
 
   activerecord:
     attributes:

@@ -16,6 +16,7 @@ gem 'puma', '>= 5.0'
 # Jobs
 gem 'resque', '~> 2.6.0'
 gem 'resque-pool', '~> 0.7.1'
+gem 'resque-scheduler'
 
 # Front-end
 gem 'bootstrap', '~> 5.1'

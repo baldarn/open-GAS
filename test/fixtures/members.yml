@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+gino:
+  first_name: gino
+  last_name: ginetti
+  email: gino.ginetti@email.com
+  born_at: 2000-01-02
+  born_in: comunino
+  citizenship: italiano
+  address: via delle vie 123 R
+  postal_code: 12345
+  province: provinciona
+  municipality: comunone

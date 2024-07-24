@@ -18,7 +18,11 @@ class Member < ApplicationRecord
             :citizenship,
             :address,
             :postal_code,
+            :email,
             :municipality, presence: true
+
+  scope :with_expiring_medical_certificate,
+        -> { where(medical_certificate_expires_at: Time.zone.today.beginning_of_day..2.months.from_now) }
 
   # TODO: model validation of medical certificate if exists
   enum :medical_certificate_kind, %i[regular competitive]

@@ -29,3 +29,9 @@
 
 en:
   hello: "Hello world"
+  medical_certificate:
+    expiring_email:
+      subject: Medical certificate is expiring!
+      hello: Hi
+      expiring_text: You medical certificate is expiring!
+      remember_text: Remember to do that and bring the original!
