@@ -1,6 +1,22 @@
 # frozen_string_literal: true
 
 class MembersController < ApplicationController
+  def new
+    @member = Member.new
+  end
+
+  def create
+    @member = Member.create(member_params)
+
+    if @member.valid?
+      respond_to do |format|
+        format.turbo_stream
+      end
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def update
     @member = Member.find(params[:id])
 

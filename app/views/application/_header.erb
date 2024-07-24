@@ -7,10 +7,15 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
         <li class="nav-item">
-          <a href="<%= root_url %>" class="nav-link text-secondary">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <%= image_tag "add.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
             Giocatori
           </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="<%= root_url %>">Lista</a></li>
+            <li><a class="dropdown-item" href="<%= new_member_path %>">Nuovo</a></li>
+          </ul>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
