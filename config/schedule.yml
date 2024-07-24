@@ -1,3 +1,0 @@
-queue_for_expired_medical_certificates:
-  cron: "*/5 * * * *"
-  class: "MedicalCertificateJob"

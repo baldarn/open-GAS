@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 require 'resque/server'
-require 'resque-scheduler'
-require 'resque/scheduler/server'
 
 Rails.application.routes.draw do
   root to: 'home#index'
