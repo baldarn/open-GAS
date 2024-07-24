@@ -3,9 +3,15 @@
 class AddEvents < ActiveRecord::Migration[7.1]
   def change
     create_table :events do |t|
+      t.belongs_to :club
+
       t.integer :kind, null: false
-      t.datetime :date_from, null: false
-      t.datetime :date_to, null: false
+      t.date :date_from, null: false
+      t.date :date_to
+      t.time :time_from
+      t.time :time_to
+      t.boolean :all_day, null: false, default: 0
+
       t.text :description
 
       t.text :recurring

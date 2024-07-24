@@ -35,11 +35,11 @@ it:
     created: Evento creato
     updated: Evento aggiornato
   recurring_select:
-    not_recurring: "- non ricorrente -"
-    change_schedule: "Cambia ricorrenza..."
-    set_schedule: "Imposta ricorrenza..."
-    new_custom_schedule: "Nuova ricorrenza personalizzata..."
-    custom_schedule: "Ricorrenza personalizzata..."
+    not_recurring: Non ricorrente
+    change_schedule: Cambia ricorrenza
+    set_schedule: Imposta ricorrenza
+    new_custom_schedule: Nuova ricorrenza personalizzata
+    custom_schedule: Ricorrenza personalizzata
     or: o
   simple_calendar:
     previous: "<"
@@ -52,6 +52,10 @@ it:
   activerecord:
     attributes:
       member/medical_certificate_kind:
-        regular: "Normale"
-        competitive: "Agonistico"
+        regular: Normale
+        competitive: Agonistico
+      event/kind:
+        training: Allenamento
+        competition: Partita/Gara
+        other: Altro
 

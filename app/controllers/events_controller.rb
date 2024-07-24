@@ -6,41 +6,58 @@ class EventsController < BaseController
 
     case params[:view]
     when 'week'
-      @events = Event.where(
+      @events = @club.events.where(
         date_from: start_date.beginning_of_day..start_date.end_of_day + 1.week
       )
 
       render 'week'
     when 'day'
-      @events = Event.where(
+      @events = @club.events.where(
         date_from: start_date.all_day
       )
 
       render 'day'
     when 'agenda'
-      @events = Event.where(
+      @events = @club.events.where(
         date_from: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week
       )
 
       render 'agenda'
     else
       # default view is month
-      @events = Event.where(
+      @events = @club.events.where(
         date_from: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week
       )
     end
   end
 
   def new
-    @event = Event.new
+    @event = @club.events.build
+  end
+
+  def edit
+    @event = @club.events.find(params[:id])
   end
 
   def create
-    @event = Event.new(event_params)
+    @event = @club.events.build(event_params)
 
     if @event.save
       respond_to do |format|
-        format.html { redirect_to root_url, flash: { notice: I18n.t('events.created') } }
+        format.html { redirect_to club_events, flash: { notice: I18n.t('events.created') } }
+        format.turbo_stream
+      end
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @event = @club.events.find(params[:id])
+
+    if @event.update(event_params)
+      respond_to do |format|
+        format.html { redirect_to club_events, flash: { notice: I18n.t('events.created') } }
         format.turbo_stream
       end
     else
@@ -51,6 +68,15 @@ class EventsController < BaseController
   private
 
   def event_params
-    params.require(:event).permit(:kind, :date_from, :date_to)
+    params.require(:event)
+          .permit(
+            :kind,
+            :date_from,
+            :date_to,
+            :time_from,
+            :time_to,
+            :all_day,
+            :recurring
+          )
   end
 end

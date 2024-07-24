@@ -46,14 +46,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_24_113600) do
   end
 
   create_table "events", force: :cascade do |t|
+    t.integer "club_id"
     t.integer "kind", null: false
-    t.datetime "date_from", null: false
-    t.datetime "date_to", null: false
+    t.date "date_from", null: false
+    t.date "date_to"
+    t.time "time_from"
+    t.time "time_to"
+    t.boolean "all_day", default: false, null: false
     t.text "description"
     t.text "recurring"
     t.integer "place_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["club_id"], name: "index_events_on_club_id"
     t.index ["place_id"], name: "index_events_on_place_id"
   end
 

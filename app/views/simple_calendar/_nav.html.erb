@@ -6,4 +6,5 @@
   <%= link_to t('simple_calendar.week', default: 'Week'), club_events_url(club: @club, start_date: params[:start_date], view: 'week') %>
   <%= link_to t('simple_calendar.day', default: 'Day'), club_events_url(club: @club, start_date: params[:start_date], view: 'day') %>
   <%= link_to t('simple_calendar.agenda', default: 'Agenda'), club_events_url(club: @club, start_date: params[:start_date], view: 'agenda') %>
+  <%= link_to "Add", new_club_event_path(@club), class: 'btn' %>
 </nav>

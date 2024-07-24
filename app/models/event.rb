@@ -3,11 +3,12 @@
 class Event < ApplicationRecord
   has_one_attached :attachment
 
+  belongs_to :club
   belongs_to :place, optional: true
 
   enum :kind, %i[training competition other]
 
-  validates :kind, :date_from, :date_to, presence: true
+  validates :kind, :date_from, presence: true
 
   serialize :recurring, coder: YAML, type: Hash
 
@@ -17,6 +18,10 @@ class Event < ApplicationRecord
     else
       super(nil)
     end
+  end
+
+  def recurrence
+    IceCube::Schedule.from_hash(recurring)
   end
 
   # for simple-calendar

@@ -10,3 +10,5 @@ pin_all_from 'app/javascript/controllers', under: 'controllers'
 
 pin 'bootstrap', to: 'bootstrap.min.js', preload: true
 pin 'popper', to: 'popper.js', preload: true
+
+pin 'recurring_select', to: 'recurring_select.js', preload: true
