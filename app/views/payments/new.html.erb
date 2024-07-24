@@ -1,4 +1,4 @@
-<%= turbo_frame_tag @payment do %>
+<%= turbo_frame_tag "new_payment_#{@member.id}" do %>
   <div class="card">
     <div class="card-body">
       <%= render "form", member: @member, payment: @payment %>

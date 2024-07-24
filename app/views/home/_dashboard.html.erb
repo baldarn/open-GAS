@@ -17,10 +17,10 @@
       <%= f.input :telephone, wrapper_html: { class: 'col-sm-6' } %>
       <%= f.input :email, wrapper_html: { class: 'col-sm-6' } %>
       <%= f.file_field :picture %>
-      <%= 
+      <%=
         if member.picture.present?
           image_tag member.picture, class: 'img-fluid img-thumbnail rounded mx-auto d-block', style: 'max-width: 200px'
-        end 
+        end
         %>
       <%= f.submit 'Save', class: 'd-none' %>
     </div>
@@ -38,11 +38,11 @@
         </h3>
         <%= f.input :medical_certificate_expires_at %>
         <%= f.input :medical_certificate_kind do %>
-          <%= 
+          <%=
           f.select(
-            :medical_certificate_kind, 
+            :medical_certificate_kind,
             Member.medical_certificate_kinds.map { |kind, v| [Member.human_attribute_name("medical_certificate_kind.#{kind}"), kind] },
-            { prompt: 'Seleziona tipo' }, 
+            { prompt: 'Seleziona tipo' },
             class: 'form-control'
           )
         %>
@@ -53,11 +53,11 @@
           Pagamenti <span class="dot-<%= member.payments_status %>"></span>
           <%= link_to "Nuovo pagamento",
             new_member_payment_path(member),
-            data: { turbo_frame: dom_id(Payment.new) },
+            data: { turbo_frame: "new_payment_#{member.id}" },
             class: "btn btn-primary" %>
-          <%= turbo_frame_tag Payment.new %>
-          <%= turbo_frame_tag "payments" do %>
-            <%= render member.payments, locals: { member: member} %>
+          <%= turbo_frame_tag "new_payment_#{member.id}" %>
+          <%= turbo_frame_tag "payments_#{member.id}" do %>
+            <%= render member.payments, member: %>
           <% end %>
         </h3>
       </div>
