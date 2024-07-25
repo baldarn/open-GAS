@@ -16,8 +16,9 @@ Faker::Config.locale = 'it'
 
 club = Club.create(name: 'The Club')
 
-10.times do
+20.times do
   member = Member.create!(
+    club:,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     born_at: Faker::Date.between(from: '2015-12-31', to: '2000-01-01'),
@@ -31,8 +32,9 @@ club = Club.create(name: 'The Club')
     email: Faker::Internet.email,
     medical_certificate_kind: %i[regular competitive].sample,
     medical_certificate_expires_at: Faker::Date.forward,
-    club:
+    membership_id: Faker::Number.number,
+    membership_expires_at: Faker::Date.forward
   )
 
-  Membership.create!(member:)
+  Payment.create!(member:, amount: 50, reason: 'Quota associativa')
 end

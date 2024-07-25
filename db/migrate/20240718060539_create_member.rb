@@ -21,7 +21,13 @@ class CreateMember < ActiveRecord::Migration[7.1]
       t.integer :medical_certificate_kind
       t.date :medical_certificate_expires_at
 
+      t.string :membership_id
+      t.date :membership_expires_at
+
       t.text :notes
+
+      t.datetime :discarded_at
+      t.index :discarded_at
 
       t.timestamps
     end

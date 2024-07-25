@@ -5,6 +5,9 @@ class AddClubs < ActiveRecord::Migration[7.1]
     create_table :clubs do |t|
       t.string :name, null: false
 
+      t.datetime :discarded_at
+      t.index :discarded_at
+
       t.timestamps
     end
   end

@@ -1,0 +1,21 @@
+<%= paginate @payments %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Cognome</th>
+      <th scope="col">Quota</th>
+      <th scope="col">Causale</th>
+      <th scope="col">Quando</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @payments.each do |payment| %>
+      <tr>
+        <th><%= payment.member.last_name %></th>
+        <td><%= payment.amount %></td>
+        <td><%= payment.reason %></td>
+        <td><%= payment.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

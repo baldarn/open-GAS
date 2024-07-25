@@ -1,5 +1,6 @@
 <%= turbo_frame_tag "new_payment_#{member.id}" do %>
   <div class="col">
     Amount: <%= payment.amount %>
+    Reason: <%= payment.reason %>
   </div>
 <% end %>

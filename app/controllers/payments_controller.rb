@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 class PaymentsController < BaseController
-  before_action :set_member
+  before_action :set_member, if: -> { params[:member_id].present? }
+
+  def index
+    @payments = @club.payments.page(params[:page])
+  end
 
   def new
     @payment = Payment.new
@@ -40,7 +44,7 @@ class PaymentsController < BaseController
   private
 
   def payment_params
-    params.require(:payment).permit(:amount)
+    params.require(:payment).permit(:amount, :reason)
   end
 
   def set_member

@@ -41,8 +41,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_24_113600) do
 
   create_table "clubs", force: :cascade do |t|
     t.string "name", null: false
+    t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_clubs_on_discarded_at"
   end
 
   create_table "events", force: :cascade do |t|
@@ -95,24 +97,24 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_24_113600) do
     t.string "email"
     t.integer "medical_certificate_kind"
     t.date "medical_certificate_expires_at"
+    t.string "membership_id"
+    t.date "membership_expires_at"
     t.text "notes"
+    t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["club_id"], name: "index_members_on_club_id"
-  end
-
-  create_table "memberships", force: :cascade do |t|
-    t.integer "member_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["member_id"], name: "index_memberships_on_member_id"
+    t.index ["discarded_at"], name: "index_members_on_discarded_at"
   end
 
   create_table "payments", force: :cascade do |t|
     t.integer "member_id"
     t.integer "amount", null: false
+    t.string "reason", null: false
+    t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_payments_on_discarded_at"
     t.index ["member_id"], name: "index_payments_on_member_id"
   end
 

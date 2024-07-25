@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class MembersController < BaseController
+  def index
+    @members = @club.members
+  end
+
   def new
     @member = Member.new
   end
@@ -48,7 +52,9 @@ class MembersController < BaseController
             :email,
             :picture,
             :medical_certificate_kind,
-            :medical_certificate_expires_at
+            :medical_certificate_expires_at,
+            :membership_id,
+            :membership_expires_at
           )
   end
 end

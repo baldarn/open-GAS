@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
 class Member < ApplicationRecord
+  include Discard::Model
+  default_scope -> { kept }
+
   has_one_attached :picture
 
   belongs_to :club
 
   has_many :payments, dependent: :destroy
-  has_many :memberships, dependent: :destroy
-
   has_many :member_groups, dependent: :destroy
   has_many :groups, through: :member_groups, dependent: :nullify
 
@@ -39,11 +40,8 @@ class Member < ApplicationRecord
   end
 
   def membership_status
-    last_membership = memberships.last
-
-    return 'error' if last_membership.blank?
-
-    # TODO: logic
+    return 'error' if membership_expires_at.blank? || membership_expires_at <= 1.month.ago
+    return 'warning' if membership_expires_at <= Time.zone.now
 
     'ok'
   end

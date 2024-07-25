@@ -25,6 +25,13 @@ gem 'simple_form', '~> 5.3'
 gem 'stimulus-rails'
 gem 'turbo-rails'
 
+# Pagination
+gem 'kaminari'
+gem 'kaminari-i18n'
+
+# Soft delete
+gem 'discard', '~> 1.2'
+
 # recurring events
 gem 'ice_cube'
 gem 'recurring_select', github: 'gregschmit/recurring_select', branch: 'master'

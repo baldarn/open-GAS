@@ -31,6 +31,8 @@
         <h3>
           Tesseramento <span class="dot-<%= member.membership_status %>"></span>
         </h3>
+        <%= f.input :membership_id %>
+        <%= f.input :membership_expires_at %>
       </div>
       <div class="card">
         <h3>
@@ -51,15 +53,15 @@
       <div class="card">
         <h3>
           Pagamenti <span class="dot-<%= member.payments_status %>"></span>
-          <%= link_to "Nuovo pagamento",
+        </h3>
+        <%= link_to "Nuovo pagamento",
             new_club_member_payment_path(club, member),
             data: { turbo_frame: "new_payment_#{member.id}" },
             class: "btn btn-primary" %>
-          <%= turbo_frame_tag "new_payment_#{member.id}" %>
-          <%= turbo_frame_tag "payments_#{member.id}" do %>
-            <%= render member.payments, member: %>
-          <% end %>
-        </h3>
+        <%= turbo_frame_tag "new_payment_#{member.id}" %>
+        <%= turbo_frame_tag "payments_#{member.id}" do %>
+          <%= render member.payments, member: %>
+        <% end %>
       </div>
     </div>
   </div>
