@@ -19,7 +19,7 @@ FROM --platform=$TARGETPLATFORM base as build
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git libvips pkg-config
+    apt-get install --no-install-recommends -y build-essential git libvips pkg-config nodejs
 
 # Install application gems
 COPY Gemfile Gemfile.lock .ruby-version ./
@@ -38,7 +38,7 @@ FROM base
 
 # Install packages needed for deployment
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libjemalloc2 libsqlite3-0 libvips redis && \
+    apt-get install --no-install-recommends -y curl libjemalloc2 libsqlite3-0 libvips redis nodejs && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Copy built artifacts: gems, application

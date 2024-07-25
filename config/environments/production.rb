@@ -70,4 +70,6 @@ Rails.application.configure do
   config.active_record.sqlite3_production_warning = false
 
   config.active_job.queue_adapter = :resque
+
+  config.assets.manifest = Rails.root.join('config/manifest.json')
 end

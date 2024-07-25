@@ -60,6 +60,7 @@ end
 
 group :development do
   gem 'htmlbeautifier'
+  gem 'kamal'
   gem 'web-console'
 end
 
