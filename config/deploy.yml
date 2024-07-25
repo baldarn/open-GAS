@@ -64,7 +64,8 @@ env:
 #       - data:/data
 
 # Configure custom arguments for Traefik. Be sure to reboot traefik when you modify it.
-# traefik:
+traefik:
+  host_port: "8080"
 #   args:
 #     accesslog: true
 #     accesslog.format: json

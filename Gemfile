@@ -51,7 +51,6 @@ gem 'thruster'
 gem 'useragent', github: 'basecamp/useragent'
 
 group :development, :test do
-  gem 'brakeman', require: false
   gem 'debug'
   gem 'faker', require: false
   gem 'rubocop-capybara', require: false
@@ -59,6 +58,8 @@ group :development, :test do
 end
 
 group :development do
+  gem 'brakeman', require: false
+  gem 'bundle-audit', require: false
   gem 'htmlbeautifier'
   gem 'kamal'
   gem 'web-console'

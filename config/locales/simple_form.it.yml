@@ -22,8 +22,15 @@ it:
         province: Provincia
         telephone: Telefono
         email: Email
+        citizenship: Cittadinanza
+        address: Indirizzo
+        membership_id: Numero tessera
+        membership_expires_at: Scadenza
         medical_certificate_expires_at: Scadenza
         medical_certificate_kind: Tipo
+      payment:
+        amount: Ammontare
+        reason: Causale
     #   user:
     #     new:
     #       email: 'E-mail to sign in.'

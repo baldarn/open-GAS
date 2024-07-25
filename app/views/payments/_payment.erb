@@ -1,6 +1,5 @@
-<%= turbo_frame_tag "new_payment_#{member.id}" do %>
-  <div class="card">
-    Amount: <%= payment.amount %>
-    Reason: <%= payment.reason %>
-  </div>
-<% end %>
+<div class="card">
+  Amount: <%= number_to_currency(payment.amount) %>
+  <br>
+  Reason: <%= payment.reason %>
+</div>
