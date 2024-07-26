@@ -1,6 +1,6 @@
 <div class="simple-calendar">
   <div class="calendar-heading">
-    <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
+    <span class="calendar-title"><%= start_date.day %> <%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
 
     <%= render '/simple_calendar/nav', calendar: %>
   </div>

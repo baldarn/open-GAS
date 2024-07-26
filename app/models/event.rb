@@ -6,6 +6,12 @@ class Event < ApplicationRecord
   belongs_to :club
   belongs_to :place, optional: true
 
+  has_many :presences, dependent: :destroy
+  has_many :members, through: :presences
+
+  has_many :event_groups, dependent: :destroy
+  has_many :groups, through: :event_groups
+
   enum :kind, %i[training competition other]
 
   validates :kind, :date_from, presence: true

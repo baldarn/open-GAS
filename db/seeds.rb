@@ -12,13 +12,10 @@
 
 require 'faker'
 
-Faker::Config.locale = 'it'
-
-club = Club.create(name: 'The Club')
-
-20.times do
-  member = Member.create!(
+def random_member(club, adults_group)
+  Member.create!(
     club:,
+    groups: [adults_group],
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     born_at: Faker::Date.between(from: '2015-12-31', to: '2000-01-01'),
@@ -35,6 +32,23 @@ club = Club.create(name: 'The Club')
     membership_id: Faker::Number.number,
     membership_expires_at: Faker::Date.forward
   )
+end
+
+Faker::Config.locale = 'it'
+
+club = Club.create!(name: 'The Club')
+
+children_group = club.groups.create!(name: 'children')
+adults_group = club.groups.create!(name: 'adults')
+
+10.times do
+  member = random_member(club, children_group)
+
+  Payment.create!(member:, amount: 50, reason: 'Quota associativa')
+end
+
+10.times do
+  member = random_member(club, adults_group)
 
   Payment.create!(member:, amount: 50, reason: 'Quota associativa')
 end

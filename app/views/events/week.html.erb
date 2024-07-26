@@ -2,7 +2,7 @@
   <%= date.day %>
   <% events.each do |event| %>
     <div>
-      <%= event.kind %>
+      <%= Event.human_attribute_name("kind.#{event.kind}") %>
     </div>
   <% end %>
 <% end %>

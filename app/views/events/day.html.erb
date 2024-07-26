@@ -2,7 +2,7 @@
   <%= date.day %>
   <% events.each do |event| %>
     <div>
-      <%= event.kind %>
+      <%= link_to Event.human_attribute_name("kind.#{event.kind}"), edit_club_event_path(@club, event) %>
     </div>
   <% end %>
 <% end %>

@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     end
 
     resources :payments, only: [:index]
-    resources :events
+    resources :events do
+      resources :presences
+    end
   end
 
   mount Resque::Server.new, at: '/resque'

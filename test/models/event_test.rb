@@ -8,6 +8,5 @@ class EventTest < ActiveSupport::TestCase
 
     assert(event.errors.key?('kind'))
     assert(event.errors.key?('date_from'))
-    assert(event.errors.key?('date_to'))
   end
 end

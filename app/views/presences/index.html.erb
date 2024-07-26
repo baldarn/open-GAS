@@ -1,0 +1,14 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Membro</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @event.groups.first.members.each do |member| %>
+      <tr>
+        <th><%= member.last_name %></th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

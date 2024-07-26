@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_24_113600) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_26_131946) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -45,6 +45,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_24_113600) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["discarded_at"], name: "index_clubs_on_discarded_at"
+  end
+
+  create_table "event_groups", force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_groups_on_event_id"
+    t.index ["group_id"], name: "index_event_groups_on_group_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -127,6 +136,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_24_113600) do
   create_table "presences", force: :cascade do |t|
     t.integer "member_id"
     t.integer "training_id"
+    t.date "date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_presences_on_member_id"

@@ -6,6 +6,8 @@ class AddPresences < ActiveRecord::Migration[7.1]
       t.belongs_to :member
       t.belongs_to :training
 
+      t.date :date, null: false
+
       t.timestamps
     end
   end

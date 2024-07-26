@@ -8,5 +8,6 @@ class PresenceTest < ActiveSupport::TestCase
 
     assert(presence.errors.key?('event'))
     assert(presence.errors.key?('member'))
+    assert(presence.errors.key?('date'))
   end
 end

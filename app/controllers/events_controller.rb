@@ -22,7 +22,7 @@ class EventsController < BaseController
         date_from: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week
       )
 
-      render 'agenda'
+      # render 'agenda'
     else
       # default view is month
       @events = @club.events.where(
@@ -76,7 +76,8 @@ class EventsController < BaseController
             :time_from,
             :time_to,
             :all_day,
-            :recurring
+            :recurring,
+            group_ids: []
           )
   end
 end

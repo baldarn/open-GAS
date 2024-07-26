@@ -10,10 +10,11 @@
     %>
   <% end %>
   <%= f.input :date_from %>
-  <%= f.input :date_to %>
+  <%= f.input :date_to, include_blank: true %>
   <%= f.input :time_from %>
   <%= f.input :time_to %>
   <%= f.input :all_day %>
+  <%= f.association :groups, collection: @club.groups %>
   <%= f.select_recurring :recurring, nil, :allow_blank => true %>
 
   <%= f.submit 'Save' %>
