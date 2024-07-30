@@ -5,6 +5,7 @@ class AddEvents < ActiveRecord::Migration[7.1]
     create_table :events do |t|
       t.belongs_to :club
 
+      t.string :title, null: false
       t.integer :kind, null: false
       t.date :date_from, null: false
       t.date :date_to

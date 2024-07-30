@@ -31,6 +31,15 @@ it:
       payment:
         amount: Ammontare
         reason: Causale
+      event:
+        kind: Tipo
+        title: Titolo
+        date_from: Data inizio
+        date_to: Data fine
+        time_from: Ora inizio
+        time_to: Ora fine
+        all_day: Tutto il giorno
+        groups: Gruppi
     #   user:
     #     new:
     #       email: 'E-mail to sign in.'

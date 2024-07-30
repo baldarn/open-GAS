@@ -1,4 +1,5 @@
 <%= simple_form_for [@club, @event] do |f| %>
+  <%= f.input :title %>
   <%= f.input :kind do %>
     <%=
     f.select(

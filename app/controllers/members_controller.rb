@@ -2,11 +2,12 @@
 
 class MembersController < BaseController
   def index
-    @members = @club.members
+    @group = params[:group_id] ? @club.groups.find(params[:group_id]) : @club.groups.first
+    @members = @group.members
   end
 
   def new
-    @member = Member.new
+    @member = @club.members.build
   end
 
   def create
@@ -22,7 +23,7 @@ class MembersController < BaseController
   end
 
   def update
-    @member = Member.find(params[:id])
+    @member = @club.members.find(params[:id])
 
     if @member.update(member_params)
       respond_to do |format|

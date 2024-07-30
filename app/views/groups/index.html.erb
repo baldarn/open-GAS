@@ -1,0 +1,15 @@
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+        <td><%= group.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

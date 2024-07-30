@@ -11,7 +11,7 @@
   <tbody>
     <% @payments.each do |payment| %>
       <tr>
-        <th><%= payment.member.last_name %></th>
+        <td><%= payment.member.last_name %></td>
         <td><%= number_to_currency(payment.amount) %></td>
         <td><%= payment.reason %></td>
         <td><%= payment.created_at %></td>

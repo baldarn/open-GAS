@@ -58,7 +58,7 @@ class EventsController < BaseController
     if @event.update(event_params)
       respond_to do |format|
         format.html { redirect_to club_events, flash: { notice: I18n.t('events.created') } }
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = 'OMGGGG' }
       end
     else
       render :new, status: :unprocessable_entity
@@ -71,6 +71,7 @@ class EventsController < BaseController
     params.require(:event)
           .permit(
             :kind,
+            :title,
             :date_from,
             :date_to,
             :time_from,

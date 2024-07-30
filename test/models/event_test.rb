@@ -6,6 +6,7 @@ class EventTest < ActiveSupport::TestCase
   test 'valudates presence' do
     event = Event.create
 
+    assert(event.errors.key?('title'))
     assert(event.errors.key?('kind'))
     assert(event.errors.key?('date_from'))
   end

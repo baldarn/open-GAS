@@ -1,11 +1,18 @@
 <%= month_calendar(events: @events) do |date, events| %>
   <%= date.day %>
   <% events.each do |event| %>
-    <div>
-      <%= link_to Event.human_attribute_name("kind.#{event.kind}"), edit_club_event_path(@club, event) %>
-      <%= link_to club_event_presences_path(@club, event, date:) do %>
-        <%= image_tag "card-checklist.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
-      <% end %>
+    <div class="row">
+      <div class="col">
+        <%= event.title %>
+      </div>
+      <div class="col">
+        <%= link_to edit_club_event_path(@club, event, date:) do %>
+          <%= image_tag "edit.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+        <% end %>
+        <%= link_to club_event_presences_path(@club, event, date:) do %>
+          <%= image_tag "card-checklist.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+        <% end %>
+      </div>
     </div>
   <% end %>
 <% end %>

@@ -41,3 +41,7 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
   border-radius: 50%;
   display: inline-block;
 }
+
+.app-flash {
+  margin-top: 3.5rem;
+}

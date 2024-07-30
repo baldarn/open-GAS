@@ -21,17 +21,16 @@
   <body data-controller="fullscreen lightbox">
     <header>
       <%= render partial: 'header' %>
-  </header>
-  <div id="toolbar">
-  </div>
-  <div class="container-fluid">
-    <div class="row justify-content-center">
-      <div class="col-12">
-        <%= yield %>
+    </header>
+    <%= render 'flash' %>
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <%= yield %>
+        </div>
       </div>
     </div>
-  </div>
-  <footer id="footer">
-  </footer>
-</body>
+    <footer id="footer">
+    </footer>
+  </body>
 </html>

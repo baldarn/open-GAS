@@ -14,7 +14,7 @@ class Event < ApplicationRecord
 
   enum :kind, %i[training competition other]
 
-  validates :kind, :date_from, presence: true
+  validates :title, :kind, :date_from, presence: true
 
   serialize :recurring, coder: YAML, type: Hash
 
@@ -33,5 +33,9 @@ class Event < ApplicationRecord
   # for simple-calendar
   def start_time
     date_from
+  end
+
+  def member_present_at_date?(member, date)
+    presences.where(member:, date:).count == 1
   end
 end

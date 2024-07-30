@@ -10,6 +10,8 @@ Rails.application.routes.draw do
       resources :payments
     end
 
+    resources :groups
+
     resources :payments, only: [:index]
     resources :events do
       resources :presences

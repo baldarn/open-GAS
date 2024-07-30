@@ -58,6 +58,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_26_131946) do
 
   create_table "events", force: :cascade do |t|
     t.integer "club_id"
+    t.string "title", null: false
     t.integer "kind", null: false
     t.date "date_from", null: false
     t.date "date_to"
@@ -135,12 +136,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_26_131946) do
 
   create_table "presences", force: :cascade do |t|
     t.integer "member_id"
-    t.integer "training_id"
+    t.integer "event_id"
     t.date "date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_presences_on_event_id"
     t.index ["member_id"], name: "index_presences_on_member_id"
-    t.index ["training_id"], name: "index_presences_on_training_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

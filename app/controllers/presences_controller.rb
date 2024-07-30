@@ -8,35 +8,19 @@ class PresencesController < BaseController
   end
 
   def create
-    @presence = @event.presences.build(presence_params)
+    @presence = @event.presences.find_or_initialize_by(presence_params)
 
-    if @presence.save
-      respond_to do |format|
-        format.html { redirect_to root_url, flash: { notice: I18n.t('events.created') } }
-        format.turbo_stream
-      end
+    if params[:is_present] && @presence.new_record?
+      @presence.save
     else
-      render :new, status: :unprocessable_entity
-    end
-  end
-
-  def update
-    @presence = @event.presences.find(params[:id])
-
-    if @presence.update(presence_params)
-      respond_to do |format|
-        format.html { redirect_to root_url, flash: { notice: I18n.t('events.created') } }
-        format.turbo_stream
-      end
-    else
-      render :new, status: :unprocessable_entity
+      @presence.destroy
     end
   end
 
   private
 
   def presence_params
-    params.require(:presence).permit(:date, member_ids: [])
+    params.permit(:date, :member_id, :presence)
   end
 
   def set_event
