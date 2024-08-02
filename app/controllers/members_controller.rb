@@ -15,10 +15,12 @@ class MembersController < BaseController
 
     if @member.save
       respond_to do |format|
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = 'created' }
       end
     else
-      render :new, status: :unprocessable_entity
+      respond_to do |format|
+        format.turbo_stream { flash.now[:alert] = 'error' }
+      end
     end
   end
 
@@ -27,10 +29,12 @@ class MembersController < BaseController
 
     if @member.update(member_params)
       respond_to do |format|
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = 'updated' }
       end
     else
-      render :new, status: :unprocessable_entity
+      respond_to do |format|
+        format.turbo_stream { flash.now[:alert] = 'error' }
+      end
     end
   end
 

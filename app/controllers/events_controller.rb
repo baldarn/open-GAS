@@ -45,10 +45,13 @@ class EventsController < BaseController
     if @event.save
       respond_to do |format|
         format.html { redirect_to club_events, flash: { notice: I18n.t('events.created') } }
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = 'created' }
       end
     else
-      render :new, status: :unprocessable_entity
+      respond_to do |format|
+        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { flash.now[:alert] = 'error' }
+      end
     end
   end
 
@@ -58,11 +61,20 @@ class EventsController < BaseController
     if @event.update(event_params)
       respond_to do |format|
         format.html { redirect_to club_events, flash: { notice: I18n.t('events.created') } }
-        format.turbo_stream { flash.now[:notice] = 'OMGGGG' }
+        format.turbo_stream { flash.now[:notice] = 'updated' }
       end
     else
-      render :new, status: :unprocessable_entity
+      respond_to do |format|
+        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { flash.now[:alert] = 'error' }
+      end
     end
+  end
+
+  def destroy
+    @event = @club.events.find(params[:id])
+
+    @event.discard
   end
 
   private
