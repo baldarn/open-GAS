@@ -59,7 +59,8 @@ class MembersController < BaseController
             :medical_certificate_kind,
             :medical_certificate_expires_at,
             :membership_id,
-            :membership_expires_at
+            :membership_expires_at,
+            group_ids: []
           )
   end
 end

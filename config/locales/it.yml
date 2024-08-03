@@ -73,6 +73,7 @@ it:
         postal_code: CAP
         email: Email
         municipality: Comune
+        groups: Gruppi
       event/kind:
         training: Allenamento
         competition: Partita/Gara

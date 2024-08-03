@@ -22,6 +22,8 @@ class Member < ApplicationRecord
             :email,
             :municipality, presence: true
 
+  validates :groups, length: { minimum: 1 }
+
   scope :with_expiring_medical_certificate,
         -> { where(medical_certificate_expires_at: Time.zone.today.beginning_of_day..2.months.from_now) }
 
