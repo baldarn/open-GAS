@@ -1,46 +1,47 @@
-<%= simple_form_for [club, member], html: { class: 'row' } do |f| %>
-  <div class="col-sm-8 card">
-    <div class="row">
-      <h3>
-        Dati
-      </h3>
-      <%= f.input :first_name, wrapper_html: { class: 'col-sm-6' } %>
-      <%= f.input :last_name, wrapper_html: { class: 'col-sm-6' } %>
-      <%= f.input :born_at %>
-      <%= f.input :born_in %>
-      <%= f.input :tax_code %>
-      <%= f.input :citizenship, wrapper_html: { class: 'col-sm-6' } %>
-      <%= f.input :address, wrapper_html: { class: 'col-sm-6' } %>
-      <%= f.input :postal_code, wrapper_html: { class: 'col-sm-2' } %>
-      <%= f.input :municipality, wrapper_html: { class: 'col-sm-8' } %>
-      <%= f.input :province, wrapper_html: { class: 'col-sm-2' } %>
-      <%= f.input :telephone, wrapper_html: { class: 'col-sm-6' } %>
-      <%= f.input :email, wrapper_html: { class: 'col-sm-6' } %>
-      <%= f.file_field :picture %>
-      <%=
+<%= turbo_frame_tag member do %>
+  <%= simple_form_for [club, member], html: { class: 'row' } do |f| %>
+    <div class="col-sm-8 card">
+      <div class="row">
+        <h3>
+          Dati
+        </h3>
+        <%= f.input :first_name, wrapper_html: { class: 'col-sm-6' } %>
+        <%= f.input :last_name, wrapper_html: { class: 'col-sm-6' } %>
+        <%= f.input :born_at %>
+        <%= f.input :born_in %>
+        <%= f.input :tax_code %>
+        <%= f.input :citizenship, wrapper_html: { class: 'col-sm-6' } %>
+        <%= f.input :address, wrapper_html: { class: 'col-sm-6' } %>
+        <%= f.input :postal_code, wrapper_html: { class: 'col-sm-2' } %>
+        <%= f.input :municipality, wrapper_html: { class: 'col-sm-8' } %>
+        <%= f.input :province, wrapper_html: { class: 'col-sm-2' } %>
+        <%= f.input :telephone, wrapper_html: { class: 'col-sm-6' } %>
+        <%= f.input :email, wrapper_html: { class: 'col-sm-6' } %>
+        <%= f.file_field :picture %>
+        <%=
         if member.picture.present?
           image_tag member.picture, class: 'img-fluid img-thumbnail rounded mx-auto d-block', style: 'max-width: 200px'
         end
         %>
-      <%= f.submit 'Save', class: 'd-none' %>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="" style="height: 100%;">
-      <div class="card">
-        <h3>
-          Tesseramento <span class="dot-<%= member.membership_status %>"></span>
-        </h3>
-        <%= f.input :membership_id %>
-        <%= f.input :membership_expires_at %>
+        <%= f.submit 'Save', class: 'd-none' %>
       </div>
-      <div class="card">
-        <h3>
-          Certificato medico <span class="dot-<%= member.medical_status %>"></span>
-        </h3>
-        <%= f.input :medical_certificate_expires_at %>
-        <%= f.input :medical_certificate_kind do %>
-          <%=
+    </div>
+    <div class="col-sm-4">
+      <div class="" style="height: 100%;">
+        <div class="card">
+          <h3>
+            Tesseramento <span class="dot-<%= member.membership_status %>"></span>
+          </h3>
+          <%= f.input :membership_id %>
+          <%= f.input :membership_expires_at %>
+        </div>
+        <div class="card">
+          <h3>
+            Certificato medico <span class="dot-<%= member.medical_status %>"></span>
+          </h3>
+          <%= f.input :medical_certificate_expires_at %>
+          <%= f.input :medical_certificate_kind do %>
+            <%=
           f.select(
             :medical_certificate_kind,
             Member.medical_certificate_kinds.map { |kind, v| [Member.human_attribute_name("medical_certificate_kind.#{kind}"), kind] },
@@ -48,21 +49,22 @@
             class: 'form-control'
           )
         %>
-        <% end %>
-      </div>
-      <div class="card">
-        <h3>
-          Pagamenti <span class="dot-<%= member.payments_status %>"></span>
-        </h3>
-        <%= link_to "Nuovo pagamento",
+          <% end %>
+        </div>
+        <div class="card">
+          <h3>
+            Pagamenti <span class="dot-<%= member.payments_status %>"></span>
+          </h3>
+          <%= link_to "Nuovo pagamento",
             new_club_member_payment_path(club, member),
             data: { turbo_frame: "new_payment_#{member.id}" },
             class: "btn btn-primary" %>
-        <%= turbo_frame_tag "new_payment_#{member.id}" %>
-        <%= turbo_frame_tag "payments_#{member.id}" do %>
-          <%= render member.payments, member: %>
-        <% end %>
+          <%= turbo_frame_tag "new_payment_#{member.id}" %>
+          <%= turbo_frame_tag "payments_#{member.id}" do %>
+            <%= render member.payments, member: %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 <% end %>

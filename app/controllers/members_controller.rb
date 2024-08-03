@@ -11,15 +11,15 @@ class MembersController < BaseController
   end
 
   def create
-    @member = @club.payments.build(member_params)
+    @member = @club.members.build(member_params)
 
     if @member.save
       respond_to do |format|
-        format.turbo_stream { flash.now[:notice] = 'created' }
+        format.turbo_stream { flash.now[:notice] = I18n.t('members.created') }
       end
     else
       respond_to do |format|
-        format.turbo_stream { flash.now[:alert] = 'error' }
+        format.turbo_stream
       end
     end
   end
@@ -29,11 +29,11 @@ class MembersController < BaseController
 
     if @member.update(member_params)
       respond_to do |format|
-        format.turbo_stream { flash.now[:notice] = 'updated' }
+        format.turbo_stream { flash.now[:notice] = I18n.t('members.updated') }
       end
     else
       respond_to do |format|
-        format.turbo_stream { flash.now[:alert] = 'error' }
+        format.turbo_stream
       end
     end
   end

@@ -28,6 +28,9 @@
 #       enabled: "ON"
 
 it:
+  members:
+    created: Giocatore creato
+    updated: Giocatore aggiornato
   payments:
     created: Pagamento creato
     updated: Pagamento aggiornato
@@ -60,6 +63,16 @@ it:
       member/medical_certificate_kind:
         regular: Normale
         competitive: Agonistico
+      member:
+        first_name: Nome
+        last_name: Cognome
+        born_id: Nato a
+        born_at: Nato il
+        citizenship: Cittadinanza
+        address: Indirizzo
+        postal_code: CAP
+        email: Email
+        municipality: Comune
       event/kind:
         training: Allenamento
         competition: Partita/Gara

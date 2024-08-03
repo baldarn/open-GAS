@@ -45,7 +45,7 @@ class EventsController < BaseController
     if @event.save
       respond_to do |format|
         format.html { redirect_to club_events, flash: { notice: I18n.t('events.created') } }
-        format.turbo_stream { flash.now[:notice] = 'created' }
+        format.turbo_stream { flash.now[:notice] = I18n.t('events.created') }
       end
     else
       respond_to do |format|
@@ -60,8 +60,8 @@ class EventsController < BaseController
 
     if @event.update(event_params)
       respond_to do |format|
-        format.html { redirect_to club_events, flash: { notice: I18n.t('events.created') } }
-        format.turbo_stream { flash.now[:notice] = 'updated' }
+        format.html { redirect_to club_events, flash: { notice: I18n.t('events.updated') } }
+        format.turbo_stream { flash.now[:notice] = I18n.t('events.updated') }
       end
     else
       respond_to do |format|
