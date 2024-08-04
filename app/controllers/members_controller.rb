@@ -3,7 +3,7 @@
 class MembersController < BaseController
   def index
     @group = params[:group_id] ? @club.groups.find(params[:group_id]) : @club.groups.first
-    @members = @group.members
+    @members = @group.members.order(:last_name)
   end
 
   def new
