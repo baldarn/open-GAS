@@ -36,6 +36,9 @@ gem 'discard', '~> 1.2'
 gem 'ice_cube'
 gem 'recurring_select', github: 'gregschmit/recurring_select', branch: 'master'
 
+gem 'devise', '~> 4.9'
+gem 'devise-i18n'
+
 # Other
 gem 'bcrypt', '~> 3.1.7'
 gem 'front_matter_parser'

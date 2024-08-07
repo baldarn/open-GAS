@@ -60,6 +60,8 @@ class MembersController < BaseController
             :medical_certificate_expires_at,
             :membership_id,
             :membership_expires_at,
+            :privacy_disclaimer,
+            :picture_disclaimer,
             group_ids: []
           )
   end

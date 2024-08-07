@@ -36,6 +36,6 @@ class ClubsController < ApplicationController
   private
 
   def club_params
-    params.require(:club).permit(:name)
+    params.require(:club).permit(:name, :email)
   end
 end

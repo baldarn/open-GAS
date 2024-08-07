@@ -3,6 +3,7 @@
     Club
   </h3>
   <%= f.input :name %>
+  <%= f.input :email %>
   <%=
     if club.picture.present?
       image_tag club.picture, class: 'img-fluid img-thumbnail rounded mx-auto d-block', style: 'max-width: 200px'

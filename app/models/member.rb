@@ -30,6 +30,12 @@ class Member < ApplicationRecord
   # TODO: model validation of medical certificate if exists
   enum :medical_certificate_kind, %i[regular competitive]
 
+  scope :with_warnings,
+        -> { includes(:payments).select { |m| m.status == 'warning' } }
+
+  scope :with_errors,
+        -> { includes(:payments).select { |m| m.status == 'error' } }
+
   def status
     return 'error' if statuses.find { |s| s == 'error' }
     return 'warning' if statuses.find { |s| s == 'warning' }

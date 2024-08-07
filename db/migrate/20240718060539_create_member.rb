@@ -26,6 +26,9 @@ class CreateMember < ActiveRecord::Migration[7.1]
 
       t.text :notes
 
+      t.boolean :privacy_disclaimer, null: false, default: false
+      t.boolean :picture_disclaimer, null: false, default: false
+
       t.datetime :discarded_at
       t.index :discarded_at
 

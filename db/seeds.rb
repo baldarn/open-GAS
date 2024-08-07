@@ -34,9 +34,13 @@ def random_member(club, adults_group)
   )
 end
 
+user = User.new(email: 'admin@email.com', password: 'password', role: :admin)
+user.skip_confirmation!
+user.save!
+
 Faker::Config.locale = 'it'
 
-club = Club.create!(name: 'The Club')
+club = Club.create!(name: 'The Club', user:, email: 'club@email.com')
 
 children_group = club.groups.create!(name: 'children')
 adults_group = club.groups.create!(name: 'adults')

@@ -19,6 +19,10 @@ Metrics/BlockLength:
     - config/environments/*
     - config/initializers/simple_form_bootstrap.rb
 
+Metrics/LineLength:
+  Exclude:
+    - config/initializers/devise.rb
+
 Metrics/MethodLength:
   Max: 35
   Exclude:

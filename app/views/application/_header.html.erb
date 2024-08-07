@@ -7,46 +7,73 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
         <li class="nav-item">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= image_tag "person.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
-            Giocatori
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="<%= club_members_path(@club) %>">Lista</a></li>
-            <li><a class="dropdown-item" href="<%= new_club_member_path(@club) %>">Nuovo</a></li>
-          </ul>
+          <% if user_signed_in? %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <%= image_tag "person.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+                Membri
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="<%= club_members_path(@club) %>">Lista</a></li>
+                <li><a class="dropdown-item" href="<%= new_club_member_path(@club) %>">Nuovo</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <%= image_tag "people.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+                Gruppi
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="<%= club_groups_path(@club) %>">Lista</a></li>
+                <li><a class="dropdown-item" href="<%= new_club_group_path(@club) %>">Nuovo</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="<%= edit_club_path(@club) %>" class="nav-link text-secondary">
+                <%= image_tag "house.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+                Club
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<%= club_events_url(@club) %>" class="nav-link text-secondary">
+                <%= image_tag "calendar.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+                Calendario
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<%= club_payments_url(@club) %>" class="nav-link text-secondary">
+                <%= image_tag "cash.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+                Pagamenti
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<%= club_payments_url(@club) %>" class="nav-link text-secondary">
+                <%= image_tag "collaborator.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+                Allenatori
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<%= destroy_user_session_url %>" class="nav-link text-secondary">
+                <%= image_tag "door.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+                Sign out
+              </a>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <a href="<%= user_session_url %>" class="nav-link text-secondary">
+                <%= image_tag "door.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+                Sign in
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<%= new_user_registration_url %>" class="nav-link text-secondary">
+                <%= image_tag "door.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+                Sign up
+              </a>
+            </li>
+          <% end %>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= image_tag "people.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
-            Gruppi
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="<%= club_groups_path(@club) %>">Lista</a></li>
-            <li><a class="dropdown-item" href="<%= new_club_group_path(@club) %>">Nuovo</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a href="<%= edit_club_path(@club) %>" class="nav-link text-secondary">
-            <%= image_tag "house.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
-            Club
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="<%= club_events_url(@club) %>" class="nav-link text-secondary">
-            <%= image_tag "calendar.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
-            Calendario
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="<%= club_payments_url(@club) %>" class="nav-link text-secondary">
-            <%= image_tag "cash.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
-            Pagamenti
-          </a>
-        </li>
-      </li>
-    </ul>
+      </ul>
+    </div>
   </div>
-</div>
 </nav>
