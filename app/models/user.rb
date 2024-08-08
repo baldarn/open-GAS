@@ -7,5 +7,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable
 
-  enum role: { user: 0, moderator: 1, admin: 2 }
+  enum role: { admin: 0, instructor: 1 }
 end

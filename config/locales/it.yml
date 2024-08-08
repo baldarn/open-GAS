@@ -66,7 +66,7 @@ it:
       member:
         first_name: Nome
         last_name: Cognome
-        born_id: Nato a
+        born_in: Nato a
         born_at: Nato il
         citizenship: Cittadinanza
         address: Indirizzo

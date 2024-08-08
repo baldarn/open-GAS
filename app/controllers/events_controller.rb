@@ -50,7 +50,7 @@ class EventsController < BaseController
     else
       respond_to do |format|
         format.html { render :new, status: :unprocessable_entity }
-        format.turbo_stream { flash.now[:alert] = 'error' }
+        format.turbo_stream
       end
     end
   end
@@ -66,7 +66,7 @@ class EventsController < BaseController
     else
       respond_to do |format|
         format.html { render :new, status: :unprocessable_entity }
-        format.turbo_stream { flash.now[:alert] = 'error' }
+        format.turbo_stream
       end
     end
   end

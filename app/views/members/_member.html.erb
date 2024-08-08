@@ -43,16 +43,7 @@
             Certificato medico <span class="dot-<%= member.medical_status %>"></span>
           </h3>
           <%= f.input :medical_certificate_expires_at %>
-          <%= f.input :medical_certificate_kind do %>
-            <%=
-          f.select(
-            :medical_certificate_kind,
-            Member.medical_certificate_kinds.map { |kind, v| [Member.human_attribute_name("medical_certificate_kind.#{kind}"), kind] },
-            { prompt: 'Seleziona tipo' },
-            class: 'form-control'
-          )
-        %>
-          <% end %>
+          <%= f.input :medical_certificate_kind, prompt: 'Seleziona tipo', collection: Member.medical_certificate_kinds.map { |kind, v| [Member.human_attribute_name("medical_certificate_kind.#{kind}"), kind] } %>
         </div>
         <div class="card">
           <h3>
