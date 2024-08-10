@@ -8,11 +8,11 @@ class PaymentsController < BaseController
   end
 
   def new
-    @payment = Payment.new
+    @payment = @member.payments.new
   end
 
   def edit
-    @payment = Payment.find(params[:id])
+    @payment = @member.payments.find(params[:id])
   end
 
   def create
@@ -29,7 +29,7 @@ class PaymentsController < BaseController
   end
 
   def update
-    @payment = Payment.find(params[:id])
+    @payment = @member.payments.find(params[:id])
 
     if @payment.update(payment_params)
       respond_to do |format|

@@ -19,8 +19,8 @@
         <%= f.input :email, wrapper_html: { class: 'col-sm-6' } %>
         <%= f.input :privacy_disclaimer, wrapper_html: { class: 'col-sm-6' } %>
         <%= f.input :picture_disclaimer, wrapper_html: { class: 'col-sm-6' } %>
-        <%= f.association :tags, collection: @club.tags, as: :check_boxes %>
-        <%= f.association :groups, collection: @club.groups, as: :check_boxes %>
+        <%= f.association :tags, as: :check_boxes %>
+        <%= f.association :groups, as: :check_boxes %>
         <%= f.file_field :picture %>
         <%=
         if member.picture.present?

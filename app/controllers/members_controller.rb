@@ -67,7 +67,8 @@ class MembersController < BaseController
             :membership_expires_at,
             :privacy_disclaimer,
             :picture_disclaimer,
-            group_ids: []
+            group_ids: [],
+            tag_ids: []
           )
   end
 end

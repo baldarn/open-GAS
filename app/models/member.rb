@@ -9,8 +9,12 @@ class Member < ApplicationRecord
   belongs_to :club
 
   has_many :payments, dependent: :destroy
+
   has_many :member_groups, dependent: :destroy
   has_many :groups, through: :member_groups, dependent: :nullify
+
+  has_many :member_tags, dependent: :destroy
+  has_many :tags, through: :member_tags, dependent: :nullify
 
   validates :first_name,
             :last_name,

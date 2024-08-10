@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_06_122837) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_10_162416) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -94,6 +94,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_06_122837) do
     t.index ["member_id"], name: "index_member_groups_on_member_id"
   end
 
+  create_table "member_tags", force: :cascade do |t|
+    t.integer "member_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_member_tags_on_member_id"
+    t.index ["tag_id"], name: "index_member_tags_on_tag_id"
+  end
+
   create_table "members", force: :cascade do |t|
     t.integer "club_id"
     t.string "first_name", null: false
@@ -147,6 +156,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_06_122837) do
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_presences_on_event_id"
     t.index ["member_id"], name: "index_presences_on_member_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.integer "club_id"
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["club_id"], name: "index_tags_on_club_id"
   end
 
   create_table "users", force: :cascade do |t|

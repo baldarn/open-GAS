@@ -10,6 +10,7 @@ class Club < ApplicationRecord
 
   has_many :members, dependent: :destroy
   has_many :groups, dependent: :destroy
+  has_many :tags, dependent: :destroy
   has_many :events, dependent: :destroy
   has_many :payments, through: :members
 

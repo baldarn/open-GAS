@@ -15,6 +15,7 @@
     <%= f.input :province, wrapper_html: { class: 'col-sm-2' } %>
     <%= f.input :telephone, wrapper_html: { class: 'col-sm-6' } %>
     <%= f.input :email, wrapper_html: { class: 'col-sm-6' } %>
+    <%= f.association :tags, collection: @club.tags, as: :check_boxes %>
     <%= f.association :groups, collection: @club.groups, as: :check_boxes %>
     <%= f.file_field :picture %>
     <%=

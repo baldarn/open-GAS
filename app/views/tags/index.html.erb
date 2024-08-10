@@ -1,0 +1,15 @@
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tags.each do |tag| %>
+      <tr>
+        <td><%= tag.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

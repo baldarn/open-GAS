@@ -42,6 +42,9 @@ it:
     created: Gruppo creato
     updated: Gruppo aggiornato
     create_a_group_before: Crea un gruppo prima di creare membri!
+  tags:
+    created: Attributo creato
+    updated: Attributo aggiornato
   recurring_select:
     not_recurring: Non ricorrente
     change_schedule: Cambia ricorrenza
