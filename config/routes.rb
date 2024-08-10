@@ -5,9 +5,13 @@ require 'resque/server'
 Rails.application.routes.draw do
   root to: 'home#index'
 
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
 
   resources :clubs do
+    get 'dashboard' => 'dashboard#show'
+
     resources :members do
       resources :payments
     end

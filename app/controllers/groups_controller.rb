@@ -14,10 +14,14 @@ class GroupsController < BaseController
 
     if @group.save
       respond_to do |format|
-        format.turbo_stream
+        format.html { redirect_to club_groups_url(@club), flash: { notice: I18n.t('groups.created') } }
+        format.turbo_stream { flash.now[:notice] = I18n.t('groups.created') }
       end
     else
-      render :new, status: :unprocessable_entity
+      respond_to do |format|
+        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream
+      end
     end
   end
 
@@ -26,10 +30,14 @@ class GroupsController < BaseController
 
     if @group.update(group_params)
       respond_to do |format|
-        format.turbo_stream
+        format.html { redirect_to club_groups_url(@club), flash: { notice: I18n.t('groups.updated') } }
+        format.turbo_stream { flash.now[:notice] = I18n.t('groups.updated') }
       end
     else
-      render :new, status: :unprocessable_entity
+      respond_to do |format|
+        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream
+      end
     end
   end
 

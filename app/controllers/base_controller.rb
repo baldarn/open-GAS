@@ -4,6 +4,6 @@ class BaseController < ApplicationController
   before_action :set_club
 
   def set_club
-    @club = Club.find(params[:club_id])
+    @club = current_user.club
   end
 end

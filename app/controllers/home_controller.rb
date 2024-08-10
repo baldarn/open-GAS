@@ -2,6 +2,8 @@
 
 class HomeController < ApplicationController
   def index
-    @club = Club.first
+    return unless user_signed_in?
+
+    redirect_to club_dashboard_url(current_user.club)
   end
 end

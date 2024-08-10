@@ -1,4 +1,6 @@
-<%= simple_form_for [@club, group] do |f| %>
-  <%= f.input :name, class: "input" %>
-  <%= f.button :submit, 'Salva gruppo' %>
+<%= turbo_frame_tag @group do %>
+  <%= simple_form_for [@club, group] do |f| %>
+    <%= f.input :name, class: "input" %>
+    <%= f.button :submit, 'Salva gruppo' %>
+  <% end %>
 <% end %>

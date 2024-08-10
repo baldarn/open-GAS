@@ -29,14 +29,19 @@
 
 it:
   members:
-    created: Giocatore creato
-    updated: Giocatore aggiornato
+    new: Nuovo membro
+    created: Membro creato
+    updated: Membro aggiornato
   payments:
     created: Pagamento creato
     updated: Pagamento aggiornato
   events:
     created: Evento creato
     updated: Evento aggiornato
+  groups:
+    created: Gruppo creato
+    updated: Gruppo aggiornato
+    create_a_group_before: Crea un gruppo prima di creare membri!
   recurring_select:
     not_recurring: Non ricorrente
     change_schedule: Cambia ricorrenza

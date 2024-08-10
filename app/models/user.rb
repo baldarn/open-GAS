@@ -8,4 +8,6 @@ class User < ApplicationRecord
          :confirmable, :lockable
 
   enum role: { admin: 0, instructor: 1 }
+
+  has_one :club, dependent: :nullify
 end

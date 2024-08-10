@@ -28,7 +28,14 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  members:
+    new: New member
+    created: Member created
+    updated: Member updated
+  groups:
+    created: Group created
+    updated: Group updated
+    create_a_group_before: Create a group before adding members!
   medical_certificate:
     expiring_email:
       subject: Medical certificate is expiring!

@@ -1,4 +1,6 @@
 <div>
+  <a class="btn btn-primary" href="<%= new_club_member_path(@club) %>"><%= I18n.t('members.new') %></a>
+
   <div class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
       <%= @group.name %>
@@ -6,12 +8,11 @@
     <ul class="dropdown-menu">
       <% @club.groups.each do |group| %>
         <li>
-        <%= link_to group.name, club_members_path(@club, group_id: group.id), class: 'dropdown-item' %>
+          <%= link_to group.name, club_members_path(@club, group_id: group.id), class: 'dropdown-item' %>
         </li>
       <% end %>
     </ul>
   </div>
-
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <% @members.each do |member| %>
       <li class="nav-item" role="presentation">
