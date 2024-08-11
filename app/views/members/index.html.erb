@@ -1,33 +1,32 @@
-<div>
-  <a class="btn btn-primary" href="<%= new_club_member_path(@club) %>"><%= I18n.t('members.new') %></a>
+<%= link_to I18n.t('members.new'), new_club_member_path(@club), class: 'btn btn-primary' %>
 
-  <div class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      <%= @group.name %>
-    </a>
-    <ul class="dropdown-menu">
-      <% @club.groups.each do |group| %>
-        <li>
-          <%= link_to group.name, club_members_path(@club, group_id: group.id), class: 'dropdown-item' %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
+<%= paginate @members %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"><%= I18n.t('activerecord.attributes.member.first_name') %></th>
+      <th scope="col"><%= I18n.t('activerecord.attributes.member.last_name') %></th>
+      <th scope="col"><%= I18n.t('activerecord.attributes.member.groups') %></th>
+      <th scope="col"><%= I18n.t('activerecord.attributes.member.tags') %></th>
+      <th scope="col"><%= I18n.t('actions') %></th>
+    </tr>
+  </thead>
+  <tbody>
     <% @members.each do |member| %>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="<%= member.last_name.parameterize  %>-tab" data-bs-toggle="tab" data-bs-target="#<%= member.last_name.parameterize  %>" type="button" role="tab" aria-controls="<%= member.last_name %>" aria-selected="true">
-          <span class="dot-<%= member.status %>"></span>
-          <%= "#{member.first_name.first}. #{member.last_name}" %>
-        </button>
-      </li>
+      <tr>
+        <td><%= member.first_name %></td>
+        <td><%= member.last_name %></td>
+        <td><%= member.groups.map(&:name).join(', ') %></td>
+        <td><%= member.tags.map(&:name).join(', ') %></td>
+        <td>
+          <%= link_to edit_club_member_path(@club, member) do %>
+            <%= image_tag "edit.svg", aria: { hidden: true }, size: 24 %>
+          <% end %>
+          <%= link_to club_member_path(@club, member), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
+            <%= image_tag "trash.svg", aria: { hidden: true }, size: 24 %>
+          <% end %>
+        </td>
+      </tr>
     <% end %>
-  </ul>
-  <div class="tab-content" id="myTabContent">
-    <% @members.each do |member| %>
-      <div class="tab-pane fade show" id="<%= member.last_name.parameterize  %>" role="tabpanel" aria-labelledby="<%= member.last_name.parameterize  %>-tab">
-        <%= render 'member_dashboard', club: @club, member: member %>
-      </div>
-    <% end %>
-  </div>
-</div>
+  </tbody>
+</table>

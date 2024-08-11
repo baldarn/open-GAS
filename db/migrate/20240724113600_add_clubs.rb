@@ -3,8 +3,6 @@
 class AddClubs < ActiveRecord::Migration[7.1]
   def change
     create_table :clubs do |t|
-      t.belongs_to :user
-
       t.string :name, null: false
 
       t.datetime :discarded_at

@@ -40,14 +40,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_10_162416) do
   end
 
   create_table "clubs", force: :cascade do |t|
-    t.integer "user_id"
     t.string "name", null: false
     t.datetime "discarded_at"
     t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["discarded_at"], name: "index_clubs_on_discarded_at"
-    t.index ["user_id"], name: "index_clubs_on_user_id"
   end
 
   create_table "event_groups", force: :cascade do |t|
@@ -167,6 +165,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_10_162416) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.integer "club_id"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -182,6 +183,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_10_162416) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "role", default: 0
+    t.index ["club_id"], name: "index_users_on_club_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

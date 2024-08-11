@@ -1,14 +1,25 @@
+<%= link_to I18n.t('groups.new'), new_club_group_path(@club), class: 'btn btn-primary' %>
 
+<%= paginate @groups %>
 <table class="table">
   <thead>
     <tr>
       <th scope="col">Nome</th>
+      <th scope="col"><%= I18n.t('actions') %></th>
     </tr>
   </thead>
   <tbody>
     <% @groups.each do |group| %>
       <tr>
         <td><%= group.name %></td>
+        <td>
+          <%= link_to edit_club_group_path(@club, group) do %>
+            <%= image_tag "edit.svg", aria: { hidden: true }, size: 24 %>
+          <% end %>
+          <%= link_to club_group_path(@club, group), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
+            <%= image_tag "trash.svg", aria: { hidden: true }, size: 24 %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -12,12 +12,15 @@ Rails.application.routes.draw do
   resources :clubs do
     get 'dashboard' => 'dashboard#show'
 
+    get 'members/dashboard' => 'members#dashboard'
+
     resources :members do
       resources :payments
     end
 
     resources :groups
     resources :tags
+    resources :users
 
     resources :payments, only: [:index]
     resources :events do

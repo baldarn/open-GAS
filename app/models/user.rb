@@ -7,7 +7,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable
 
-  enum role: { admin: 0, instructor: 1 }
+  has_one_attached :picture
 
-  has_one :club, dependent: :nullify
+  enum role: { admin: 0, collaborator: 1 }
+
+  belongs_to :club
+
+  validates :first_name, :last_name, :password, presence: true
 end

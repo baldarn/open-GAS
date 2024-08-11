@@ -67,8 +67,9 @@ class EventsController < BaseController
 
   def destroy
     @event = @club.events.find(params[:id])
+    @event.destroy
 
-    @event.discard
+    redirect_to club_events_url(@club), flash: { success: I18n.t('events.destroyed') }
   end
 
   private

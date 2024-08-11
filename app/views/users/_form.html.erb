@@ -1,0 +1,17 @@
+<%= turbo_frame_tag user do %>
+  <%= simple_form_for [@club, user], html: { class: 'row' } do |f| %>
+    <h3>
+      Dati
+    </h3>
+    <%= f.input :first_name, wrapper_html: { class: 'col-sm-6' } %>
+    <%= f.input :last_name, wrapper_html: { class: 'col-sm-6' } %>
+    <%= f.input :email, wrapper_html: { class: 'col-sm-6' } %>
+    <%= f.file_field :picture %>
+    <%=
+    if user.picture.present?
+      image_tag user.picture, class: 'img-fluid img-thumbnail rounded mx-auto d-block', style: 'max-width: 200px'
+    end
+    %>
+    <%= f.submit 'Save', class: 'btn btn-primary' %>
+  <% end %>
+<% end %>

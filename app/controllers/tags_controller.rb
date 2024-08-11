@@ -45,6 +45,13 @@ class TagsController < BaseController
     end
   end
 
+  def destroy
+    @tag = @club.tags.find(params[:id])
+    @tag.destroy
+
+    redirect_to club_tags_url(@club), flash: { success: I18n.t('tags.destroyed') }
+  end
+
   private
 
   def tag_params

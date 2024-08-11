@@ -2,11 +2,15 @@
 
 class GroupsController < BaseController
   def index
-    @groups = @club.groups
+    @groups = @club.groups.page(params[:page])
   end
 
   def new
     @group = @club.groups.build
+  end
+
+  def edit
+    @group = @club.groups.find(params[:id])
   end
 
   def create
@@ -26,7 +30,7 @@ class GroupsController < BaseController
   end
 
   def update
-    @group = @club.members.find(params[:id])
+    @group = @club.groups.find(params[:id])
 
     if @group.update(group_params)
       respond_to do |format|
@@ -39,6 +43,13 @@ class GroupsController < BaseController
         format.turbo_stream
       end
     end
+  end
+
+  def destroy
+    @group = @club.groups.find(params[:id])
+    @group.destroy
+
+    redirect_to club_groups_url(@club), flash: { success: I18n.t('groups.destroyed') }
   end
 
   private

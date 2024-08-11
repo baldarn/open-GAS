@@ -2,6 +2,10 @@
 
 class MembersController < BaseController
   def index
+    @members = @club.members.page(params[:page])
+  end
+
+  def dashboard
     @group = params[:group_id] ? @club.groups.find(params[:group_id]) : @club.groups.first
 
     if @group.blank?
@@ -13,6 +17,10 @@ class MembersController < BaseController
 
   def new
     @member = @club.members.build
+  end
+
+  def edit
+    @member = @club.members.find(params[:id])
   end
 
   def create
@@ -41,6 +49,13 @@ class MembersController < BaseController
         format.turbo_stream
       end
     end
+  end
+
+  def destroy
+    @member = @club.members.find(params[:id])
+    @member.discard
+
+    redirect_to club_members_url(@club), flash: { success: I18n.t('members.destroyed') }
   end
 
   private

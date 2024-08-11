@@ -6,7 +6,9 @@ class Club < ApplicationRecord
 
   has_one_attached :picture
 
-  belongs_to :user
+  has_many :users, dependent: :destroy
+
+  alias collaborators users
 
   has_many :members, dependent: :destroy
   has_many :groups, dependent: :destroy
@@ -14,5 +16,5 @@ class Club < ApplicationRecord
   has_many :events, dependent: :destroy
   has_many :payments, through: :members
 
-  validates :name, presence: true
+  validates :name, :email, presence: true
 end

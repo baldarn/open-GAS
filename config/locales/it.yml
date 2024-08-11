@@ -28,23 +28,38 @@
 #       enabled: "ON"
 
 it:
+  actions: Azioni
+  club:
+    updated: Club aggiornato
+  users:
+    new: Nuovo collaboratore
+    created: Collaboratore creato
+    updated: Collaboratore aggiornato
+    destroyed: Collaboratore cancellato
   members:
     new: Nuovo membro
     created: Membro creato
     updated: Membro aggiornato
+    destroyed: Membro cancellato
   payments:
     created: Pagamento creato
     updated: Pagamento aggiornato
+    destroyed: Pagamento cancellato
   events:
     created: Evento creato
     updated: Evento aggiornato
+    destroyed: Evento cancellato
   groups:
+    new: Nuovo gruppo
     created: Gruppo creato
     updated: Gruppo aggiornato
+    destroyed: Gruppo cancellato
     create_a_group_before: Crea un gruppo prima di creare membri!
   tags:
+    new: Nuovo attributo
     created: Attributo creato
     updated: Attributo aggiornato
+    destroyed: Attributo cancellato
   recurring_select:
     not_recurring: Non ricorrente
     change_schedule: Cambia ricorrenza
@@ -68,6 +83,10 @@ it:
 
   activerecord:
     attributes:
+      user:
+        first_name: Nome
+        last_name: Cognome
+        email: Email
       member/medical_certificate_kind:
         regular: Normale
         competitive: Agonistico
@@ -82,8 +101,13 @@ it:
         email: Email
         municipality: Comune
         groups: Gruppi
+        tags: Attributi
       event/kind:
         training: Allenamento
         competition: Partita/Gara
         other: Altro
+      tag:
+        name: Nome
+      group:
+        name: Nome
 

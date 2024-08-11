@@ -1,14 +1,24 @@
+<%= link_to I18n.t('tags.new'), new_club_tag_path(@club), class: 'btn btn-primary' %>
 
 <table class="table">
   <thead>
     <tr>
       <th scope="col">Nome</th>
+      <th scope="col"><%= I18n.t('actions') %></th>
     </tr>
   </thead>
   <tbody>
     <% @tags.each do |tag| %>
       <tr>
         <td><%= tag.name %></td>
+        <td>
+          <%= link_to edit_club_tag_path(@club, tag) do %>
+            <%= image_tag "edit.svg", aria: { hidden: true }, size: 24 %>
+          <% end %>
+          <%= link_to club_tag_path(@club, tag), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
+            <%= image_tag "trash.svg", aria: { hidden: true }, size: 24 %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

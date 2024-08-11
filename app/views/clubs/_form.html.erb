@@ -1,14 +1,15 @@
-<%= simple_form_for club, html: { class: 'row' } do |f| %>
-  <h3>
-    Club
-  </h3>
-  <%= f.input :name %>
-  <%= f.input :email %>
-  <%=
+<%= turbo_frame_tag club do %>
+  <%= simple_form_for club, html: { class: 'row' } do |f| %>
+    <h3>
+      Club
+    </h3>
+    <%= f.input :name %>
+    <%= f.input :email %>
+    <%=
     if club.picture.present?
       image_tag club.picture, class: 'img-fluid img-thumbnail rounded mx-auto d-block', style: 'max-width: 200px'
     end
     %>
-<%= f.submit 'Save', class: 'btn btn-primary' %>
-</div>
+    <%= f.submit 'Save', class: 'btn btn-primary' %>
+  <% end %>
 <% end %>
