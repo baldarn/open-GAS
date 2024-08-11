@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   has_one_attached :picture
 
-  enum role: { admin: 0, collaborator: 1 }
+  enum :role, %i[admin collaborator]
 
   belongs_to :club
 

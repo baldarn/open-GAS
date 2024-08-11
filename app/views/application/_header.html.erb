@@ -57,9 +57,9 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="<%= root_path %>" class="nav-link text-secondary">
-                <%= image_tag "module.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
-                Moduli
+              <a href="<%= edit_user_registration_url %>" class="nav-link text-secondary">
+                <%= image_tag "profile.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+                Profile
               </a>
             </li>
             <li class="nav-item">
@@ -71,8 +71,8 @@
           <% else %>
             <li class="nav-item">
               <a href="<%= user_session_url %>" class="nav-link text-secondary">
-                <%= image_tag "door.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
-                Sign in
+                <%= image_tag "unlock.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+                Log in
               </a>
             </li>
             <li class="nav-item">

@@ -5,6 +5,7 @@ module Users
     # before_action :configure_sign_up_params, only: [:create]
     # before_action :configure_account_update_params, only: [:update]
     after_action :create_club, only: :create
+    before_action :set_club, only: %i[edit destroy]
 
     # GET /resource/sign_up
     # def new
@@ -27,9 +28,11 @@ module Users
     # end
 
     # DELETE /resource
-    # def destroy
-    #   super
-    # end
+    def destroy
+      @club.destroy if @club.users.count == 1
+
+      super
+    end
 
     # GET /resource/cancel
     # Forces the session data which is usually expired after sign
@@ -66,6 +69,10 @@ module Users
       return unless @user.id
 
       @user.club = Club.create(name: 'Club', email: @user.email)
+    end
+
+    def set_club
+      @club = current_user.club
     end
   end
 end

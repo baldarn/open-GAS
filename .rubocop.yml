@@ -19,7 +19,7 @@ Metrics/BlockLength:
     - config/environments/*
     - config/initializers/simple_form_bootstrap.rb
 
-Metrics/LineLength:
+Layout/LineLength:
   Exclude:
     - config/initializers/devise.rb
 
