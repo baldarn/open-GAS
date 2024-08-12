@@ -51,6 +51,12 @@
               </a>
             </li>
             <li class="nav-item">
+              <a href="<%= club_expenses_url(@club) %>" class="nav-link text-secondary">
+                <%= image_tag "cash.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+                Spese
+              </a>
+            </li>
+            <li class="nav-item">
               <a href="<%= club_users_url(@club) %>" class="nav-link text-secondary">
                 <%= image_tag "collaborator.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
                 Collaboratori
@@ -83,10 +89,10 @@
             </li>
           <% end %>
           <li class="nav-item">
-              <a href="https://github.com/baldarn/open-GAS" class="nav-link text-secondary">
-                <%= image_tag "github.svg", aria: { hidden: true }, size: 45, class: "bi d-block mx-auto mb-1" %>
-              </a>
-            </li>
+            <a href="https://github.com/baldarn/open-GAS" class="nav-link text-secondary">
+              <%= image_tag "github.svg", aria: { hidden: true }, size: 45, class: "bi d-block mx-auto mb-1" %>
+            </a>
+          </li>
         </li>
       </ul>
     </div>

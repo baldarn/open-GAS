@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 class Member < ApplicationRecord
-  include Discard::Model
-  default_scope -> { kept }
-
   has_one_attached :picture
 
   belongs_to :club

@@ -1,0 +1,47 @@
+<div class="row">
+  <ul class="nav justify-content-end">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <%= @member&.reason || I18n.t('expense_reasons.select') %>
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <%= link_to I18n.t('all'), club_expenses_path(@club), class: 'dropdown-item' %>
+        </li>
+        <% @club.expense_reasons.each do |expense_reason| %>
+          <li>
+            <%= link_to expense_reason.reason, club_expenses_path(@club, expense_reason_id: expense_reason.id), class: 'dropdown-item' %>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+</div>
+<%= paginate @expenses %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"><%= I18n.t('activerecord.attributes.expense.amount') %></th>
+      <th scope="col"><%= I18n.t('activerecord.attributes.expense.expense_reason') %></th>
+      <th scope="col"><%= I18n.t('activerecord.attributes.expense.created_at') %></th>
+      <th scope="col"><%= I18n.t('actions') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @expenses.each do |expense| %>
+      <tr>
+        <td><%= number_to_currency(expense.amount) %></td>
+        <td><%= expense.expense_reason.reason %></td>
+        <td><%= expense.created_at %></td>
+        <td>
+          <%= link_to edit_club_expense_path(@club, expense) do %>
+            <%= image_tag "edit.svg", aria: { hidden: true }, size: 24 %>
+          <% end %>
+          <%= link_to club_expense_path(@club, expense), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
+            <%= image_tag "trash.svg", aria: { hidden: true }, size: 24 %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

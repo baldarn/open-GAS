@@ -31,6 +31,7 @@ it:
   actions: Azioni
   search: Cerca...
   none: Nessuno
+  all: Tutto
   clubs:
     updated: Club aggiornato
   users:
@@ -49,6 +50,15 @@ it:
     created: Pagamento creato
     updated: Pagamento aggiornato
     destroyed: Pagamento cancellato
+  payment_reasons:
+    select: Seleziona causale
+  expenses:
+    new: Nuova spesa
+    created: Spesa creata
+    updated: Spesa aggiornata
+    destroyed: Spesa cancellata
+  expense_reasons:
+    select: Seleziona causale
   events:
     created: Evento creato
     updated: Evento aggiornato
@@ -118,6 +128,9 @@ it:
         default_amount: Quota
       payment:
         amount: Quota
-        reason: Causale
+        payment_reason: Causale
         created_at: Data
-
+      expense:
+        amount: Quota
+        expense_reason: Causale
+        created_at: Data

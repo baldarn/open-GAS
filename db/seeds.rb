@@ -56,26 +56,38 @@ adults_group = club.groups.create!(name: 'adults', default_amount: 80)
 black_belt_tag = club.tags.create!(name: 'black belt')
 white_belt_tag = club.tags.create!(name: 'white belt')
 
+payment_reason_quota = PaymentReason.create!(club:, reason: 'Quota associativa')
+payment_reason_fruizione = PaymentReason.create!(club:, reason: 'Fruizione corso')
+
+expense_reason_affitto = ExpenseReason.create!(club:, reason: 'Pagamento affitto')
+expense_reason_materiali = ExpenseReason.create!(club:, reason: 'Materiali')
+
 10.times do
   member = random_member(club, groups: [children_group], tags: [white_belt_tag])
 
-  Payment.create!(member:, amount: 50, reason: 'Quota associativa')
+  Payment.create!(member:, payment_reason: payment_reason_quota, amount: 50)
 end
 
 10.times do
   member = random_member(club, groups: [adults_group], tags: [black_belt_tag])
 
-  Payment.create!(member:, amount: 50, reason: 'Quota associativa')
+  Payment.create!(member:, payment_reason: payment_reason_quota, amount: 50)
 end
 
 5.times do
   member = random_member(club, groups: [adults_group, children_group])
 
-  Payment.create!(member:, amount: 50, reason: 'Quota associativa')
+  Payment.create!(member:, payment_reason: payment_reason_quota, amount: 50)
 end
 
 5.times do
   member = random_member(club, groups: [children_group], tags: [white_belt_tag, black_belt_tag])
 
-  Payment.create!(member:, amount: 50, reason: 'Quota associativa')
+  Payment.create!(member:, payment_reason: payment_reason_quota, amount: 50)
+  Payment.create!(member:, payment_reason: payment_reason_fruizione, amount: 80)
+end
+
+3.times do
+  Expense.create!(club:, expense_reason: expense_reason_affitto, amount: 1000)
+  Expense.create!(club:, expense_reason: expense_reason_materiali, amount: 30)
 end

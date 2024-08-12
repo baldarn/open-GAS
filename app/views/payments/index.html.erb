@@ -2,6 +2,21 @@
   <ul class="nav justify-content-end">
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <%= @payment_reason&.reason || I18n.t('payment_reasons.select') %>
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <%= link_to I18n.t('all'), club_payments_path(@club, member_id: @member&.id), class: 'dropdown-item' %>
+        </li>
+        <% @club.payment_reasons.each do |payment_reason| %>
+          <li>
+            <%= link_to payment_reason.reason, club_payments_path(@club, payment_reason_id: payment_reason.id, member_id: @member&.id), class: 'dropdown-item' %>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         <%= @member&.full_name || I18n.t('members.select') %>
       </a>
       <ul class="dropdown-menu">
@@ -18,17 +33,14 @@
           <% end %>
         </li>
         <li>
-          <%= link_to I18n.t('none'), club_payments_path(@club), class: 'dropdown-item' %>
+          <%= link_to I18n.t('none'), club_payments_path(@club, payment_reason_id: @payment_reason&.id), class: 'dropdown-item' %>
         </li>
         <% @club.members.each do |member| %>
           <li>
-            <%= link_to member.full_name, club_payments_path(@club, member_id: member.id), class: 'member dropdown-item' %>
+            <%= link_to member.full_name, club_payments_path(@club, payment_reason_id: @payment_reason&.id, member_id: member.id), class: 'member dropdown-item' %>
           </li>
         <% end %>
       </ul>
-    </li>
-    <li>
-      <%= link_to I18n.t('payments.new'), new_club_payment_path(@club), class: 'btn btn-primary' %>
     </li>
   </ul>
 </div>
@@ -38,7 +50,7 @@
     <tr>
       <th scope="col"><%= I18n.t('activerecord.attributes.member.name') %></th>
       <th scope="col"><%= I18n.t('activerecord.attributes.payment.amount') %></th>
-      <th scope="col"><%= I18n.t('activerecord.attributes.payment.reason') %></th>
+      <th scope="col"><%= I18n.t('activerecord.attributes.payment.payment_reason') %></th>
       <th scope="col"><%= I18n.t('activerecord.attributes.payment.created_at') %></th>
       <th scope="col"><%= I18n.t('actions') %></th>
     </tr>
@@ -48,7 +60,7 @@
       <tr>
         <td><%= payment.member.full_name %></td>
         <td><%= number_to_currency(payment.amount) %></td>
-        <td><%= payment.reason %></td>
+        <td><%= payment.payment_reason.reason %></td>
         <td><%= payment.created_at %></td>
         <td>
           <%= link_to edit_club_payment_path(@club, payment, member_id: payment.member.id) do %>

@@ -5,9 +5,11 @@ class PaymentsController < BaseController
 
   def index
     @member = params[:member_id] ? @club.members.find(params[:member_id]) : nil
+    @payment_reason = params[:payment_reason_id] ? @club.payment_reasons.find(params[:payment_reason_id]) : nil
 
     @payments = @club.payments
     @payments = @payments.joins(:member).where(member: { id: @member.id }) if @member
+    @payments = @payments.joins(:payment_reason).where(payment_reason: { id: @payment_reason.id }) if @payment_reason
     @payments = @payments.page(params[:page])
   end
 
@@ -55,7 +57,7 @@ class PaymentsController < BaseController
   private
 
   def payment_params
-    params.require(:payment).permit(:amount, :reason)
+    params.require(:payment).permit(:amount, :payment_reason)
   end
 
   def set_member

@@ -59,7 +59,7 @@ class MembersController < BaseController
 
   def destroy
     @member = @club.members.find(params[:id])
-    @member.discard
+    @member.destroy
 
     redirect_to club_members_url(@club), flash: { success: I18n.t('members.destroyed') }
   end

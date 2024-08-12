@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :users
 
     resources :payments
+    resources :expenses
     resources :events do
       resources :presences
     end

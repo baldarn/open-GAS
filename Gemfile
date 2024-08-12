@@ -29,9 +29,6 @@ gem 'turbo-rails'
 gem 'kaminari'
 gem 'kaminari-i18n'
 
-# Soft delete
-gem 'discard', '~> 1.2'
-
 gem 'devise', '~> 4.9'
 gem 'devise-i18n'
 

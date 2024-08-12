@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_12_090548) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_12_135310) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -41,11 +41,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_12_090548) do
 
   create_table "clubs", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "discarded_at"
     t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["discarded_at"], name: "index_clubs_on_discarded_at"
   end
 
   create_table "event_groups", force: :cascade do |t|
@@ -67,12 +65,29 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_12_090548) do
     t.time "time_to"
     t.boolean "all_day", default: false, null: false
     t.text "description"
-    t.text "recurring"
     t.integer "place_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["club_id"], name: "index_events_on_club_id"
     t.index ["place_id"], name: "index_events_on_place_id"
+  end
+
+  create_table "expense_reasons", force: :cascade do |t|
+    t.integer "club_id"
+    t.string "reason", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["club_id"], name: "index_expense_reasons_on_club_id"
+  end
+
+  create_table "expenses", force: :cascade do |t|
+    t.integer "club_id"
+    t.integer "expense_reason_id"
+    t.integer "amount", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["club_id"], name: "index_expenses_on_club_id"
+    t.index ["expense_reason_id"], name: "index_expenses_on_expense_reason_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -123,22 +138,27 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_12_090548) do
     t.text "notes"
     t.boolean "privacy_disclaimer", default: false, null: false
     t.boolean "picture_disclaimer", default: false, null: false
-    t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["club_id"], name: "index_members_on_club_id"
-    t.index ["discarded_at"], name: "index_members_on_discarded_at"
+  end
+
+  create_table "payment_reasons", force: :cascade do |t|
+    t.integer "club_id"
+    t.string "reason", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["club_id"], name: "index_payment_reasons_on_club_id"
   end
 
   create_table "payments", force: :cascade do |t|
     t.integer "member_id"
+    t.integer "payment_reason_id"
     t.integer "amount", null: false
-    t.string "reason", null: false
-    t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["discarded_at"], name: "index_payments_on_discarded_at"
     t.index ["member_id"], name: "index_payments_on_member_id"
+    t.index ["payment_reason_id"], name: "index_payments_on_payment_reason_id"
   end
 
   create_table "places", force: :cascade do |t|

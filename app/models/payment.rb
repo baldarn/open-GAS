@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 class Payment < ApplicationRecord
-  include Discard::Model
-  default_scope -> { kept }
-
   belongs_to :member
+  belongs_to :payment_reason
 
-  validates :amount, :reason, presence: true
+  validates :amount, presence: true
 end
