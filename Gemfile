@@ -32,10 +32,6 @@ gem 'kaminari-i18n'
 # Soft delete
 gem 'discard', '~> 1.2'
 
-# recurring events
-gem 'ice_cube'
-gem 'recurring_select', github: 'gregschmit/recurring_select', branch: 'master'
-
 gem 'devise', '~> 4.9'
 gem 'devise-i18n'
 

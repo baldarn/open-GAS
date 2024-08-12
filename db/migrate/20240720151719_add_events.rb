@@ -15,8 +15,6 @@ class AddEvents < ActiveRecord::Migration[7.1]
 
       t.text :description
 
-      t.text :recurring
-
       t.belongs_to :place
 
       t.timestamps

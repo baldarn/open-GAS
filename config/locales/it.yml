@@ -66,13 +66,6 @@ it:
     created: Attributo creato
     updated: Attributo aggiornato
     destroyed: Attributo cancellato
-  recurring_select:
-    not_recurring: Non ricorrente
-    change_schedule: Cambia ricorrenza
-    set_schedule: Imposta ricorrenza
-    new_custom_schedule: Nuova ricorrenza personalizzata
-    custom_schedule: Ricorrenza personalizzata
-    or: o
   simple_calendar:
     previous: "<"
     next: ">"

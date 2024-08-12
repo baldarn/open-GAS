@@ -4,16 +4,6 @@ GIT
   specs:
     useragent (0.16.10)
 
-GIT
-  remote: https://github.com/gregschmit/recurring_select.git
-  revision: 5dd3177e7ac4c04bed3e952996ffcb57b87481c9
-  branch: master
-  specs:
-    recurring_select (4.0.0)
-      ice_cube (>= 0.11)
-      rails (>= 6.1)
-      sass-rails (>= 6.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -156,7 +146,6 @@ GEM
     htmlbeautifier (1.4.3)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
-    ice_cube (0.17.0)
     image_processing (1.12.2)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
@@ -356,8 +345,6 @@ GEM
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
-    sass-rails (6.0.0)
-      sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -457,7 +444,6 @@ DEPENDENCIES
   faker
   front_matter_parser
   htmlbeautifier
-  ice_cube
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
@@ -467,7 +453,6 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 7.2.0)
   rails-i18n (~> 7.0.0)
-  recurring_select!
   redcarpet (~> 3.6)
   redis (>= 4.0.1)
   resque (~> 2.6.0)
