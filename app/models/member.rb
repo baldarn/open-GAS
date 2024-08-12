@@ -40,6 +40,10 @@ class Member < ApplicationRecord
   scope :with_errors,
         -> { includes(:payments).select { |m| m.status == 'error' } }
 
+  def full_name
+    "#{last_name} #{first_name}".capitalize
+  end
+
   def status
     return 'error' if statuses.find { |s| s == 'error' }
     return 'warning' if statuses.find { |s| s == 'warning' }

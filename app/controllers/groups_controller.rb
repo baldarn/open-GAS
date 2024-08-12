@@ -55,6 +55,6 @@ class GroupsController < BaseController
   private
 
   def group_params
-    params.require(:group).permit(:name)
+    params.require(:group).permit(:name, :default_amount)
   end
 end

@@ -29,7 +29,9 @@
 
 it:
   actions: Azioni
-  club:
+  search: Cerca...
+  none: Nessuno
+  clubs:
     updated: Club aggiornato
   users:
     new: Nuovo collaboratore
@@ -37,11 +39,13 @@ it:
     updated: Collaboratore aggiornato
     destroyed: Collaboratore cancellato
   members:
+    select: Seleziona membro
     new: Nuovo membro
     created: Membro creato
     updated: Membro aggiornato
     destroyed: Membro cancellato
   payments:
+    new: Nuovo pagamento
     created: Pagamento creato
     updated: Pagamento aggiornato
     destroyed: Pagamento cancellato
@@ -50,12 +54,14 @@ it:
     updated: Evento aggiornato
     destroyed: Evento cancellato
   groups:
+    select: Seleziona gruppo
     new: Nuovo gruppo
     created: Gruppo creato
     updated: Gruppo aggiornato
     destroyed: Gruppo cancellato
     create_a_group_before: Crea un gruppo prima di creare membri!
   tags:
+    select: Seleziona attributo
     new: Nuovo attributo
     created: Attributo creato
     updated: Attributo aggiornato
@@ -96,6 +102,7 @@ it:
         regular: Normale
         competitive: Agonistico
       member:
+        name: Nome
         first_name: Nome
         last_name: Cognome
         born_in: Nato a
@@ -115,4 +122,9 @@ it:
         name: Nome
       group:
         name: Nome
+        default_amount: Quota
+      payment:
+        amount: Quota
+        reason: Causale
+        created_at: Data
 

@@ -10,8 +10,8 @@ class ClubsController < ApplicationController
 
     if @club.update(club_params)
       respond_to do |format|
-        format.html { redirect_to edit_club_url(@club), flash: { notice: I18n.t('club.updated') } }
-        format.turbo_stream { flash.now[:notice] = I18n.t('club.updated') }
+        format.html { redirect_to edit_club_url(@club), flash: { notice: I18n.t('clubs.updated') } }
+        format.turbo_stream { flash.now[:notice] = I18n.t('clubs.updated') }
       end
     else
       respond_to do |format|

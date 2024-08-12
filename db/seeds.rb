@@ -50,8 +50,8 @@ user = User.new(
 user.skip_confirmation!
 user.save!
 
-children_group = club.groups.create!(name: 'children')
-adults_group = club.groups.create!(name: 'adults')
+children_group = club.groups.create!(name: 'children', default_amount: 60)
+adults_group = club.groups.create!(name: 'adults', default_amount: 80)
 
 black_belt_tag = club.tags.create!(name: 'black belt')
 white_belt_tag = club.tags.create!(name: 'white belt')

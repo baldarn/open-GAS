@@ -1,3 +1,5 @@
+<%= turbo_stream.prepend 'flash', partial: 'flash' %>
+
 <%= turbo_stream.update @tag do %>
   <%= render @tag, club: @club, tag: @tag %>
 <% end %>

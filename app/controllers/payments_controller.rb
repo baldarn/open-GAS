@@ -4,7 +4,11 @@ class PaymentsController < BaseController
   before_action :set_member, if: -> { params[:member_id].present? }
 
   def index
-    @payments = @club.payments.page(params[:page])
+    @member = params[:member_id] ? @club.members.find(params[:member_id]) : nil
+
+    @payments = @club.payments
+    @payments = @payments.joins(:member).where(member: { id: @member.id }) if @member
+    @payments = @payments.page(params[:page])
   end
 
   def new

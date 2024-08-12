@@ -1,18 +1,52 @@
+<div class="row">
+  <ul class="nav justify-content-end">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <%= @member&.full_name || I18n.t('members.select') %>
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <input type="text" class="form-control" placeholder="<% I18n.t('search') %>" onkeyup="filterMembers(this)">
+          <%= javascript_tag nonce: true do %>
+            function filterMembers(input) {
+            const query = input.value.toLowerCase()
+            console.log(query);
+            const members = [...document.querySelectorAll('.member')];
+            members.forEach((elem) => elem.classList.remove('d-none'));
+            members.filter((m) => !m.innerHTML.toLowerCase().includes(query)).forEach((elem) => elem.classList.add('d-none'));
+            }
+          <% end %>
+        </li>
+        <li>
+          <%= link_to I18n.t('none'), club_payments_path(@club), class: 'dropdown-item' %>
+        </li>
+        <% @club.members.each do |member| %>
+          <li>
+            <%= link_to member.full_name, club_payments_path(@club, member_id: member.id), class: 'member dropdown-item' %>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+    <li>
+      <%= link_to I18n.t('payments.new'), new_club_payment_path(@club), class: 'btn btn-primary' %>
+    </li>
+  </ul>
+</div>
 <%= paginate @payments %>
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Cognome</th>
-      <th scope="col">Quota</th>
-      <th scope="col">Causale</th>
-      <th scope="col">Quando</th>
+      <th scope="col"><%= I18n.t('activerecord.attributes.member.name') %></th>
+      <th scope="col"><%= I18n.t('activerecord.attributes.payment.amount') %></th>
+      <th scope="col"><%= I18n.t('activerecord.attributes.payment.reason') %></th>
+      <th scope="col"><%= I18n.t('activerecord.attributes.payment.created_at') %></th>
       <th scope="col"><%= I18n.t('actions') %></th>
     </tr>
   </thead>
   <tbody>
     <% @payments.each do |payment| %>
       <tr>
-        <td><%= payment.member.last_name %></td>
+        <td><%= payment.member.full_name %></td>
         <td><%= number_to_currency(payment.amount) %></td>
         <td><%= payment.reason %></td>
         <td><%= payment.created_at %></td>

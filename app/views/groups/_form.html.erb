@@ -1,6 +1,7 @@
 <%= turbo_frame_tag @group do %>
   <%= simple_form_for [@club, group] do |f| %>
-    <%= f.input :name, class: "input" %>
+    <%= f.input :name, wrapper_html: { class: 'col-sm-6' } %>
+    <%= f.input :default_amount, as: :integer, wrapper_html: { class: 'col-sm-6' } %>
     <%= f.button :submit, 'Salva gruppo' %>
   <% end %>
 <% end %>

@@ -9,7 +9,8 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Nome</th>
+      <th scope="col"><%= I18n.t('activerecord.attributes.group.name') %></th>
+      <th scope="col"><%= I18n.t('activerecord.attributes.group.default_amount') %></th>
       <th scope="col"><%= I18n.t('actions') %></th>
     </tr>
   </thead>
@@ -17,6 +18,7 @@
     <% @groups.each do |group| %>
       <tr>
         <td><%= group.name %></td>
+        <td><%= number_to_currency(group.default_amount) %></td>
         <td>
           <%= link_to edit_club_group_path(@club, group) do %>
             <%= image_tag "edit.svg", aria: { hidden: true }, size: 24 %>

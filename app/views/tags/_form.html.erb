@@ -1,6 +1,6 @@
 <%= turbo_frame_tag @tag do %>
   <%= simple_form_for [@club, tag] do |f| %>
-    <%= f.input :name, class: "input" %>
+    <%= f.input :name %>
     <%= f.button :submit, 'Save' %>
   <% end %>
 <% end %>

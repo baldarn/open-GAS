@@ -78,6 +78,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_12_090548) do
   create_table "groups", force: :cascade do |t|
     t.integer "club_id"
     t.string "name", null: false
+    t.integer "default_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["club_id"], name: "index_groups_on_club_id"

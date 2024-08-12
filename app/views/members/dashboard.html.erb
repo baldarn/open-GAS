@@ -2,7 +2,7 @@
   <ul class="nav justify-content-end">
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        <%= @group&.name || 'Select group' %>
+        <%= @group&.name || I18n.t('groups.select') %>
       </a>
       <ul class="dropdown-menu">
         <% @club.groups.each do |group| %>
