@@ -61,5 +61,5 @@ ENV GIT_REVISION=$GIT_REVISION
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
-EXPOSE 80 443
+EXPOSE 3000
 CMD ["bin/boot"]
