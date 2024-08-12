@@ -6,7 +6,7 @@ image: baldarn/open-gas
 
 # Deploy to these servers.
 servers:
-  - debian@51.195.118.248
+  - root@open-gas.farnararo.it
 
 # Credentials for your image host.
 registry:
