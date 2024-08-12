@@ -13,6 +13,7 @@
       <th scope="col"><%= I18n.t('activerecord.attributes.user.last_name') %></th>
       <th scope="col"><%= I18n.t('activerecord.attributes.user.email') %></th>
       <th scope="col"><%= I18n.t('activerecord.attributes.user.role') %></th>
+      <th scope="col"><%= I18n.t('activerecord.attributes.user.blsd_expires_at') %></th>
       <th scope="col"><%= I18n.t('actions') %></th>
     </tr>
   </thead>
@@ -23,6 +24,7 @@
         <td><%= user.last_name %></td>
         <td><%= user.email %></td>
         <td><%= User.human_attribute_name("role.#{user.role}") %></td>
+        <td><%= user.blsd_expires_at %></td>
         <td>
           <%= link_to edit_club_user_path(@club, user) do %>
             <%= image_tag "edit.svg", aria: { hidden: true }, size: 24 %>

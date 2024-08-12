@@ -88,6 +88,7 @@ it:
         last_name: Cognome
         email: Email
         role: Ruolo
+        blsd_expires_at: Scadenza BLSD
       user/role:
         admin: Amministratore
         collaborator: Collaboratore

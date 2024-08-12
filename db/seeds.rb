@@ -12,10 +12,11 @@
 
 require 'faker'
 
-def random_member(club, adults_group)
+def random_member(club, groups: [], tags: [])
   Member.create!(
     club:,
-    groups: [adults_group],
+    groups:,
+    tags:,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     born_at: Faker::Date.between(from: '2015-12-31', to: '2000-01-01'),
@@ -52,14 +53,29 @@ user.save!
 children_group = club.groups.create!(name: 'children')
 adults_group = club.groups.create!(name: 'adults')
 
+black_belt_tag = club.tags.create!(name: 'black belt')
+white_belt_tag = club.tags.create!(name: 'white belt')
+
 10.times do
-  member = random_member(club, children_group)
+  member = random_member(club, groups: [children_group], tags: [white_belt_tag])
 
   Payment.create!(member:, amount: 50, reason: 'Quota associativa')
 end
 
 10.times do
-  member = random_member(club, adults_group)
+  member = random_member(club, groups: [adults_group], tags: [black_belt_tag])
+
+  Payment.create!(member:, amount: 50, reason: 'Quota associativa')
+end
+
+5.times do
+  member = random_member(club, groups: [adults_group, children_group])
+
+  Payment.create!(member:, amount: 50, reason: 'Quota associativa')
+end
+
+5.times do
+  member = random_member(club, groups: [children_group], tags: [white_belt_tag, black_belt_tag])
 
   Payment.create!(member:, amount: 50, reason: 'Quota associativa')
 end
