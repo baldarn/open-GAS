@@ -1,5 +1,10 @@
-<%= link_to I18n.t('groups.new'), new_club_group_path(@club), class: 'btn btn-primary' %>
-
+<div class="row">
+  <ul class="nav justify-content-end">
+    <li>
+      <%= link_to I18n.t('groups.new'), new_club_group_path(@club), class: 'btn btn-primary' %>
+    </li>
+  </ul>
+</div>
 <%= paginate @groups %>
 <table class="table">
   <thead>

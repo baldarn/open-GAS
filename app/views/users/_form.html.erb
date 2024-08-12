@@ -6,6 +6,7 @@
     <%= f.input :first_name, wrapper_html: { class: 'col-sm-6' } %>
     <%= f.input :last_name, wrapper_html: { class: 'col-sm-6' } %>
     <%= f.input :email, wrapper_html: { class: 'col-sm-6' } %>
+    <%= f.input :role, prompt: 'Seleziona ruolo', collection: User.roles.map { |role, v| [User.human_attribute_name("role.#{role}"), role] }, wrapper_html: { class: 'col-sm-6' } %>
     <%= f.file_field :picture %>
     <%=
     if user.picture.present?

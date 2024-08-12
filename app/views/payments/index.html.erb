@@ -6,6 +6,7 @@
       <th scope="col">Quota</th>
       <th scope="col">Causale</th>
       <th scope="col">Quando</th>
+      <th scope="col"><%= I18n.t('actions') %></th>
     </tr>
   </thead>
   <tbody>
@@ -15,6 +16,14 @@
         <td><%= number_to_currency(payment.amount) %></td>
         <td><%= payment.reason %></td>
         <td><%= payment.created_at %></td>
+        <td>
+          <%= link_to edit_club_payment_path(@club, payment, member_id: payment.member.id) do %>
+            <%= image_tag "edit.svg", aria: { hidden: true }, size: 24 %>
+          <% end %>
+          <%= link_to club_payment_path(@club, payment), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
+            <%= image_tag "trash.svg", aria: { hidden: true }, size: 24 %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

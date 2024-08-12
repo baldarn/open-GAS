@@ -1,5 +1,40 @@
-<%= link_to I18n.t('members.new'), new_club_member_path(@club), class: 'btn btn-primary' %>
-
+<div class="row">
+  <ul class="nav justify-content-end">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <%= @group&.name || 'Select group' %>
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <%= link_to 'None', club_members_path(@club, tag_id: @tag&.id), class: 'dropdown-item' %>
+        </li>
+        <% @club.groups.each do |group| %>
+          <li>
+            <%= link_to group.name, club_members_path(@club, group_id: group.id, tag_id: @tag&.id), class: 'dropdown-item' %>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <%= @tag&.name || 'Select tag' %>
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <%= link_to 'None', club_members_path(@club, group_id: @group&.id), class: 'dropdown-item' %>
+        </li>
+        <% @club.tags.each do |tag| %>
+          <li>
+            <%= link_to tag.name, club_members_path(@club, group_id: @group&.id, tag_id: tag.id), class: 'dropdown-item' %>
+          </li>
+        <% end %>
+      </ul>
+      <li>
+        <%= link_to I18n.t('members.new'), new_club_member_path(@club), class: 'btn btn-primary' %>
+      </li>
+    </li>
+  </ul>
+</div>
 <%= paginate @members %>
 <table class="table">
   <thead>

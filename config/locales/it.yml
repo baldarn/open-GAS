@@ -87,6 +87,10 @@ it:
         first_name: Nome
         last_name: Cognome
         email: Email
+        role: Ruolo
+      user/role:
+        admin: Amministratore
+        collaborator: Collaboratore
       member/medical_certificate_kind:
         regular: Normale
         competitive: Agonistico

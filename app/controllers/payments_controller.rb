@@ -41,6 +41,13 @@ class PaymentsController < BaseController
     end
   end
 
+  def destroy
+    @payment = @club.payments.find(params[:id])
+    @payment.destroy
+
+    redirect_to club_payments_url(@club), flash: { success: I18n.t('payments.destroyed') }
+  end
+
   private
 
   def payment_params

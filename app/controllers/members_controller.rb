@@ -2,7 +2,13 @@
 
 class MembersController < BaseController
   def index
-    @members = @club.members.page(params[:page])
+    @group = params[:group_id] ? @club.groups.find(params[:group_id]) : nil
+    @tag = params[:tag_id] ? @club.tags.find(params[:tag_id]) : nil
+
+    @members = @club.members
+    @members = @members.joins(:groups).where(groups: { id: @group.id }) if @group
+    @members = @members.joins(:tags).where(tags: { id: @tag.id }) if @tag
+    @members = @members.page(params[:page])
   end
 
   def dashboard

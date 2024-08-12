@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :tags
     resources :users
 
-    resources :payments, only: [:index]
+    resources :payments, only: %i[index edit destroy]
     resources :events do
       resources :presences
     end
