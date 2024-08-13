@@ -1,0 +1,26 @@
+service: open-gas
+
+image: baldarn/open-gas
+
+servers:
+  - open-gas-dev.farnararo.it
+
+registry:
+  username: baldarn
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+env:
+  secret:
+    - RAILS_MASTER_KEY
+
+ssh:
+  user: baldarn
+
+# Configure custom arguments for Traefik. Be sure to reboot traefik when you modify it.
+# traefik:
+#   args:
+#     accesslog: true
+#     accesslog.format: json
+
+asset_path: /rails/public/assets
