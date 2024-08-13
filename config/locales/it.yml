@@ -32,20 +32,30 @@ it:
   search: Cerca...
   none: Nessuno
   all: Tutto
+  dashboard: Dashboard
+  profile: Profilo
+  calendar: Calendario
+  log_in: Log in
+  sign_up: Registrati
+  sign_out: Log out
   clubs:
+    header: Club
     updated: Club aggiornato
   users:
+    header: Collaboratori
     new: Nuovo collaboratore
     created: Collaboratore creato
     updated: Collaboratore aggiornato
     destroyed: Collaboratore cancellato
   members:
+    header: Membri
     select: Seleziona membro
     new: Nuovo membro
     created: Membro creato
     updated: Membro aggiornato
     destroyed: Membro cancellato
   payments:
+    header: Pagamenti
     new: Nuovo pagamento
     created: Pagamento creato
     updated: Pagamento aggiornato
@@ -53,6 +63,7 @@ it:
   payment_reasons:
     select: Seleziona causale
   expenses:
+    header: Spese
     new: Nuova spesa
     created: Spesa creata
     updated: Spesa aggiornata
@@ -64,6 +75,7 @@ it:
     updated: Evento aggiornato
     destroyed: Evento cancellato
   groups:
+    header: Gruppi
     select: Seleziona gruppo
     new: Nuovo gruppo
     created: Gruppo creato
@@ -71,6 +83,7 @@ it:
     destroyed: Gruppo cancellato
     create_a_group_before: Crea un gruppo prima di creare membri!
   tags:
+    header: Attributi
     select: Seleziona attributo
     new: Nuovo attributo
     created: Attributo creato

@@ -11,80 +11,80 @@
             <li class="nav-item">
               <a href="<%= club_members_dashboard_path(@club) %>" class="nav-link text-secondary">
                 <%= image_tag "dashboard.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
-                Dashboard
+                <%= I18n.t('dashboard' )%>
               </a>
             </li>
             <li class="nav-item">
               <a href="<%= club_members_path(@club) %>" class="nav-link text-secondary">
                 <%= image_tag "person.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
-                Membri
+                <%= I18n.t('members.header' )%>
               </a>
             </li>
             <li class="nav-item">
               <a href="<%= club_tags_path(@club) %>" class="nav-link text-secondary">
                 <%= image_tag "tags.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
-                Attributi
+                <%= I18n.t('tags.header' )%>
               </a>
             </li>
             <li class="nav-item">
               <a href="<%= club_groups_path(@club) %>" class="nav-link text-secondary">
                 <%= image_tag "people.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
-                Gruppi
+                <%= I18n.t('groups.header' )%>
               </a>
             </li>
             <li class="nav-item">
               <a href="<%= edit_club_path(@club) %>" class="nav-link text-secondary">
                 <%= image_tag "house.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
-                Club
+                <%= I18n.t('clubs.header' )%>
               </a>
             </li>
             <li class="nav-item">
               <a href="<%= club_events_url(@club) %>" class="nav-link text-secondary">
                 <%= image_tag "calendar.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
-                Calendario
+                <%= I18n.t('calendar' )%>
               </a>
             </li>
             <li class="nav-item">
               <a href="<%= club_payments_url(@club) %>" class="nav-link text-secondary">
-                <%= image_tag "cash.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
-                Pagamenti
+                <%= image_tag "piggy-bank.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+                <%= I18n.t('payments.header' )%>
               </a>
             </li>
             <li class="nav-item">
               <a href="<%= club_expenses_url(@club) %>" class="nav-link text-secondary">
                 <%= image_tag "cash.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
-                Spese
+                <%= I18n.t('expenses.header' )%>
               </a>
             </li>
             <li class="nav-item">
               <a href="<%= club_users_url(@club) %>" class="nav-link text-secondary">
                 <%= image_tag "collaborator.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
-                Collaboratori
+                <%= I18n.t('users.header' )%>
               </a>
             </li>
             <li class="nav-item">
               <a href="<%= edit_user_registration_url %>" class="nav-link text-secondary">
                 <%= image_tag "profile.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
-                Profile
+                <%= I18n.t('profile' )%>
               </a>
             </li>
             <li class="nav-item">
               <a href="<%= destroy_user_session_url %>" class="nav-link text-secondary">
                 <%= image_tag "door.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
-                Sign out
+                <%= I18n.t('sign_out' )%>
               </a>
             </li>
           <% else %>
             <li class="nav-item">
               <a href="<%= user_session_url %>" class="nav-link text-secondary">
                 <%= image_tag "unlock.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
-                Log in
+                <%= I18n.t('log_in' )%>
               </a>
             </li>
             <li class="nav-item">
               <a href="<%= new_user_registration_url %>" class="nav-link text-secondary">
                 <%= image_tag "door.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
-                Sign up
+                <%= I18n.t('sign_up' )%>
               </a>
             </li>
           <% end %>
