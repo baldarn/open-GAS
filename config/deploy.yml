@@ -6,7 +6,9 @@ image: baldarn/open-gas
 
 # Deploy to these servers.
 servers:
-  - root@open-gas.farnararo.it
+  web:
+    hosts:
+      - open-gas.farnararo.it
 
 # Credentials for your image host.
 registry:
