@@ -1,4 +1,4 @@
-service: open-gas
+service: open-gas-dev
 
 image: baldarn/open-gas
 
@@ -6,6 +6,10 @@ servers:
   web:
     hosts:
       - open-gas-dev.farnararo.it
+    labels:
+      traefik.http.routers.open_gas.entrypoints: websecure
+      traefik.http.routers.open_gas.rule: Host(`open-gas-dev.farnararo.it`)
+      traefik.http.routers.open_gas.tls.certresolver: letsencrypt
 
 registry:
   username: baldarn
@@ -15,14 +19,5 @@ registry:
 env:
   secret:
     - RAILS_MASTER_KEY
-
-ssh:
-  user: baldarn
-
-# Configure custom arguments for Traefik. Be sure to reboot traefik when you modify it.
-# traefik:
-#   args:
-#     accesslog: true
-#     accesslog.format: json
 
 asset_path: /rails/public/assets

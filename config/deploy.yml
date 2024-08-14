@@ -10,11 +10,9 @@ servers:
     hosts:
       - open-gas.farnararo.it
     labels:
+      traefik.http.routers.open_gas.entrypoints: websecure
       traefik.http.routers.open_gas.rule: Host(`open-gas.farnararo.it`)
-      traefik.http.routers.open_gas_secure.entrypoints: websecure
-      traefik.http.routers.open_gas_secure.rule: Host(`open-gas.farnararo.it`)
-      traefik.http.routers.open_gas_secure.tls: true
-      traefik.http.routers.open_gas_secure.tls.certresolver: letsencrypt
+      traefik.http.routers.open_gas.tls.certresolver: letsencrypt
 
 # Credentials for your image host.
 registry:
@@ -74,12 +72,18 @@ traefik:
   options:
     publish:
       - "443:443"
+      - "8080:8080"
     volume:
       - "/letsencrypt/acme.json:/letsencrypt/acme.json"
   args:
+    api.dashboard: true
+    api.insecure: true
     entryPoints.web.address: ":80"
     entryPoints.websecure.address: ":443"
-    certificatesResolvers.letsencrypt.acme.email: "lorenzo.faranraro@gmail.com"
+    entryPoints.web.http.redirections.entryPoint.to: websecure
+    entryPoints.web.http.redirections.entryPoint.scheme: https
+    entryPoints.web.http.redirections.entrypoint.permanent: true
+    certificatesResolvers.letsencrypt.acme.email: "lorenzo.farnararo@gmail.com"
     certificatesResolvers.letsencrypt.acme.storage: "/letsencrypt/acme.json"
     certificatesResolvers.letsencrypt.acme.httpchallenge: true
     certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: web
