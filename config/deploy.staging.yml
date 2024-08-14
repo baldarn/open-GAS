@@ -3,7 +3,9 @@ service: open-gas
 image: baldarn/open-gas
 
 servers:
-  - open-gas-dev.farnararo.it
+  web:
+    hosts:
+      - open-gas-dev.farnararo.it
 
 registry:
   username: baldarn
