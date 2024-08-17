@@ -7,7 +7,7 @@
         </h3>
         <%= f.input :first_name, wrapper_html: { class: 'col-sm-6' } %>
         <%= f.input :last_name, wrapper_html: { class: 'col-sm-6' } %>
-        <%= f.input :born_at %>
+        <%= f.input :born_at, start_year: Date.today.year - 90, end_year: Date.today.year - 5 %>
         <%= f.input :born_in %>
         <%= f.input :tax_code %>
         <%= f.input :citizenship, wrapper_html: { class: 'col-sm-6' } %>
