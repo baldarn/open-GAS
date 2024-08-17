@@ -20,5 +20,5 @@ test:
 production:
   primary:
     <<: *default
-    password: <%= ENV.fetch('PG_PRODUCTION_PASSWORD', 'opengas') %>
+    password: <%= ENV.fetch('POSTGRES_PASSWORD', 'opengas') %>
 
