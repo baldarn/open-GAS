@@ -5,10 +5,10 @@ image: baldarn/open-gas
 servers:
   web:
     hosts:
-      - open-gas-dev.farnararo.it
+      - staging.opengas.eu
     labels:
       traefik.http.routers.open_gas.entrypoints: websecure
-      traefik.http.routers.open_gas.rule: Host(`open-gas-dev.farnararo.it`)
+      traefik.http.routers.open_gas.rule: Host(`staging.opengas.eu`)
       traefik.http.routers.open_gas.tls.certresolver: letsencrypt
 
 registry:

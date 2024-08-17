@@ -8,10 +8,10 @@ image: baldarn/open-gas
 servers:
   web:
     hosts:
-      - open-gas.farnararo.it
+      - opengas.eu
     labels:
       traefik.http.routers.open_gas.entrypoints: websecure
-      traefik.http.routers.open_gas.rule: Host(`open-gas.farnararo.it`)
+      traefik.http.routers.open_gas.rule: Host(`opengas.eu`)
       traefik.http.routers.open_gas.tls.certresolver: letsencrypt
 
 # Credentials for your image host.
@@ -29,6 +29,7 @@ registry:
 env:
   secret:
     - RAILS_MASTER_KEY
+    - POSTGRES_PASSWORD
 
 # Use a different ssh user than root
 # ssh:
@@ -45,21 +46,19 @@ env:
 #     host: ssh://app@192.168.0.1
 
 # Use accessory services (secrets come from .env).
-# accessories:
-#   db:
-#     image: mysql:8.0
-#     host: 192.168.0.2
-#     port: 3306
-#     env:
-#       clear:
-#         MYSQL_ROOT_HOST: '%'
-#       secret:
-#         - MYSQL_ROOT_PASSWORD
-#     files:
-#       - config/mysql/production.cnf:/etc/mysql/my.cnf
-#       - db/production.sql:/docker-entrypoint-initdb.d/setup.sql
-#     directories:
-#       - data:/var/lib/mysql
+accessories:
+  db:
+    image: postgres:16.4
+    host: opengas.eu
+    port: 5432
+    env:
+      clear:
+        POSTGRES_DB: "opengas_production"
+        POSTGRES_USER: "opengas"
+      secret:
+        - POSTGRES_PASSWORD
+    directories:
+      - data:/var/lib/postgresql/data
 #   redis:
 #     image: redis:7.0
 #     host: 192.168.0.2

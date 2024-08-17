@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'resque/server'
-
 Rails.application.routes.draw do
   root to: 'home#index'
 
@@ -28,8 +26,6 @@ Rails.application.routes.draw do
       resources :presences
     end
   end
-
-  mount Resque::Server.new, at: '/resque'
 
   get 'up' => 'rails/health#show', as: :rails_health_check
 end

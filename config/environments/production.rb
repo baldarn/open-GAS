@@ -70,10 +70,10 @@ Rails.application.configure do
   config.log_level = ENV.fetch('RAILS_LOG_LEVEL', 'info')
 
   # Use a different cache store in production.
-  config.cache_store = :redis_cache_store
+  config.cache_store = :memory_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
-  # config.active_job.queue_adapter = :resque
+  config.active_job.queue_adapter = :solid_queue
   # config.active_job.queue_name_prefix = "open_gas_production"
 
   # Disable caching for Action Mailer templates even if Action Controller
@@ -83,6 +83,15 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
+
+  config.action_mailer.smtp_settings = {
+    address: ENV.fetch('SMTP_ADDRESS', 'smtp'),
+    port: 587,
+    user_name: ENV.fetch('SMTP_USERNAME', 'user'),
+    password: ENV.fetch('SMTP_PASSWORD', 'password'),
+    authentication: 'plain',
+    enable_starttls: true
+  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
@@ -105,7 +114,7 @@ Rails.application.configure do
   # SQLite is good, actually
   config.active_record.sqlite3_production_warning = false
 
-  config.active_job.queue_adapter = :resque
+  config.active_job.queue_adapter = :solid_queue
 
   config.assets.manifest = Rails.root.join('config/manifest.json')
 end

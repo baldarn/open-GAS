@@ -7,15 +7,13 @@ ruby file: '.ruby-version'
 gem 'rails', '~> 7.2.0'
 
 # Drivers
-gem 'redis', '>= 4.0.1'
-gem 'sqlite3', '~> 1.4'
+gem 'pg', '~> 1.5.7'
 
 # Deployment
 gem 'puma', '>= 5.0'
 
 # Jobs
-gem 'resque', '~> 2.6.0'
-gem 'resque-pool', '~> 0.7.1'
+gem 'solid_queue', '~> 0.4.1'
 
 # Front-end
 gem 'bootstrap', '~> 5.1'
@@ -43,7 +41,6 @@ gem 'rouge', '~> 4.2'
 gem 'rqrcode'
 gem 'sassc-rails'
 gem 'sprockets-rails'
-gem 'thruster'
 gem 'useragent', github: 'basecamp/useragent'
 
 group :development, :test do
