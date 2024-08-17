@@ -11,7 +11,9 @@ class User < ApplicationRecord
 
   enum :role, %i[admin collaborator]
 
-  belongs_to :club
+  attr_accessor :club_name
+
+  belongs_to :club, optional: true
 
   validates :first_name, :last_name, :password, presence: true
 end

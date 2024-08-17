@@ -62,6 +62,9 @@ it:
     destroyed: Pagamento cancellato
   payment_reasons:
     select: Seleziona causale
+    created: Causale creata
+    updated: Causale aggiornata
+    destroyed: Causale cancellata
   expenses:
     header: Spese
     new: Nuova spesa
@@ -70,6 +73,9 @@ it:
     destroyed: Spesa cancellata
   expense_reasons:
     select: Seleziona causale
+    created: Causale creata
+    updated: Causale aggiornata
+    destroyed: Causale cancellata
   events:
     created: Evento creato
     updated: Evento aggiornato

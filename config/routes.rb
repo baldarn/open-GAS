@@ -21,7 +21,9 @@ Rails.application.routes.draw do
     resources :users
 
     resources :payments
+    resources :payment_reasons
     resources :expenses
+    resources :expense_reasons
     resources :events do
       resources :presences
     end

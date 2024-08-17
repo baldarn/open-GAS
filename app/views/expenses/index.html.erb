@@ -5,6 +5,9 @@
         <%= @member&.reason || I18n.t('expense_reasons.select') %>
       </a>
       <ul class="dropdown-menu">
+      <li>
+        <%= link_to I18n.t('expenses.new'), new_club_expense_path(@club), class: 'btn btn-primary' %>
+      </li>
         <li>
           <%= link_to I18n.t('all'), club_expenses_path(@club), class: 'dropdown-item' %>
         </li>
@@ -14,6 +17,9 @@
           </li>
         <% end %>
       </ul>
+    </li>
+    <li>
+      <%= link_to I18n.t('expenses.new'), new_club_expense_path(@club), class: 'btn btn-primary' %>
     </li>
   </ul>
 </div>
