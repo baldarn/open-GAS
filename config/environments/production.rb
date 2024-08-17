@@ -87,9 +87,9 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.smtp_settings = {
-    address: ENV.fetch('SMTP_ADDRESS', 'smtp'),
-    port: ENV.fetch('SMTP_PORT', 465),
-    user_name: ENV.fetch('SMTP_USERNAME', 'user'),
+    address: ENV.fetch('SMTP_ADDRESS', 'smtp.ionos.it'),
+    port: ENV.fetch('SMTP_PORT', 587),
+    user_name: ENV.fetch('SMTP_USERNAME', 'info@opengas.eu'),
     password: ENV.fetch('SMTP_PASSWORD', 'password'),
     authentication: 'plain',
     enable_starttls: true

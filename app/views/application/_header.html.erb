@@ -44,17 +44,17 @@
                 <%= I18n.t('calendar' )%>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="<%= club_payments_url(@club) %>" class="nav-link text-secondary">
-                <%= image_tag "piggy-bank.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
-                <%= I18n.t('payments.header' )%>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<%= club_expenses_url(@club) %>" class="nav-link text-secondary">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <%= image_tag "cash.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
-                <%= I18n.t('expenses.header' )%>
+                <%= I18n.t('finance_header') %>
               </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="<%= club_payments_url(@club) %>"><%= I18n.t('payments.header') %></a></li>
+                <li><a class="dropdown-item" href="<%= club_payment_reasons_url(@club) %>"><%= I18n.t('payment_reasons.header') %></a></li>
+                <li><a class="dropdown-item" href="<%= club_expenses_url(@club) %>"><%= I18n.t('expenses.header') %></a></li>
+                <li><a class="dropdown-item" href="<%= club_expense_reasons_url(@club) %>"><%= I18n.t('expense_reasons.header') %></a></li>
+              </ul>
             </li>
             <li class="nav-item">
               <a href="<%= club_users_url(@club) %>" class="nav-link text-secondary">

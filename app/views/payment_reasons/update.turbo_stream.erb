@@ -1,0 +1,5 @@
+<%= turbo_stream.prepend 'flash', partial: 'flash' %>
+
+<%= turbo_stream.update @payment_reason do %>
+  <%= render @payment_reason, club: @club, payment_reason: @payment_reason %>
+<% end %>

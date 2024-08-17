@@ -2,7 +2,7 @@
 
 class PaymentReasonsController < BaseController
   def index
-    @payment_reason = @club.payment_reasons
+    @payment_reasons = @club.payment_reasons.page(params[:page])
   end
 
   def new
@@ -19,7 +19,7 @@ class PaymentReasonsController < BaseController
     if @payment_reason.save
       respond_to do |format|
         format.html { redirect_to root_url, flash: { notice: I18n.t('payment_reasons.created') } }
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = I18n.t('payment_reasons.created') }
       end
     else
       render :new, status: :unprocessable_entity
@@ -32,7 +32,7 @@ class PaymentReasonsController < BaseController
     if @payment_reason.update(expense_params)
       respond_to do |format|
         format.html { redirect_to root_url, flash: { notice: I18n.t('payment_reasons.updated') } }
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = I18n.t('payment_reasons.updated') }
       end
     else
       render :new, status: :unprocessable_entity

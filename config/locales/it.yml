@@ -39,6 +39,7 @@ it:
   log_in: Log in
   sign_up: Registrati
   sign_out: Log out
+  finance_header: Area Finanziaria
   clubs:
     header: Club
     updated: Club aggiornato
@@ -62,8 +63,9 @@ it:
     updated: Pagamento aggiornato
     destroyed: Pagamento cancellato
   payment_reasons:
+    header: Causali pagamenti
     select: Seleziona causale
-    new: Nuova causale
+    new: Nuova causale spese
     created: Causale creata
     updated: Causale aggiornata
     destroyed: Causale cancellata
@@ -74,8 +76,9 @@ it:
     updated: Spesa aggiornata
     destroyed: Spesa cancellata
   expense_reasons:
+    header: Causali spese
     select: Seleziona causale
-    new: Nuova causale
+    new: Nuova causale spese
     created: Causale creata
     updated: Causale aggiornata
     destroyed: Causale cancellata
@@ -153,7 +156,11 @@ it:
         amount: Quota
         payment_reason: Causale
         created_at: Data
+      payment_reason:
+        reason: Causale
       expense:
         amount: Quota
         expense_reason: Causale
         created_at: Data
+      expense_reason:
+        reason: Causale

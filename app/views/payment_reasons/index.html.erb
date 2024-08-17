@@ -1,0 +1,31 @@
+<div class="row">
+  <ul class="nav justify-content-end">
+    <li>
+      <%= link_to I18n.t('payment_reasons.new'), new_club_payment_reason_path(@club), class: 'btn btn-primary' %>
+    </li>
+  </ul>
+</div>
+<%= paginate @payment_reasons %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"><%= I18n.t('activerecord.attributes.payment_reason.reason') %></th>
+      <th scope="col"><%= I18n.t('actions') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @payment_reasons.each do |payment_reason| %>
+      <tr>
+        <td><%= payment_reason.reason %></td>
+        <td>
+          <%= link_to edit_club_payment_reason_path(@club, payment_reason) do %>
+            <%= image_tag "edit.svg", aria: { hidden: true }, size: 24 %>
+          <% end %>
+          <%= link_to club_payment_reason_path(@club, payment_reason), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
+            <%= image_tag "trash.svg", aria: { hidden: true }, size: 24 %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

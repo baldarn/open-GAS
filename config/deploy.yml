@@ -32,7 +32,7 @@ env:
   clear:
     PG_HOST: host.docker.internal
     APP_HOST: opengas.eu
-    SMTP_PORT: 465
+    SMTP_PORT: 587
     SMTP_ADDRESS: smtp.ionos.it
     SMTP_USERNAME: info@opengas.eu
   secret:

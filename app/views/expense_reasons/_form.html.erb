@@ -1,5 +1,5 @@
-<%= turbo_frame_tag @espense_reason do %>
-  <%= simple_form_for [@club, espense_reason] do |f| %>
+<%= turbo_frame_tag @expense_reason do %>
+  <%= simple_form_for [@club, expense_reason] do |f| %>
     <%= f.input :reason %>
     <%= f.button :submit, I18n.t('save') %>
   <% end %>
