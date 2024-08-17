@@ -13,6 +13,8 @@ servers:
       traefik.http.routers.open_gas.entrypoints: websecure
       traefik.http.routers.open_gas.rule: Host(`opengas.eu`)
       traefik.http.routers.open_gas.tls.certresolver: letsencrypt
+    options:
+      add-host: host.docker.internal:host-gateway
 
 # Credentials for your image host.
 registry:
@@ -27,6 +29,8 @@ registry:
 # Inject ENV variables into containers (secrets come from .env).
 # Remember to run `kamal env push` after making changes!
 env:
+  clear:
+    PG_HOST: host.docker.internal
   secret:
     - RAILS_MASTER_KEY
     - POSTGRES_PASSWORD
@@ -51,6 +55,8 @@ accessories:
     image: postgres:16.4
     host: opengas.eu
     port: 5432
+    options:
+      restart: always
     env:
       clear:
         POSTGRES_DB: "opengas_production"

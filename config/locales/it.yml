@@ -139,6 +139,7 @@ it:
       group:
         name: Nome
         default_amount: Quota
+        mandatory_medical_certificate: Certifiato medico obbligatorio
       payment:
         amount: Quota
         payment_reason: Causale
