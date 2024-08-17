@@ -31,9 +31,13 @@ registry:
 env:
   clear:
     PG_HOST: host.docker.internal
+    APP_HOST: opengas.eu
   secret:
     - RAILS_MASTER_KEY
     - POSTGRES_PASSWORD
+    - SMTP_ADDRESS
+    - SMTP_USERNAME
+    - SMTP_PASSWORD
 
 # Use a different ssh user than root
 # ssh:
