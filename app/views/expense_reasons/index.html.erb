@@ -1,0 +1,35 @@
+<div class="row">
+  <ul class="nav justify-content-end">
+    <li>
+      <%= link_to I18n.t('expense_reasons.new'), new_club_expense_reason_path(@club), class: 'btn btn-primary' %>
+    </li>
+  </ul>
+</div>
+<%= paginate @expense_reasons %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"><%= I18n.t('activerecord.attributes.expense_reason.name') %></th>
+      <th scope="col"><%= I18n.t('activerecord.attributes.expense_reason.default_amount') %></th>
+      <th scope="col"><%= I18n.t('activerecord.attributes.expense_reason.mandatory_medical_certificate') %></th>
+      <th scope="col"><%= I18n.t('actions') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @expense_reasons.each do |expense_reason| %>
+      <tr>
+        <td><%= expense_reason.name %></td>
+        <td><%= number_to_currency(expense_reason.default_amount) %></td>
+        <td><%= expense_reason.mandatory_medical_certificate %></td>
+        <td>
+          <%= link_to edit_club_expense_reason_path(@club, expense_reason) do %>
+            <%= image_tag "edit.svg", aria: { hidden: true }, size: 24 %>
+          <% end %>
+          <%= link_to club_expense_reason_path(@club, expense_reason), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
+            <%= image_tag "trash.svg", aria: { hidden: true }, size: 24 %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

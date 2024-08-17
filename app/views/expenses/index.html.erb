@@ -18,6 +18,9 @@
         <% end %>
       </ul>
     </li>
+      <li>
+      <%= link_to I18n.t('expense_reasons.new'), new_club_expense_reason_path(@club), class: 'btn btn-primary' %>
+    </li>
     <li>
       <%= link_to I18n.t('expenses.new'), new_club_expense_path(@club), class: 'btn btn-primary' %>
     </li>

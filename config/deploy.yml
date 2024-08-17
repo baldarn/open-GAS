@@ -32,11 +32,12 @@ env:
   clear:
     PG_HOST: host.docker.internal
     APP_HOST: opengas.eu
+    SMTP_PORT: 465
+    SMTP_ADDRESS: smtp.ionos.it
+    SMTP_USERNAME: info@opengas.eu
   secret:
     - RAILS_MASTER_KEY
     - POSTGRES_PASSWORD
-    - SMTP_ADDRESS
-    - SMTP_USERNAME
     - SMTP_PASSWORD
 
 # Use a different ssh user than root

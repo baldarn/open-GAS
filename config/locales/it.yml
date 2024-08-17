@@ -31,6 +31,7 @@ it:
   actions: Azioni
   search: Cerca...
   none: Nessuno
+  save: Salva
   all: Tutto
   dashboard: Dashboard
   profile: Profilo
@@ -62,6 +63,7 @@ it:
     destroyed: Pagamento cancellato
   payment_reasons:
     select: Seleziona causale
+    new: Nuova causale
     created: Causale creata
     updated: Causale aggiornata
     destroyed: Causale cancellata
@@ -73,6 +75,7 @@ it:
     destroyed: Spesa cancellata
   expense_reasons:
     select: Seleziona causale
+    new: Nuova causale
     created: Causale creata
     updated: Causale aggiornata
     destroyed: Causale cancellata
