@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ExpensesController < BaseController
+  before_action :current_user_is_admin?
+
   def index
     @expense_reason = params[:expense_reason_id] ? @club.expense_reasons.find(params[:expense_reason_id]) : nil
 

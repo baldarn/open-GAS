@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class MembersController < BaseController
+  before_action :current_user_is_admin?
+
   def index
     @group = params[:group_id] ? @club.groups.find(params[:group_id]) : nil
     @tag = params[:tag_id] ? @club.tags.find(params[:tag_id]) : nil

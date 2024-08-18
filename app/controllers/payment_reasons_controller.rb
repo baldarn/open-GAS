@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class PaymentReasonsController < BaseController
+  before_action :current_user_is_admin?
+
   def index
     @payment_reasons = @club.payment_reasons.page(params[:page])
   end

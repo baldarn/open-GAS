@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PaymentsController < BaseController
+  before_action :current_user_is_admin?
   before_action :set_member, if: -> { params[:member_id].present? }
 
   def index

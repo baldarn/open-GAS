@@ -2,4 +2,6 @@
 
 class DashboardController < BaseController
   def show; end
+
+  def collaborator_dashboard; end
 end

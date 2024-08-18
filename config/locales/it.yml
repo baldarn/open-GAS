@@ -122,6 +122,7 @@ it:
         last_name: Cognome
         email: Email
         role: Ruolo
+        groups: Gruppi di insegnamento
         blsd_expires_at: Scadenza BLSD
       user/role:
         admin: Amministratore

@@ -39,7 +39,7 @@ Faker::Config.locale = 'it'
 
 club = Club.create!(name: 'The Club', email: 'club@email.com')
 
-user = User.new(
+admin = User.new(
   club:,
   first_name: 'admin',
   last_name: 'admin',
@@ -47,8 +47,19 @@ user = User.new(
   password: 'password',
   role: :admin
 )
-user.skip_confirmation!
-user.save!
+admin.skip_confirmation!
+admin.save!
+
+collaborator = User.new(
+  club:,
+  first_name: 'collaborator',
+  last_name: 'collaborator',
+  email: 'collaborator@email.com',
+  password: 'password',
+  role: :collaborator
+)
+collaborator.skip_confirmation!
+collaborator.save!
 
 children_group = club.groups.create!(name: 'children', default_amount: 60)
 adults_group = club.groups.create!(name: 'adults', default_amount: 80)

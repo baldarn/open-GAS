@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class ClubsController < ApplicationController
+class ClubsController < BaseController
+  before_action :current_user_is_admin?
+
   def edit
     @club = current_user.club
   end

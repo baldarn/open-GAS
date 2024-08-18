@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < BaseController
+  before_action :current_user_is_admin?
+
   def index
     @users = @club.users.page(params[:page])
   end
@@ -57,6 +59,6 @@ class UsersController < BaseController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :picture)
+    params.require(:user).permit(:first_name, :last_name, :email, :picture, :role, :blsd_expires_at, group_ids: [])
   end
 end

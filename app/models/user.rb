@@ -9,11 +9,16 @@ class User < ApplicationRecord
 
   has_one_attached :picture
 
-  enum :role, %i[admin collaborator]
+  has_many :user_groups, dependent: :destroy
+  has_many :groups, through: :user_groups, dependent: :nullify
 
-  attr_accessor :club_name
+  enum :role, %i[admin collaborator]
 
   belongs_to :club, optional: true
 
-  validates :first_name, :last_name, :password, presence: true
+  validates :first_name, :last_name, presence: true
+
+  def admin?
+    role == 'admin'
+  end
 end

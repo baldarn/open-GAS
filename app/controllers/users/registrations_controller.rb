@@ -14,9 +14,10 @@ module Users
     # POST /resource
     def create
       super
-      return unless @user.errors
 
-      @club = Club.create!(name: params[:user][:club_name], email: params[:user][:email])
+      return turbo_stream if @user.errors
+
+      @club = Club.create!(name: 'DA IMPOSTARE', email: params[:user][:email])
       @user.club = @club
       @user.save
     end

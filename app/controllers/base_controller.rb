@@ -11,4 +11,8 @@ class BaseController < ApplicationController
   def set_club
     @club = current_user.club
   end
+
+  def current_user_is_admin?
+    head :unauthorized unless current_user.admin?
+  end
 end

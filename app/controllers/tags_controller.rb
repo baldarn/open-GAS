@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class TagsController < BaseController
+  before_action :current_user_is_admin?
+
   def index
     @tags = @club.tags.page(params[:page])
   end

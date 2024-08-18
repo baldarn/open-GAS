@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class GroupsController < BaseController
+  before_action :current_user_is_admin?
+
   def index
     @groups = @club.groups.page(params[:page])
   end
