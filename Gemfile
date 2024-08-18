@@ -13,7 +13,8 @@ gem 'pg', '~> 1.5.7'
 gem 'puma', '>= 5.0'
 
 # Jobs
-gem 'solid_queue', '~> 0.4.1'
+gem 'mission_control-jobs', '~> 0.3.1'
+gem 'solid_queue', '~> 0.5.0'
 
 # Front-end
 gem 'bootstrap', '~> 5.1'

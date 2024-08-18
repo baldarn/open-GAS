@@ -28,6 +28,9 @@ RUN bundle install && \
 # Copy application code
 COPY . .
 
+# Set app version from git
+ENV APP_VERSION="$(git describe --exact-match --tags 2> /dev/null || git rev-parse --short HEAD)"
+
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
@@ -48,12 +51,6 @@ RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
     chown -R rails:rails db log storage tmp
 USER 1000:1000
-
-# Set version and revision
-ARG APP_VERSION
-ENV APP_VERSION=$APP_VERSION
-ARG GIT_REVISION
-ENV GIT_REVISION=$GIT_REVISION
 
 # Entrypoint prepares the application.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]

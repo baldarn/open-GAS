@@ -115,7 +115,5 @@ Rails.application.configure do
   # SQLite is good, actually
   config.active_record.sqlite3_production_warning = false
 
-  config.active_job.queue_adapter = :solid_queue
-
   config.assets.manifest = Rails.root.join('config/manifest.json')
 end

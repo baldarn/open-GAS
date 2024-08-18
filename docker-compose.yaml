@@ -8,24 +8,7 @@ services:
     volumes:
       - db_storage:/var/lib/postgresql/data
     ports:
-      - ${PG_PORT}:5432
+      - ${PG_PORT:-5432}:5432
     environment:
       - POSTGRES_USER=opengas
       - POSTGRES_PASSWORD=opengas
-
-  solid_queue:
-    restart: unless-stopped
-    build:
-      context: .
-      dockerfile: Dockerfile.development
-      ssh:
-        - default
-    command: ./bin/rake solid_queue:start
-    environment:
-      - PG_HOST=db
-      - PGUSER=opengas
-      - PGPASSWORD=opengas
-      - PGDATABASE=opengas_development
-    depends_on:
-      - db
-

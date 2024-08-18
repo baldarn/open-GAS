@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class MedicalCertificateJob < ApplicationJob
+class MedicalCertificateReminderJob < ApplicationJob
   @queue = :default
 
   def perform
