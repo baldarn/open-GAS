@@ -56,6 +56,9 @@ it:
     created: Membro creato
     updated: Membro aggiornato
     destroyed: Membro cancellato
+  presences:
+    set: Gestisci presenze
+    updated: Presenze aggiornate
   payments:
     header: Pagamenti
     new: Nuovo pagamento

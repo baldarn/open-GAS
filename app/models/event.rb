@@ -4,7 +4,6 @@ class Event < ApplicationRecord
   has_one_attached :attachment
 
   belongs_to :club
-  belongs_to :place, optional: true
 
   has_many :presences, dependent: :destroy
   has_many :members, through: :presences

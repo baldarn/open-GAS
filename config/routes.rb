@@ -24,9 +24,8 @@ Rails.application.routes.draw do
     resources :payment_reasons
     resources :expenses
     resources :expense_reasons
-    resources :events do
-      resources :presences
-    end
+    resources :events
+    resources :presences
   end
 
   get 'up' => 'rails/health#show', as: :rails_health_check

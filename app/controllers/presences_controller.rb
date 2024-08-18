@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 class PresencesController < BaseController
-  before_action :set_event
+  before_action :set_group
 
   def index
-    @presences = @event.presences
+    @presences = @group.presences
   end
 
   def create
-    @presence = @event.presences.find_or_initialize_by(presence_params)
+    @presence = @group.presences.find_or_initialize_by(presence_params)
 
     if params[:is_present] && @presence.new_record?
       @presence.save
@@ -20,10 +20,10 @@ class PresencesController < BaseController
   private
 
   def presence_params
-    params.permit(:date, :member_id, :presence)
+    params.permit(:date, :member_id, :group_id, :event_id, :presence)
   end
 
-  def set_event
-    @event = @club.events.find(params[:event_id])
+  def set_group
+    @group = @club.groups.find(params[:group_id])
   end
 end

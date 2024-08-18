@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_18_151552) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_18_161003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,11 +68,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_18_151552) do
     t.time "time_to"
     t.boolean "all_day", default: false, null: false
     t.text "description"
-    t.bigint "place_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["club_id"], name: "index_events_on_club_id"
-    t.index ["place_id"], name: "index_events_on_place_id"
   end
 
   create_table "expense_reasons", force: :cascade do |t|
@@ -165,19 +163,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_18_151552) do
     t.index ["payment_reason_id"], name: "index_payments_on_payment_reason_id"
   end
 
-  create_table "places", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "presences", force: :cascade do |t|
     t.bigint "member_id"
     t.bigint "event_id"
     t.date "date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "group_id"
     t.index ["event_id"], name: "index_presences_on_event_id"
+    t.index ["group_id"], name: "index_presences_on_group_id"
     t.index ["member_id"], name: "index_presences_on_member_id"
   end
 

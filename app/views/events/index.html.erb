@@ -1,18 +1,29 @@
 <%= month_calendar(events: @events) do |date, events| %>
   <%= date.day %>
-  <% events.each do |event| %>
-    <div class="row">
-      <div class="col">
-        <%= event.title %>
-      </div>
-      <div class="col">
-        <%= link_to edit_club_event_path(@club, event, date:) do %>
-          <%= image_tag "edit.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
+  <ul class="nav">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <%= I18n.t('presences.set') %>
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <input type="text" class="form-control" placeholder="<% I18n.t('search') %>" onkeyup="filterGroups(this, <%= date.day %>)">
+          <%= javascript_tag nonce: true do %>
+            function filterGroups(input, day) {
+            const query = input.value.toLowerCase()
+            console.log(query);
+            const groups = [...document.querySelectorAll(`.group-${day}`)];
+            groups.forEach((elem) => elem.classList.remove('d-none'));
+            groups.filter((m) => !m.innerHTML.toLowerCase().includes(query)).forEach((elem) => elem.classList.add('d-none'));
+            }
+          <% end %>
+        </li>
+        <% @club.groups.each do |group| %>
+          <li>
+            <%= link_to group.name, club_presences_path(@club, group_id: group.id, date: date), class: "group-#{date.day} dropdown-item" %>
+          </li>
         <% end %>
-        <%= link_to club_event_presences_path(@club, event, date:) do %>
-          <%= image_tag "card-checklist.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+      </ul>
+    </li>
+  </ul>
 <% end %>

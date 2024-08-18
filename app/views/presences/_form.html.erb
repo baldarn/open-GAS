@@ -1,6 +1,7 @@
-<%= simple_form_for [club, event, presence] do |f| %>
+<%= simple_form_for [club, presence] do |f| %>
   <%= f.input :event %>
   <%= f.input :member %>
+  <%= f.input :group %>
   <%= f.input :date, as: :integer %>
   <%= f.button :submit, 'Salva presenza' %>
 <% end %>

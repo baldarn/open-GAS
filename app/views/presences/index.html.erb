@@ -1,29 +1,27 @@
-<%= @event.title %> | <%= params[:date] %>
-<% @event.groups.each do |group| %>
-  <h2> <%= group.name %></h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Membro</th>
-        <th scope="col">Presenza</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% group.members.each do |member| %>
-        <%= form_for [@club, @event, Presence.new] do |f| %>
-          <%= hidden_field_tag :member_id, member.id  %>
-          <%= hidden_field_tag :date, params[:date]  %>
-          <tr>
-            <td><%= member.last_name %></td>
-            <td><%= 
+<h2> <%= @group.name %> | <%= params[:date] %></h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Membro</th>
+      <th scope="col">Presenza</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @group.members.each do |member| %>
+      <%= form_for [@club, Presence.new] do |f| %>
+        <%= hidden_field_tag :member_id, member.id  %>
+        <%= hidden_field_tag :group_id, @group.id  %>
+        <%= hidden_field_tag :date, params[:date]  %>
+        <tr>
+          <td><%= member.last_name %></td>
+          <td><%= 
               check_box_tag 'is_present', 
-                checked: @event.member_present_at_date?(member, params[:date]),
+                checked: @group.member_present_at_date?(member, params[:date]),
                 onchange: 'this.form.submit();'
               %>
-            </td>
-          </tr>
-        <% end %>
+          </td>
+        </tr>
       <% end %>
-    </tbody>
-  </table>
-<% end %>
+    <% end %>
+  </tbody>
+</table>

@@ -4,25 +4,9 @@ class EventsController < BaseController
   def index
     start_date = params.fetch(:start_date, Time.zone.today).to_date
 
-    case params[:view]
-    when 'week'
-      @events = @club.events.where(
-        date_from: start_date.beginning_of_day..start_date.end_of_day + 1.week
-      )
-
-      render 'week'
-    when 'day'
-      @events = @club.events.where(
-        date_from: start_date.all_day
-      )
-
-      render 'day'
-    else
-      # default view is month
-      @events = @club.events.where(
-        date_from: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week
-      )
-    end
+    @events = @club.events.where(
+      date_from: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week
+    )
   end
 
   def new
@@ -84,7 +68,6 @@ class EventsController < BaseController
             :time_from,
             :time_to,
             :all_day,
-            :recurring,
             group_ids: []
           )
   end
