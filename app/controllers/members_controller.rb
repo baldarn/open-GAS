@@ -13,16 +13,6 @@ class MembersController < BaseController
     @members = @members.page(params[:page])
   end
 
-  def dashboard
-    @group = params[:group_id] ? @club.groups.find(params[:group_id]) : @club.groups.first
-
-    if @group.blank?
-      return redirect_to new_club_group_url(@club), flash: { notice: I18n.t('groups.create_a_group_before') }
-    end
-
-    @members = @group.members.order(:last_name)
-  end
-
   def new
     @member = @club.members.build
   end

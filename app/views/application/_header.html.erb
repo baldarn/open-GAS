@@ -9,7 +9,7 @@
         <% if user_signed_in? %>
           <% if current_user.admin? %>
             <li class="nav-item">
-              <a href="<%= club_members_dashboard_path(@club) %>" class="nav-link text-secondary">
+              <a href="<%= club_dashboard_path(@club) %>" class="nav-link text-secondary">
                 <%= image_tag "dashboard.svg", aria: { hidden: true }, size: 24, class: "bi d-block mx-auto mb-1" %>
                 <%= I18n.t('dashboard' )%>
               </a>
