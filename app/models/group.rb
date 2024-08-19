@@ -10,6 +10,6 @@ class Group < ApplicationRecord
   validates :name, presence: true
 
   def member_present_at_date?(member, date)
-    presences.where(member:, date:).count == 1
+    presences.where(member:, date:).present?
   end
 end

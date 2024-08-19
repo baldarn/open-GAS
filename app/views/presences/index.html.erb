@@ -1,27 +1,49 @@
-<h2> <%= @group.name %> | <%= params[:date] %></h2>
+<h2><%= @group.name %> | <%= params[:date] %></h2>
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Membro</th>
-      <th scope="col">Presenza</th>
+      <th scope="col"><%= I18n.t('members.header') %></th>
+      <th scope="col">
+        <%= I18n.t('presences.presence') %>
+        <br>
+        <%= check_box_tag 'check_all', onchange: 'checkAll(this)' %>
+        <%= I18n.t('presences.check_all') %>
+      </td>
+    </th>
+  </tr>
+</thead>
+<tbody>
+  <% @group.members.each do |member| %>
+    <tr>
+      <td><%= member.last_name %></td>
+      <td>
+        <%=
+            check_box_tag "#{member.id}_is_present", 
+              checked: @group.member_present_at_date?(member, params[:date]),
+              onchange: "checkPresence(this, #{@group.id}, #{member.id})",
+              class: 'presence'
+            %>
+      </td>
     </tr>
-  </thead>
-  <tbody>
-    <% @group.members.each do |member| %>
-      <%= form_for [@club, Presence.new] do |f| %>
-        <%= hidden_field_tag :member_id, member.id  %>
-        <%= hidden_field_tag :group_id, @group.id  %>
-        <%= hidden_field_tag :date, params[:date]  %>
-        <tr>
-          <td><%= member.last_name %></td>
-          <td><%= 
-              check_box_tag 'is_present', 
-                checked: @group.member_present_at_date?(member, params[:date]),
-                onchange: 'this.form.submit();'
-              %>
-          </td>
-        </tr>
-      <% end %>
-    <% end %>
-  </tbody>
+  <% end %>
+</tbody>
 </table>
+<%= javascript_tag nonce: true do %>
+  async function checkPresence(input, group_id, member_id) {
+  const url = `<%= club_check_presence_path(@club) %>?group_id=${group_id}&member_id=${member_id}&is_present=${input.checked}&date=<%= params[:date] %>`
+  try {
+  const response = await fetch(url);
+  if (!response.ok) {
+  input.checked = !input.checked
+  throw new Error(`Response status: ${response.status}`);
+  }
+  } catch (error) {
+  console.error(error.message);
+  input.checked = !input.checked
+  }
+  }
+  function checkAll(input) {
+  const presences = [...document.querySelectorAll('.presence:not(:checked)')];
+  presences.forEach((p) => p.click());
+  }
+<% end %>

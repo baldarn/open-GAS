@@ -25,7 +25,8 @@ Rails.application.routes.draw do
     resources :expenses
     resources :expense_reasons
     resources :events
-    resources :presences
+    resources :presences, only: [:index]
+    get 'check_presence' => 'presences#check'
   end
 
   get 'up' => 'rails/health#show', as: :rails_health_check
