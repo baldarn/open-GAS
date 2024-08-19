@@ -28,6 +28,8 @@
 #       enabled: "ON"
 
 it:
+  warning: Attenzione
+  problems: Problemi
   actions: Azioni
   search: Cerca...
   none: Nessuno

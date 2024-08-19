@@ -1,3 +1,11 @@
+<div class="row">
+  <ul class="nav justify-content-end">
+    <li>
+      <%= link_to I18n.t('payments.new'), new_club_member_payment_path(@club, @member), class: 'btn btn-primary' %>
+    </li>
+  </ul>
+</div>
+
 <%= turbo_frame_tag @member do %>
   <%= render 'form', member: @member %>
 <% end %>

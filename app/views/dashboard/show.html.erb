@@ -1,16 +1,47 @@
 <h1>Dashboard</h1>
 <div class="row">
-  <div class="col-6">
-    <h2 class="text-center">Warnings</h2>
+  <div class="col">
+    <h2><%= I18n.t('warning') %></h2>
     <ul>
       <% @club.members.with_warnings.each do |m| %>
-        <li><%= m.first_name %></li>
+        <li>
+          <%= link_to m.full_name, edit_club_member_path(@club, m) %>: <br>
+          <% if m.membership_status == 'warning' %>
+            la associazione sta per scadere
+            <br>
+          <% end %>
+          <% if m.medical_status == 'warning' %>
+            il certificato medico sta per scadere
+            <br>
+          <% end %>
+          <% if m.payments_status == 'warning' %>
+            problemi nei pagamenti
+            <br>
+          <% end %>
+        </li>
       <% end %>
     </ul>
   </div>
-  <div class="col-6">
-    <h2 class="text-center">Errors</h2>
+  <div class="col">
+    <h2><%= I18n.t('problems') %></h2>
     <ul>
+      <% @club.members.with_errors.each do |m| %>
+        <li>
+          <%= link_to m.full_name, edit_club_member_path(@club, m) %>: <br>
+          <% if m.membership_status == 'error' %>
+            la associazione è scaduta
+            <br>
+          <% end %>
+          <% if m.medical_status == 'error' %>
+            il certificato medico è scaduto
+            <br>
+          <% end %>
+          <% if m.payments_status == 'error' %>
+            problemi nei pagamenti
+            <br>
+          <% end %>
+        </li>
+      <% end %>
       <% @club.members.with_errors.each do |m| %>
         <li><%= m.first_name %></li>
       <% end %>
