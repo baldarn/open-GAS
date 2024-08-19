@@ -15,7 +15,7 @@ module Users
     def create
       super
 
-      return turbo_stream if @user.errors
+      return turbo_stream if @user.errors.present?
 
       @club = Club.create!(name: 'DA IMPOSTARE', email: params[:user][:email])
       @user.club = @club
