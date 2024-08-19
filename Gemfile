@@ -12,6 +12,12 @@ gem 'pg', '~> 1.5.7'
 # Deployment
 gem 'puma', '>= 5.0'
 
+# Metrics
+gem 'yabeda'
+gem 'yabeda-prometheus'
+gem 'yabeda-puma-plugin'
+gem 'yabeda-rails'
+
 # Jobs
 gem 'mission_control-jobs', '~> 0.3.1'
 gem 'solid_queue', '~> 0.5.0'

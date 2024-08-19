@@ -33,5 +33,8 @@ plugin :tmp_restart
 
 plugin :solid_queue
 
+activate_control_app
+plugin :yabeda
+
 # Only use a pidfile when requested
 pidfile ENV['PIDFILE'] if ENV['PIDFILE']
