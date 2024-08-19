@@ -66,8 +66,8 @@ accessories:
       restart: always
     env:
       clear:
-        POSTGRES_DB: "opengas_production"
-        POSTGRES_USER: "opengas"
+        POSTGRES_DB: opengas_production
+        POSTGRES_USER: opengas
       secret:
         - POSTGRES_PASSWORD
     directories:

@@ -7,13 +7,13 @@ local:
   root: <%= Rails.root.join("storage", "files") %>
   public: true
 
-# Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
-# amazon:
-#   service: S3
-#   access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
-#   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
-#   region: us-east-1
-#   bucket: your_own_bucket-<%= Rails.env %>
+s3:
+  service: S3
+  access_key_id: <%= Rails.application.credentials.dig(:s3, :access_key_id) %>
+  secret_access_key: <%= Rails.application.credentials.dig(:s3, :secret_access_key) %>
+  endpoint: https://s3.de.io.cloud.ovh.net
+  region: de
+  bucket: opengas
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:

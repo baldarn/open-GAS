@@ -32,6 +32,7 @@ gem 'devise', '~> 4.9'
 gem 'devise-i18n'
 
 # Other
+gem 'aws-sdk-s3'
 gem 'bcrypt', '~> 3.1.7'
 gem 'front_matter_parser'
 gem 'image_processing', '~> 1.2'
