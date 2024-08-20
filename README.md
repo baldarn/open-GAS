@@ -1,4 +1,5 @@
 [![ci](https://github.com/baldarn/open-GAS/actions/workflows/ci.yml/badge.svg)](https://github.com/baldarn/open-GAS/actions/workflows/ci.yml)
+[![Code Climate](https://codeclimate.com/github/baldarn/open-GAS/badges/gpa.svg)](https://codeclimate.com/github/baldarn/open_GAS)
 
 # Open GAS
 ### The open source software for sports associations
