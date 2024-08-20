@@ -8,16 +8,22 @@ The software is still a work in progress. Expect huge variations.
 I suggest you to use [asdf](https://asdf-vm.com/)
 Install ruby 3.3.4
 
+Start the needed services with docker compose:
+
+```
+docker compose up -d
+```
+
 Create the database and seeds:
 
 ```
-bundle exec rails db:create db:migrate db:seed
+bin/rails db:create db:migrate db:seed
 ```
 
 To run the server:
 
 ```
-bundle exec rails s
+bin/rails s
 ```
 
 You an reach the app at https://localhost:3000
@@ -27,7 +33,14 @@ You an reach the app at https://localhost:3000
 Run:
 
 ```
-bundle exec rails test
+# application tests
+bin/rails test
+
+# system tests (E2E)
+bin/rails test:system
+
+# all
+bin/rails test:all
 ```
 
 ## Lint
@@ -39,4 +52,34 @@ Run:
 ```
 bundle exec rubocop
 bundle exec htmlbeautifier filename
+```
+
+## Deploy
+
+We use [kamal](https://github.com/basecamp/kamal) for deploying.
+
+Copy the `.env` file:
+
+```
+cp .env.example .env
+```
+
+Configure your env variables.
+
+The first time (after having configured you server), run:
+
+```
+bundle exec kamal setup
+```
+
+For pushing envs or changing those, run:
+
+```
+bundle exec kamal env push
+```
+
+Then:
+
+```
+bundle exec kamal deploy
 ```

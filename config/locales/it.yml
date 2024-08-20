@@ -28,6 +28,7 @@
 #       enabled: "ON"
 
 it:
+  gas_title: Il gestionale open source per le associazioni sportive italiane
   warning: Attenzione
   problems: Problemi
   actions: Azioni
