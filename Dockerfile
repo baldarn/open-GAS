@@ -2,7 +2,8 @@
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
 ARG RUBY_VERSION=3.3.4
-FROM ruby:$RUBY_VERSION-slim as base
+ARG APP_VERSION=undefined
+FROM ruby:$RUBY_VERSION-slim AS base
 
 # Rails app lives here
 WORKDIR /rails
@@ -11,7 +12,8 @@ WORKDIR /rails
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
+    BUNDLE_WITHOUT="development" \
+    APP_VERSION=${APP_VERSION}
 
 # Throw-away build stage to reduce size of final image
 FROM --platform=$TARGETPLATFORM base as build
@@ -27,9 +29,6 @@ RUN bundle install && \
 
 # Copy application code
 COPY . .
-
-# Set app version from git
-ENV APP_VERSION="$(git describe --exact-match --tags 2> /dev/null || git rev-parse --short HEAD)"
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile

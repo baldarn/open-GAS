@@ -1,0 +1,29 @@
+name: Kamal Command
+
+on:
+  workflow_dispatch:
+    inputs:
+      command:
+        description: "Kamal command to run"
+        default: "kamal app details"
+
+jobs:
+  Command:
+    runs-on: ubuntu-latest
+
+    env:
+      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+      KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3.4
+      - name: Run KAMAL command
+        run: ${{ github.event.inputs.command }}

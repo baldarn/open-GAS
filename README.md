@@ -1,3 +1,5 @@
+[![ci](https://github.com/baldarn/open-GAS/actions/workflows/ci.yml/badge.svg)](https://github.com/baldarn/open-GAS/actions/workflows/ci.yml)
+
 # Open GAS
 ### The open source software for sports associations
 
