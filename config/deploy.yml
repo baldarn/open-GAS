@@ -41,6 +41,7 @@ env:
     - RAILS_MASTER_KEY
     - POSTGRES_PASSWORD
     - SMTP_PASSWORD
+    - APP_VERSION
 
 # Use a different ssh user than root
 # ssh:
