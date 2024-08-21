@@ -50,6 +50,8 @@ RUN groupadd --system --gid 1000 rails && \
     chown -R rails:rails db log storage tmp
 USER 1000:1000
 
+ENV LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2
+
 # Entrypoint prepares the application.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
