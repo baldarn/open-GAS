@@ -1,21 +1,21 @@
 <h1>Dashboard</h1>
 <div class="row">
   <div class="col">
-    <h2><%= I18n.t('warning') %></h2>
+    <h2><%= I18n.t('warnings.name') %></h2>
     <ul>
       <% @club.members.with_warnings.each do |m| %>
         <li>
           <%= link_to m.full_name, edit_club_member_path(@club, m) %>: <br>
           <% if m.membership_status == 'warning' %>
-            la associazione sta per scadere
+            <%= I18n.t('warnings.medical_certificate') %>
             <br>
           <% end %>
           <% if m.medical_status == 'warning' %>
-            il certificato medico sta per scadere
+            <%= I18n.t('warnings.membership') %>
             <br>
           <% end %>
           <% if m.payments_status == 'warning' %>
-            problemi nei pagamenti
+            <%= I18n.t('warnings.payment') %>
             <br>
           <% end %>
         </li>
@@ -23,21 +23,21 @@
     </ul>
   </div>
   <div class="col">
-    <h2><%= I18n.t('problems') %></h2>
+    <h2><%= I18n.t('problems.name') %></h2>
     <ul>
       <% @club.members.with_errors.each do |m| %>
         <li>
           <%= link_to m.full_name, edit_club_member_path(@club, m) %>: <br>
           <% if m.membership_status == 'error' %>
-            la associazione è scaduta
+            <%= I18n.t('problems.medical_certificate') %>
             <br>
           <% end %>
           <% if m.medical_status == 'error' %>
-            il certificato medico è scaduto
+            <%= I18n.t('problems.medical_certificate') %>
             <br>
           <% end %>
           <% if m.payments_status == 'error' %>
-            problemi nei pagamenti
+            <%= I18n.t('problems.medical_certificate') %>
             <br>
           <% end %>
         </li>

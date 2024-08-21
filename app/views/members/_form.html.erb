@@ -16,12 +16,12 @@
     <%= f.input :telephone, wrapper_html: { class: 'col-sm-6' } %>
     <%= f.input :email, wrapper_html: { class: 'col-sm-6' } %>
     <h3>
-      Tesseramento <span class="dot-<%= member.membership_status %>"></span>
+      <%= I18n.t('membership.name') %> <span class="dot-<%= member.membership_status %>"></span>
     </h3>
     <%= f.input :membership_id %>
     <%= f.input :membership_expires_at %>
     <h3>
-      Certificato medico <span class="dot-<%= member.medical_status %>"></span>
+      <%= I18n.t('medical_certificate.name') %> <span class="dot-<%= member.medical_status %>"></span>
     </h3>
     <%= f.input :medical_certificate_expires_at, include_blank: true, wrapper_html: { class: 'col-sm-6' } %>
     <%= f.input :medical_certificate_kind, 
