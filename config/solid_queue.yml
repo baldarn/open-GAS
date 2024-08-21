@@ -2,13 +2,13 @@ default: &default
   dispatchers:
     - polling_interval: 1
       batch_size: 500
-      recurring_tasks:
-        medical_certificate_reminder:
-          class: MedicalCertificateReminderJob
-          schedule: every day
-        blsd_reminder:
-          class: BlsdReminderJob
-          schedule: every day
+      # recurring_tasks:
+      #   medical_certificate_reminder:
+      #     class: MedicalCertificateReminderJob
+      #     schedule: every day
+      #   blsd_reminder:
+      #     class: BlsdReminderJob
+      #     schedule: every day
 
   workers:
     - queues:
