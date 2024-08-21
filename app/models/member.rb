@@ -23,6 +23,7 @@ class Member < ApplicationRecord
             :email,
             :municipality, presence: true
 
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :groups, length: { minimum: 1 }
 
   scope :with_expiring_medical_certificate,
