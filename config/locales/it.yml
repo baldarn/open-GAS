@@ -29,8 +29,16 @@
 
 it:
   gas_title: Il gestionale open source per le associazioni sportive italiane
-  warning: Attenzione
-  problems: Problemi
+  warnings: 
+    name: Attenzione
+    medical_certificate: Il certificato medico sta per scadere
+    membership: Il tesseramento sta per scadere
+    payment: Problemi nei pagamenti
+  problems: 
+    name: Problemi
+    medical_certificate: Il certificato medico è scaduto
+    membership: Il tesseramento è scaduto
+    payment: Problemi nei pagamenti
   actions: Azioni
   search: Cerca...
   none: Nessuno
@@ -116,7 +124,10 @@ it:
     week: Settimana
     month: Mese
     giorno: Giorno
+  membership:
+    name: Tesseramento
   medical_certificate:
+    name: Certificato Medico
     expiring_email:
       subject: Certificato medico in scadenza!
       hello: Ciao
