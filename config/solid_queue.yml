@@ -6,6 +6,9 @@ default: &default
         medical_certificate_reminder:
           class: MedicalCertificateReminderJob
           schedule: every day
+        blsd_reminder:
+          class: BlsdReminderJob
+          schedule: every day
 
   workers:
     - queues:

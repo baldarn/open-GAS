@@ -18,6 +18,9 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, presence: true
 
+  scope :with_expiring_blsd,
+        -> { where(blsd_expires_at: Time.zone.today.beginning_of_day..6.months.from_now) }
+
   def admin?
     role == 'admin'
   end

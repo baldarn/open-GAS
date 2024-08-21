@@ -122,6 +122,12 @@ it:
       hello: Ciao
       expiring_text: Il tuo certificato medico sta per scadere!
       remember_text: Ricordati di farlo e consegnarlo in copia originale!
+  blsd:
+    expiring_email:
+      subject: BLSD in scadenza!
+      hello: Ciao
+      expiring_text: La tua abilitazione BLSD sta per scadere!
+      remember_text: Ricordati di rieffettuarla e consegnarlo in copia originale!
 
   activerecord:
     attributes:
