@@ -7,11 +7,11 @@
         <li>
           <%= link_to m.full_name, edit_club_member_path(@club, m) %>: <br>
           <% if m.membership_status == 'warning' %>
-            <%= I18n.t('warnings.medical_certificate') %>
+            <%= I18n.t('warnings.membership') %>
             <br>
           <% end %>
           <% if m.medical_status == 'warning' %>
-            <%= I18n.t('warnings.membership') %>
+            <%= I18n.t('warnings.medical_certificate') %>
             <br>
           <% end %>
           <% if m.payments_status == 'warning' %>
@@ -29,7 +29,7 @@
         <li>
           <%= link_to m.full_name, edit_club_member_path(@club, m) %>: <br>
           <% if m.membership_status == 'error' %>
-            <%= I18n.t('problems.medical_certificate') %>
+            <%= I18n.t('problems.membership') %>
             <br>
           <% end %>
           <% if m.medical_status == 'error' %>
@@ -37,7 +37,7 @@
             <br>
           <% end %>
           <% if m.payments_status == 'error' %>
-            <%= I18n.t('problems.medical_certificate') %>
+            <%= I18n.t('problems.payment') %>
             <br>
           <% end %>
         </li>

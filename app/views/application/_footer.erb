@@ -5,8 +5,11 @@
         <%= image_tag "github.svg", aria: { hidden: true }, size: 45, class: "bi d-block mx-auto mb-1" %>
       </a>
       <% if ENV['APP_VERSION'].present? %>
-        <span style='margin-left: 10px;'>v<%= ENV['APP_VERSION'] %></span>
+        <span class="ms-1">v<%= ENV['APP_VERSION'] %></span>
       <% end %>
+      <a href="https://opengas.betteruptime.com" class="link-info link-offset-2 ms-1">
+        Status
+      </a>
     </div>
     <div class="nav col-md-4 justify-content-end list-unstyled d-flex">
       <a href="https://www.iubenda.com/privacy-policy/35860933" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe " title="Privacy Policy ">Privacy Policy</a><script type="text/javascript">
