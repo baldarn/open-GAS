@@ -81,7 +81,7 @@ it:
   payment_reasons:
     header: Causali pagamenti
     select: Seleziona causale
-    new: Nuova causale spese
+    new: Nuova causale pagamento
     created: Causale creata
     updated: Causale aggiornata
     destroyed: Causale cancellata
