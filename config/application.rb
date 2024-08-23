@@ -28,5 +28,12 @@ module OpenGas
 
     config.i18n.default_locale = :it
     config.hosts = []
+    if Rails.env.production?
+      config.logger = Logtail::Logger.create_default_logger(
+        Rails.application.credentials.dig(
+          :vector, :rails_logs_token
+        )
+      )
+    end
   end
 end

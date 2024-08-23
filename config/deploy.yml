@@ -40,7 +40,6 @@ env:
   secret:
     - RAILS_MASTER_KEY
     - POSTGRES_PASSWORD
-    - SMTP_PASSWORD
     - APP_VERSION
 
 # Use a different ssh user than root
@@ -93,9 +92,9 @@ traefik:
     api.insecure: true
     entryPoints.web.address: ":80"
     entryPoints.websecure.address: ":443"
-    entryPoints.web.http.redirections.entryPoint.to: websecure
-    entryPoints.web.http.redirections.entryPoint.scheme: https
-    entryPoints.web.http.redirections.entrypoint.permanent: true
+    # entryPoints.web.http.redirections.entryPoint.to: websecure
+    # entryPoints.web.http.redirections.entryPoint.scheme: https
+    # entryPoints.web.http.redirections.entrypoint.permanent: true
     certificatesResolvers.letsencrypt.acme.email: "lorenzo.farnararo@gmail.com"
     certificatesResolvers.letsencrypt.acme.storage: "/letsencrypt/acme.json"
     certificatesResolvers.letsencrypt.acme.httpchallenge: true
