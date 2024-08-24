@@ -13,25 +13,40 @@
 require 'faker'
 
 def random_member(club, groups: [], tags: [])
+  born_at = Faker::Date.between(from: 10.years.ago, to: 40.years.ago)
+  minor = born_at >= 18.years.ago
   Member.create!(
     club:,
     groups:,
     tags:,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    born_at: Faker::Date.between(from: '2015-12-31', to: '2000-01-01'),
+    born_at:,
     born_in: Faker::Address.city,
     citizenship: Faker::Address.country,
     address: Faker::Address.full_address,
     postal_code: Faker::Address.postcode,
     municipality: Faker::Address.community,
+    tax_code: Faker::Alphanumeric::ALPHANUMS,
     province: Faker::Address.community.first(2),
     telephone: Faker::PhoneNumber.cell_phone,
     email: Faker::Internet.email,
     medical_certificate_kind: %i[regular competitive].sample,
     medical_certificate_expires_at: Faker::Date.forward,
     membership_id: Faker::Number.number,
-    membership_expires_at: Faker::Date.forward
+    membership_expires_at: Faker::Date.forward,
+    first_parent_first_name: minor ? Faker::Name.first_name : nil,
+    first_parent_last_name: minor ? Faker::Name.last_name : nil,
+    first_parent_born_at: minor ? Faker::Date.between(from: 20.years.ago, to: 70.years.ago) : nil,
+    first_parent_born_in: minor ? Faker::Address.city : nil,
+    first_parent_citizenship: minor ? Faker::Address.country : nil,
+    first_parent_address: minor ? Faker::Address.full_address : nil,
+    first_parent_postal_code: minor ? Faker::Address.postcode : nil,
+    first_parent_municipality: minor ? Faker::Address.community : nil,
+    first_parent_tax_code: minor ? Faker::Alphanumeric::ALPHANUMS : nil,
+    first_parent_province: minor ? Faker::Address.community.first(2) : nil,
+    first_parent_telephone: minor ? Faker::PhoneNumber.cell_phone : nil,
+    first_parent_email: minor ? Faker::Internet.email : nil
   )
 end
 

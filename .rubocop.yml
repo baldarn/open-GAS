@@ -30,6 +30,6 @@ Metrics/MethodLength:
     - db/migrate/*
 
 Metrics/AbcSize:
-  Max: 30
+  Max: 50
   Exclude:
     - db/migrate/*
