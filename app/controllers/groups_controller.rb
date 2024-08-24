@@ -19,15 +19,9 @@ class GroupsController < BaseController
     @group = @club.groups.build(group_params)
 
     if @group.save
-      respond_to do |format|
-        format.html { redirect_to club_groups_url(@club), flash: { notice: I18n.t('groups.created') } }
-        format.turbo_stream { flash.now[:notice] = I18n.t('groups.created') }
-      end
+      redirect_to club_groups_url(@club), flash: { notice: I18n.t('groups.created') }
     else
-      respond_to do |format|
-        format.html { render :new, status: :unprocessable_entity }
-        format.turbo_stream
-      end
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -35,15 +29,9 @@ class GroupsController < BaseController
     @group = @club.groups.find(params[:id])
 
     if @group.update(group_params)
-      respond_to do |format|
-        format.html { redirect_to club_groups_url(@club), flash: { notice: I18n.t('groups.updated') } }
-        format.turbo_stream { flash.now[:notice] = I18n.t('groups.updated') }
-      end
+      redirect_to club_groups_url(@club), flash: { notice: I18n.t('groups.updated') }
     else
-      respond_to do |format|
-        format.html { render :new, status: :unprocessable_entity }
-        format.turbo_stream
-      end
+      render :edit, status: :unprocessable_entity
     end
   end
 

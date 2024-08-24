@@ -1,5 +1,0 @@
-<%= turbo_stream.prepend 'flash', partial: 'flash' %>
-
-<%= turbo_stream.update @expense_reason do %>
-  <%= render 'form', expense_reason: @expense_reason %>
-<% end %>

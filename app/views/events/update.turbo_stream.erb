@@ -1,5 +1,0 @@
-<%= turbo_stream.prepend 'flash', partial: 'flash' %>
-
-<%= turbo_stream.update @event do %>
-  <%= render @event, club: @club, event: @event %>
-<% end %>

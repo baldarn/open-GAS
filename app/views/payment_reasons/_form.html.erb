@@ -1,6 +1,4 @@
-<%= turbo_frame_tag @payment_reason do %>
-  <%= simple_form_for [@club, payment_reason] do |f| %>
-    <%= f.input :reason %>
-    <%= f.button :submit, I18n.t('save') %>
-  <% end %>
+<%= simple_form_for [@club, payment_reason] do |f| %>
+  <%= f.input :reason %>
+  <%= f.button :submit, I18n.t('save') %>
 <% end %>

@@ -21,15 +21,9 @@ class EventsController < BaseController
     @event = @club.events.build(event_params)
 
     if @event.save
-      respond_to do |format|
-        format.html { redirect_to club_events_url(@club), flash: { notice: I18n.t('events.created') } }
-        format.turbo_stream { flash.now[:notice] = I18n.t('events.created') }
-      end
+      redirect_to club_events_url(@club), flash: { notice: I18n.t('events.created') }
     else
-      respond_to do |format|
-        format.html { render :new, status: :unprocessable_entity }
-        format.turbo_stream
-      end
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -37,15 +31,9 @@ class EventsController < BaseController
     @event = @club.events.find(params[:id])
 
     if @event.update(event_params)
-      respond_to do |format|
-        format.html { redirect_to club_events_url(@club), flash: { notice: I18n.t('events.updated') } }
-        format.turbo_stream { flash.now[:notice] = I18n.t('events.updated') }
-      end
+      redirect_to club_events_url(@club), flash: { notice: I18n.t('events.updated') }
     else
-      respond_to do |format|
-        format.html { render :new, status: :unprocessable_entity }
-        format.turbo_stream
-      end
+      render :new, status: :unprocessable_entity
     end
   end
 

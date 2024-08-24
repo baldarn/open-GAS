@@ -19,15 +19,9 @@ class TagsController < BaseController
     @tag = @club.tags.build(tag_params)
 
     if @tag.save
-      respond_to do |format|
-        format.html { redirect_to club_tags_url(@club), flash: { notice: I18n.t('tags.created') } }
-        format.turbo_stream { flash.now[:notice] = I18n.t('tags.created') }
-      end
+      redirect_to club_tags_url(@club), flash: { notice: I18n.t('tags.created') }
     else
-      respond_to do |format|
-        format.html { render :new, status: :unprocessable_entity }
-        format.turbo_stream
-      end
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -35,15 +29,9 @@ class TagsController < BaseController
     @tag = @club.tags.find(params[:id])
 
     if @tag.update(tag_params)
-      respond_to do |format|
-        format.html { redirect_to club_tags_url(@club), flash: { notice: I18n.t('tags.updated') } }
-        format.turbo_stream { flash.now[:notice] = I18n.t('tags.updated') }
-      end
+      redirect_to club_tags_url(@club), flash: { notice: I18n.t('tags.updated') }
     else
-      respond_to do |format|
-        format.html { render :new, status: :unprocessable_entity }
-        format.turbo_stream
-      end
+      render :edit, status: :unprocessable_entity
     end
   end
 

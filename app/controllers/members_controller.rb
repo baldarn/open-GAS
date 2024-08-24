@@ -25,13 +25,9 @@ class MembersController < BaseController
     @member = @club.members.build(member_params)
 
     if @member.save
-      respond_to do |format|
-        format.turbo_stream { flash.now[:notice] = I18n.t('members.created') }
-      end
+      redirect_to club_members_url(@club), flash: { notice: I18n.t('members.created') }
     else
-      respond_to do |format|
-        format.turbo_stream
-      end
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -39,13 +35,9 @@ class MembersController < BaseController
     @member = @club.members.find(params[:id])
 
     if @member.update(member_params)
-      respond_to do |format|
-        format.turbo_stream { flash.now[:notice] = I18n.t('members.updated') }
-      end
+      redirect_to club_members_url(@club), flash: { notice: I18n.t('members.updated') }
     else
-      respond_to do |format|
-        format.turbo_stream
-      end
+      render :edit, status: :unprocessable_entity
     end
   end
 

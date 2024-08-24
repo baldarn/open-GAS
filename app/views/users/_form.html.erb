@@ -1,20 +1,18 @@
-<%= turbo_frame_tag user do %>
-  <%= simple_form_for [@club, user], html: { class: 'row' } do |f| %>
-    <h3>
-      Dati
-    </h3>
-    <%= f.input :first_name, wrapper_html: { class: 'col-sm-6' } %>
-    <%= f.input :last_name, wrapper_html: { class: 'col-sm-6' } %>
-    <%= f.input :email, wrapper_html: { class: 'col-sm-6' } %>
-    <%= f.input :role, prompt: 'Seleziona ruolo', collection: User.roles.map { |role, v| [User.human_attribute_name("role.#{role}"), role] }, wrapper_html: { class: 'col-sm-6' } %>
-    <%= f.association :groups, collection: @club.groups, as: :check_boxes %>
-    <%= f.input :blsd_expires_at, include_blank: true, wrapper_html: { class: 'col-sm-6' } %>
-    <%= f.file_field :picture %>
-    <%=
+<%= simple_form_for [@club, user], html: { class: 'row' } do |f| %>
+  <h3>
+    Dati
+  </h3>
+  <%= f.input :first_name, wrapper_html: { class: 'col-sm-6' } %>
+  <%= f.input :last_name, wrapper_html: { class: 'col-sm-6' } %>
+  <%= f.input :email, wrapper_html: { class: 'col-sm-6' } %>
+  <%= f.input :role, prompt: 'Seleziona ruolo', collection: User.roles.map { |role, v| [User.human_attribute_name("role.#{role}"), role] }, wrapper_html: { class: 'col-sm-6' } %>
+  <%= f.association :groups, collection: @club.groups, as: :check_boxes %>
+  <%= f.input :blsd_expires_at, include_blank: true, wrapper_html: { class: 'col-sm-6' } %>
+  <%= f.file_field :picture %>
+  <%=
     if user.picture.present?
       image_tag user.picture, class: 'img-fluid img-thumbnail rounded mx-auto d-block', style: 'max-width: 200px'
     end
     %>
-    <%= f.submit 'Save', class: 'btn btn-primary' %>
-  <% end %>
+  <%= f.submit 'Save', class: 'btn btn-primary' %>
 <% end %>

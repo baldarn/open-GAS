@@ -1,7 +1,3 @@
-<%= turbo_frame_tag "new_payment_#{@member.id}" do %>
-  <div class="card">
-    <div class="card-body">
-      <%= render "form", club: @club, member: @member, payment: @payment %>
-    </div>
-  </div>
-<% end %>
+<h2><%= "#{I18n.t('payments.new')}: #{@member.first_name} #{@member.last_name}" %></h2>
+
+<%= render "form",  member: @member, payment: @payment %>

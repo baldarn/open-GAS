@@ -1,5 +1,0 @@
-<%= turbo_stream.prepend 'flash', partial: 'flash' %>
-
-<%= turbo_stream.update @user do %>
-  <%= render 'form', club: @club, user: @user %>
-<% end %>

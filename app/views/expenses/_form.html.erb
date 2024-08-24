@@ -1,5 +1,5 @@
-<%= simple_form_for [club, expense] do |f| %>
+<%= simple_form_for [@club, expense] do |f| %>
   <%= f.input :amount, as: :integer %>
-  <%= f.association :expense_reason, label_method: :reason, collection: @club.expense_reasons %>
+  <%= f.association :expense_reason, required: true, label_method: :reason, collection: @club.expense_reasons %>
   <%= f.button :submit, 'Salva spesa' %>
 <% end %>

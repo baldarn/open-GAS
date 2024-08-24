@@ -21,15 +21,9 @@ class UsersController < BaseController
     @user.password = 'password'
 
     if @user.save
-      respond_to do |format|
-        format.html { redirect_to new_club_user_url(@club), flash: { notice: I18n.t('users.created') } }
-        format.turbo_stream { flash.now[:notice] = I18n.t('users.created') }
-      end
+      redirect_to new_club_user_url(@club), flash: { notice: I18n.t('users.created') }
     else
-      respond_to do |format|
-        format.html { render :new, status: :unprocessable_entity }
-        format.turbo_stream
-      end
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -37,15 +31,9 @@ class UsersController < BaseController
     @user = @club.users.find(params[:id])
 
     if @user.update(user_params)
-      respond_to do |format|
-        format.html { redirect_to club_users_url(@club), flash: { notice: I18n.t('users.updated') } }
-        format.turbo_stream { flash.now[:notice] = I18n.t('users.updated') }
-      end
+      redirect_to club_users_url(@club), flash: { notice: I18n.t('users.updated') }
     else
-      respond_to do |format|
-        format.html { render :edit, status: :unprocessable_entity }
-        format.turbo_stream
-      end
+      render :edit, status: :unprocessable_entity
     end
   end
 

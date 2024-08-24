@@ -1,7 +1,1 @@
-<%= turbo_frame_tag @expense do %>
-  <div class="card">
-    <div class="card-body">
-      <%= render "form", club: @club, expense: @expense %>
-    </div>
-  </div>
-<% end %>
+<%= render "form", expense: @expense %>

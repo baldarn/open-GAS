@@ -23,10 +23,7 @@ class ExpensesController < BaseController
     @expense = @club.expenses.build(expense_params)
 
     if @expense.save
-      respond_to do |format|
-        format.html { redirect_to root_url, flash: { notice: I18n.t('expenses.created') } }
-        format.turbo_stream
-      end
+      redirect_to club_expenses_url(@club), flash: { notice: I18n.t('expenses.created') }
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,12 +33,9 @@ class ExpensesController < BaseController
     @expense = @club.expenses.find(params[:id])
 
     if @expense.update(expense_params)
-      respond_to do |format|
-        format.html { redirect_to root_url, flash: { notice: I18n.t('expenses.updated') } }
-        format.turbo_stream
-      end
+      redirect_to club_expenses_url(@club), flash: { notice: I18n.t('expenses.updated') }
     else
-      render :new, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -55,6 +49,6 @@ class ExpensesController < BaseController
   private
 
   def expense_params
-    params.require(:expense).permit(:amount, :expense_reason)
+    params.require(:expense).permit(:amount, :expense_reason_id)
   end
 end

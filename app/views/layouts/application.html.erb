@@ -2,24 +2,18 @@
 <html>
   <head>
     <title><%= content_for(:title) || "Open GAS" %></title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta charset="UTF-8">
-    <meta name="color-scheme" content="light dark">
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, interactive-widget=resizes-content">
-    <meta name="view-transition" content="same-origin">
-    <meta name="turbo-cache-control" content="no-cache">
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.png" type="image/png">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <link rel="icon" href="/favicon.png" type="image/png">
-    <link rel="apple-touch-icon" href="/app-icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= javascript_importmap_tags %>
   </head>
-  <body data-controller="fullscreen lightbox">
+  <%= content_tag :body, data: { action: action_name, controller: controller_name, path: request.path, controller: "toggle" } do %>
     <header>
-      <%= render partial: 'header' %>
+      <%= render 'header' %>
     </header>
     <%= render 'flash' %>
     <div class="container-fluid">
@@ -29,6 +23,6 @@
         </div>
       </div>
     </div>
-    <%= render partial: 'footer' %>
-  </body>
+    <%= render 'footer' %>
+  <% end %>
 </html>

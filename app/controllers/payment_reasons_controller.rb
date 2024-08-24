@@ -19,10 +19,7 @@ class PaymentReasonsController < BaseController
     @payment_reason = @club.payment_reasons.build(expense_params)
 
     if @payment_reason.save
-      respond_to do |format|
-        format.html { redirect_to root_url, flash: { notice: I18n.t('payment_reasons.created') } }
-        format.turbo_stream { flash.now[:notice] = I18n.t('payment_reasons.created') }
-      end
+      redirect_to club_expense_reasons_url(@club), flash: { notice: I18n.t('payment_reasons.created') }
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,12 +29,9 @@ class PaymentReasonsController < BaseController
     @payment_reason = @club.payment_reasons.find(params[:id])
 
     if @payment_reason.update(expense_params)
-      respond_to do |format|
-        format.html { redirect_to root_url, flash: { notice: I18n.t('payment_reasons.updated') } }
-        format.turbo_stream { flash.now[:notice] = I18n.t('payment_reasons.updated') }
-      end
+      redirect_to club_expense_reasons_url(@club), flash: { notice: I18n.t('payment_reasons.updated') }
     else
-      render :new, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 

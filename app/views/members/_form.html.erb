@@ -1,42 +1,40 @@
-<%= turbo_frame_tag member do %>
-  <%= simple_form_for [@club, member], html: { class: 'row' } do |f| %>
-    <h3>
-      Dati
-    </h3>
-    <%= f.input :first_name, wrapper_html: { class: 'col-sm-6' } %>
-    <%= f.input :last_name, wrapper_html: { class: 'col-sm-6' } %>
-    <%= f.input :born_at, start_year: Date.today.year - 90, end_year: Date.today.year - 5 %>
-    <%= f.input :born_in %>
-    <%= f.input :tax_code %>
-    <%= f.input :citizenship, wrapper_html: { class: 'col-sm-6' } %>
-    <%= f.input :address, wrapper_html: { class: 'col-sm-6' } %>
-    <%= f.input :postal_code, wrapper_html: { class: 'col-sm-2' } %>
-    <%= f.input :municipality, wrapper_html: { class: 'col-sm-8' } %>
-    <%= f.input :province, wrapper_html: { class: 'col-sm-2' } %>
-    <%= f.input :telephone, wrapper_html: { class: 'col-sm-6' } %>
-    <%= f.input :email, wrapper_html: { class: 'col-sm-6' } %>
-    <h3>
-      <%= I18n.t('membership.name') %> <span class="dot-<%= member.membership_status %>"></span>
-    </h3>
-    <%= f.input :membership_id %>
-    <%= f.input :membership_expires_at %>
-    <h3>
-      <%= I18n.t('medical_certificate.name') %> <span class="dot-<%= member.medical_status %>"></span>
-    </h3>
-    <%= f.input :medical_certificate_expires_at, include_blank: true, wrapper_html: { class: 'col-sm-6' } %>
-    <%= f.input :medical_certificate_kind, 
+<%= simple_form_for [@club, member], html: { class: 'row' } do |f| %>
+  <h3>
+    Dati
+  </h3>
+  <%= f.input :first_name, wrapper_html: { class: 'col-sm-6' } %>
+  <%= f.input :last_name, wrapper_html: { class: 'col-sm-6' } %>
+  <%= f.input :born_at, start_year: Date.today.year - 90, end_year: Date.today.year - 5 %>
+  <%= f.input :born_in %>
+  <%= f.input :tax_code %>
+  <%= f.input :citizenship, wrapper_html: { class: 'col-sm-6' } %>
+  <%= f.input :address, wrapper_html: { class: 'col-sm-6' } %>
+  <%= f.input :postal_code, wrapper_html: { class: 'col-sm-2' } %>
+  <%= f.input :municipality, wrapper_html: { class: 'col-sm-8' } %>
+  <%= f.input :province, wrapper_html: { class: 'col-sm-2' } %>
+  <%= f.input :telephone, wrapper_html: { class: 'col-sm-6' } %>
+  <%= f.input :email, wrapper_html: { class: 'col-sm-6' } %>
+  <h3>
+    <%= I18n.t('membership.name') %> <span class="dot-<%= member.membership_status %>"></span>
+  </h3>
+  <%= f.input :membership_id %>
+  <%= f.input :membership_expires_at %>
+  <h3>
+    <%= I18n.t('medical_certificate.name') %> <span class="dot-<%= member.medical_status %>"></span>
+  </h3>
+  <%= f.input :medical_certificate_expires_at, include_blank: true, wrapper_html: { class: 'col-sm-6' } %>
+  <%= f.input :medical_certificate_kind, 
       prompt: 'Seleziona tipo', 
       collection: Member.medical_certificate_kinds.map { |kind, v| [Member.human_attribute_name("medical_certificate_kind.#{kind}"), kind] },
       wrapper_html: { class: 'col-sm-6' }
       %>
-    <%= f.association :tags, collection: @club.tags, as: :check_boxes %>
-    <%= f.association :groups, collection: @club.groups, as: :check_boxes %>
-    <%= f.file_field :picture %>
-    <%=
+  <%= f.association :tags, collection: @club.tags, as: :check_boxes %>
+  <%= f.association :groups, collection: @club.groups, as: :check_boxes %>
+  <%= f.file_field :picture %>
+  <%=
     if member.picture.present?
       image_tag member.picture, class: 'img-fluid img-thumbnail rounded mx-auto d-block', style: 'max-width: 200px'
     end
     %>
-    <%= f.submit 'Save', class: 'btn btn-primary' %>
-  <% end %>
+  <%= f.submit 'Save', class: 'btn btn-primary' %>
 <% end %>

@@ -26,10 +26,7 @@ class PaymentsController < BaseController
     @payment = @member.payments.build(payment_params)
 
     if @payment.save
-      respond_to do |format|
-        format.html { redirect_to root_url, flash: { notice: I18n.t('payments.created') } }
-        format.turbo_stream
-      end
+      redirect_to club_member_url(@club, @member), flash: { notice: I18n.t('payments.created') }
     else
       render :new, status: :unprocessable_entity
     end
@@ -39,12 +36,9 @@ class PaymentsController < BaseController
     @payment = @member.payments.find(params[:id])
 
     if @payment.update(payment_params)
-      respond_to do |format|
-        format.html { redirect_to root_url, flash: { notice: I18n.t('payments.updated') } }
-        format.turbo_stream
-      end
+      redirect_to club_member_url(@club, @member), flash: { notice: I18n.t('payments.updated') }
     else
-      render :new, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -58,7 +52,7 @@ class PaymentsController < BaseController
   private
 
   def payment_params
-    params.require(:payment).permit(:amount, :payment_reason)
+    params.require(:payment).permit(:amount, :payment_reason_id)
   end
 
   def set_member

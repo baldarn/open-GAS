@@ -1,7 +1,3 @@
-<%= "Editing payment of #{@member.first_name} #{@member.last_name}. Date #{@payment.created_at}" %>
+<h2><%= "Editing payment of #{@member.first_name} #{@member.last_name}" %></h2>
 
-<%= simple_form_for [@club, @member, @payment] do |f| %>
-  <%= f.input :amount, as: :integer %>
-  <%= f.association :payment_reason, label_method: :reason, collection: @club.payment_reasons %>
-  <%= f.button :submit, 'Salva pagamento' %>
-<% end %>
+<%= render "form",  member: @member, payment: @payment %>

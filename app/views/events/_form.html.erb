@@ -1,0 +1,11 @@
+<%= simple_form_for [@club, @event] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :kind, prompt: 'Seleziona tipo', collection: Event.kinds.map { |kind, v| [Event.human_attribute_name("kind.#{kind}"), kind] } %>
+  <%= f.input :date_from %>
+  <%= f.input :date_to, include_blank: true %>
+  <%= f.input :time_from %>
+  <%= f.input :time_to %>
+  <%= f.input :all_day %>
+  <%= f.association :groups, collection: @club.groups %>
+  <%= f.submit 'Save' %>
+<% end %>

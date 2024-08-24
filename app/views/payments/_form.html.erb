@@ -1,5 +1,8 @@
-<%= simple_form_for [club, member, payment] do |f| %>
+<%= simple_form_for [@club, member, payment] do |f| %>
   <%= f.input :amount, as: :integer %>
-  <%= f.association :payment_reason, label_method: :reason, collection: @club.payment_reasons %>
+  <%= f.association :payment_reason, required: true, label_method: :reason, collection: @club.payment_reasons %>
+  <% if payment.created_at %>
+    <%= f.input :created_at, disabled: true, as: :date %>
+  <% end %>
   <%= f.button :submit, 'Salva pagamento' %>
 <% end %>
