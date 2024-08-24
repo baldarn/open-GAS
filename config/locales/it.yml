@@ -61,6 +61,8 @@ it:
     updated: Collaboratore aggiornato
     destroyed: Collaboratore cancellato
   members:
+    first_parent: Primo genitore
+    second_parent: Secondo genitore
     header: Membri
     select: Seleziona membro
     new: Nuovo membro
@@ -168,6 +170,28 @@ it:
         municipality: Comune
         groups: Gruppi
         tags: Attributi
+        privacy_disclaimer: liberatoria privacy
+        picture_disclaimer: liberatoria foto
+        first_parent_name: Primo genitore Nome
+        first_parent_first_name: Primo genitore Nome
+        first_parent_last_name: Primo genitore Cognome
+        first_parent_born_in: Primo genitore Nato a
+        first_parent_born_at: Primo genitore Nato il
+        first_parent_citizenship: Primo genitore Cittadinanza
+        first_parent_address: Primo genitore Indirizzo
+        first_parent_postal_code: Primo genitore CAP
+        first_parent_email: Primo genitore Email
+        first_parent_municipality: Primo genitore Comune
+        second_parent_name: Secondo genitore Nome
+        second_parent_first_name: Secondo genitore Nome
+        second_parent_last_name: Secondo genitore Cognome
+        second_parent_born_in: Nato Secondo genitore a
+        second_parent_born_at: Nato Secondo genitore il
+        second_parent_citizenship: Secondo genitore Cittadinanza
+        second_parent_address: Secondo genitore Indirizzo
+        second_parent_postal_code: Secondo genitore CAP
+        second_parent_email: Secondo genitore Email
+        second_parent_municipality: Secondo genitore Comune
       event/kind:
         training: Allenamento
         competition: Partita/Gara

@@ -14,6 +14,54 @@
   <%= f.input :province, wrapper_html: { class: 'col-sm-2' } %>
   <%= f.input :telephone, wrapper_html: { class: 'col-sm-6' } %>
   <%= f.input :email, wrapper_html: { class: 'col-sm-6' } %>
+  <div class="accordion accordion-flush" id="parents">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#parent-1" aria-expanded="false" aria-controls="parent-1">
+          <%= I18n.t('members.first_parent')%>
+        </button>
+      </h2>
+      <div id="parent-1" class="accordion-collapse collapse" data-bs-parent="#parents">
+        <div class="accordion-body row">
+          <%= f.input :first_parent_first_name, wrapper_html: { class: 'col-sm-6' } %>
+          <%= f.input :first_parent_last_name, wrapper_html: { class: 'col-sm-6' } %>
+          <%= f.input :first_parent_born_at, start_year: Date.today.year - 90, end_year: Date.today.year - 5 %>
+          <%= f.input :first_parent_born_in %>
+          <%= f.input :first_parent_tax_code %>
+          <%= f.input :first_parent_citizenship, wrapper_html: { class: 'col-sm-6' } %>
+          <%= f.input :first_parent_address, wrapper_html: { class: 'col-sm-6' } %>
+          <%= f.input :first_parent_postal_code, wrapper_html: { class: 'col-sm-2' } %>
+          <%= f.input :first_parent_municipality, wrapper_html: { class: 'col-sm-8' } %>
+          <%= f.input :first_parent_province, wrapper_html: { class: 'col-sm-2' } %>
+          <%= f.input :first_parent_telephone, wrapper_html: { class: 'col-sm-6' } %>
+          <%= f.input :first_parent_email, wrapper_html: { class: 'col-sm-6' } %>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#parent-2" aria-expanded="false" aria-controls="parent-2">
+          <%= I18n.t('members.second_parent')%>
+        </button>
+      </h2>
+      <div id="parent-2" class="accordion-collapse collapse" data-bs-parent="#parents">
+        <div class="accordion-body row">
+          <%= f.input :second_parent_first_name, wrapper_html: { class: 'col-sm-6' } %>
+          <%= f.input :second_parent_last_name, wrapper_html: { class: 'col-sm-6' } %>
+          <%= f.input :second_parent_born_at, start_year: Date.today.year - 90, end_year: Date.today.year - 5 %>
+          <%= f.input :second_parent_born_in %>
+          <%= f.input :second_parent_tax_code %>
+          <%= f.input :second_parent_citizenship, wrapper_html: { class: 'col-sm-6' } %>
+          <%= f.input :second_parent_address, wrapper_html: { class: 'col-sm-6' } %>
+          <%= f.input :second_parent_postal_code, wrapper_html: { class: 'col-sm-2' } %>
+          <%= f.input :second_parent_municipality, wrapper_html: { class: 'col-sm-8' } %>
+          <%= f.input :second_parent_province, wrapper_html: { class: 'col-sm-2' } %>
+          <%= f.input :second_parent_telephone, wrapper_html: { class: 'col-sm-6' } %>
+          <%= f.input :second_parent_email, wrapper_html: { class: 'col-sm-6' } %>
+        </div>
+      </div>
+    </div>
+  </div>
   <h3>
     <%= I18n.t('membership.name') %> <span class="dot-<%= member.membership_status %>"></span>
   </h3>
@@ -30,6 +78,8 @@
       %>
   <%= f.association :tags, collection: @club.tags, as: :check_boxes %>
   <%= f.association :groups, collection: @club.groups, as: :check_boxes %>
+  <%= f.input :privacy_disclaimer %>
+  <%= f.input :picture_disclaimer %>
   <%= f.file_field :picture %>
   <%=
     if member.picture.present?
