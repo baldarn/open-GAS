@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_18_161003) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_24_101228) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -142,6 +142,30 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_18_161003) do
     t.boolean "picture_disclaimer", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_parent_first_name"
+    t.string "first_parent_last_name"
+    t.date "first_parent_born_at"
+    t.string "first_parent_born_in"
+    t.string "first_parent_tax_code"
+    t.string "first_parent_citizenship"
+    t.string "first_parent_address"
+    t.string "first_parent_postal_code"
+    t.string "first_parent_municipality"
+    t.string "first_parent_province"
+    t.string "first_parent_telephone"
+    t.string "first_parent_email"
+    t.string "second_parent_first_name"
+    t.string "second_parent_last_name"
+    t.date "second_parent_born_at"
+    t.string "second_parent_born_in"
+    t.string "second_parent_tax_code"
+    t.string "second_parent_citizenship"
+    t.string "second_parent_address"
+    t.string "second_parent_postal_code"
+    t.string "second_parent_municipality"
+    t.string "second_parent_province"
+    t.string "second_parent_telephone"
+    t.string "second_parent_email"
     t.index ["club_id"], name: "index_members_on_club_id"
   end
 
