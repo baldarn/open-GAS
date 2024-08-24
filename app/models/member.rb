@@ -24,10 +24,19 @@ class Member < ApplicationRecord
             :tax_code,
             :municipality, presence: true
 
+  validates :first_parent_first_name,
+            :first_parent_last_name,
+            :first_parent_born_at,
+            :first_parent_born_in,
+            :first_parent_citizenship,
+            :first_parent_address,
+            :first_parent_postal_code,
+            :first_parent_email,
+            :first_parent_tax_code,
+            :first_parent_municipality, presence: true, if: -> { child? }
+
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :groups, length: { minimum: 1 }
-
-  validate :at_least_a_parent?, if: -> { born_at && born_at >= (Time.zone.today - 18.years) }
 
   scope :with_expiring_medical_certificate,
         -> { where(medical_certificate_expires_at: Time.zone.today.beginning_of_day..2.months.from_now) }
@@ -43,6 +52,10 @@ class Member < ApplicationRecord
 
   def full_name
     "#{last_name} #{first_name}".capitalize
+  end
+
+  def child?
+    born_at ? born_at >= 18.years.ago : false
   end
 
   def status
@@ -78,47 +91,5 @@ class Member < ApplicationRecord
     # TODO: logic
 
     'ok'
-  end
-
-  private
-
-  def at_least_a_parent?
-    return true if first_parent_present? || second_parent_present?
-
-    errors.add(:at_least_a_parent, 'add at least a parent')
-  end
-
-  def first_parent_present?
-    if first_parent_first_name.present? &&
-       first_parent_last_name.present? &&
-       first_parent_born_at.present? &&
-       first_parent_born_in.present? &&
-       first_parent_citizenship.present? &&
-       first_parent_address.present? &&
-       first_parent_postal_code.present? &&
-       first_parent_email.present? &&
-       first_parent_tax_code.present? &&
-       first_parent_municipality.present?
-      return true
-    end
-
-    false
-  end
-
-  def second_parent_present?
-    if second_parent_first_name.present? &&
-       second_parent_last_name.present? &&
-       second_parent_born_at.present? &&
-       second_parent_born_in.present? &&
-       second_parent_citizenship.present? &&
-       second_parent_address.present? &&
-       second_parent_postal_code.present? &&
-       second_parent_email.present? &&
-       second_parent_tax_code.present? &&
-       second_parent_municipality.present?
-      return true
-    end
-
-    false
   end
 end

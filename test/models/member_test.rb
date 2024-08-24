@@ -20,6 +20,5 @@ class MemberTest < ActiveSupport::TestCase
     assert_not(members(:minor_with_no_parents).valid?)
 
     assert(members(:minor_with_first_parent).valid?)
-    assert(members(:minor_with_second_parent).valid?)
   end
 end
