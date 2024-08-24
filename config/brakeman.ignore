@@ -22,40 +22,6 @@
         915
       ],
       "note": ""
-    },
-    {
-      "warning_type": "Dynamic Render Path",
-      "warning_code": 15,
-      "fingerprint": "98eeb33f9eb07816fb55dafdc27c35da8afe256aae03213adf4fec346877b886",
-      "check_name": "Render",
-      "message": "Render path contains parameter value",
-      "file": "app/views/events/edit.html.erb",
-      "line": 1,
-      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
-      "code": "render(action => current_user.club.events.find(params[:id]), {})",
-      "render_path": [
-        {
-          "type": "controller",
-          "class": "EventsController",
-          "method": "edit",
-          "line": 18,
-          "file": "app/controllers/events_controller.rb",
-          "rendered": {
-            "name": "events/edit",
-            "file": "app/views/events/edit.html.erb"
-          }
-        }
-      ],
-      "location": {
-        "type": "template",
-        "template": "events/edit"
-      },
-      "user_input": "params[:id]",
-      "confidence": "Weak",
-      "cwe_id": [
-        22
-      ],
-      "note": ""
     }
   ],
   "updated": "2024-08-20 10:50:17 +0200",
