@@ -15,4 +15,11 @@ class MemberTest < ActiveSupport::TestCase
     assert(member.errors.key?('address'))
     assert(member.errors.key?('postal_code'))
   end
+
+  test 'has at least a parent if minor' do
+    assert_not(members(:minor_with_no_parents).valid?)
+
+    assert(members(:minor_with_first_parent).valid?)
+    assert(members(:minor_with_second_parent).valid?)
+  end
 end
