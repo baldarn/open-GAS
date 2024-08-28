@@ -13,11 +13,20 @@ module Users
 
     # POST /resource
     def create
+      params[:user][:registering] = true
       super
 
       return turbo_stream if @user.errors.present?
 
-      @club = Club.create!(name: 'DA IMPOSTARE', email: params[:user][:email])
+      @club = Club.create!(
+        name: @user.club_name,
+        email: @user.club_email,
+        address: @user.club_address,
+        postal_code: @user.club_postal_code,
+        municipality: @user.club_municipality,
+        province: @user.club_province,
+        tax_code: @user.club_tax_code
+      )
       @user.club = @club
       @user.save
     end
@@ -52,7 +61,9 @@ module Users
 
     # If you have extra params to permit, append them to the sanitizer.
     def configure_sign_up_params
-      devise_parameter_sanitizer.permit(:sign_up, keys: %i[first_name last_name club_name])
+      devise_parameter_sanitizer.permit(:sign_up,
+                                        keys: %i[first_name last_name registering club_name club_email club_address
+                                                 club_postal_code club_municipality club_province club_tax_code])
     end
 
     # If you have extra params to permit, append them to the sanitizer.

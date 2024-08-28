@@ -15,6 +15,12 @@ it:
         first_name: Nome
         last_name: Cognome
         email: Email
+        club_name: Nome Club
+        club_address: Indirizzo Club
+        club_postal_code: CAP Club
+        club_municipality: Comune Club
+        club_province: Provincia Club
+        club_tax_code: Codice Fiscale/PIva Club
       member:
         first_name: Nome
         last_name: Cognome
