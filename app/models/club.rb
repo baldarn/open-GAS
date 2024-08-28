@@ -18,4 +18,7 @@ class Club < ApplicationRecord
 
   validates :name, :email, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+
+  normalizes :email, with: ->(v) { v.strip.downcase }
+  normalizes :province, with: ->(v) { v.upcase }
 end
