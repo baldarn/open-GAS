@@ -57,6 +57,7 @@ gem 'useragent', github: 'basecamp/useragent'
 
 group :development, :test do
   gem 'debug'
+  gem 'dotenv-rails'
   gem 'faker', require: false
   gem 'rubocop', '~> 1.65', require: false
   gem 'rubocop-capybara', require: false
