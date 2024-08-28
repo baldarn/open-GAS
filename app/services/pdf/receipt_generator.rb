@@ -1,21 +1,55 @@
 # frozen_string_literal: true
 
-require 'prawn/measurement_extensions'
-
 module Pdf
   class ReceiptGenerator
     attr_reader :club, :member, :payment
 
-    def initialize(club:, member:, payment:)
-      @club = club
-      @member = member
+    BODY = <<~TEXT.squish
+      <!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <style>
+            body {
+              background: #6e28d9;
+              padding: 0 24px;
+              margin: 0;
+              height: 100vh;
+              color: white;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-family: Arial, Helvetica, sans-serif;
+            }
+          </style>
+        </head>
+        <body>
+
+          <table style="width: 100%;">
+          <tr>
+          <td style="text-align: left;">openGAS</td>
+          <td>RICEVUTA</td>
+          <td style="width: 100px; text-align: right">club 1</td>
+          </tr>
+          </table>
+
+        </body>
+      </html>
+    TEXT
+
+    def initialize(payment:)
       @payment = payment
+      @member = payment.member
+      @club = payment.member.club
     end
 
     def call
       path = Rails.root.join('tmp', filename)
 
-      File.binwrite(path, to_pdf)
+      kit = PDFKit.new(BODY, page_size: 'A4', orientation: 'portrait')
+      kit.to_file(path)
+
+      path
     end
 
     def filename
@@ -24,32 +58,6 @@ module Pdf
 
     private
 
-    def to_pdf
-      layout = {
-        page_layout: :portrait,
-        page_size: 'A4',
-        margin: 5.mm
-      }
-
-      document = Prawn::Document.new(layout) do
-        font_size 8.4.pt
-        default_leading 5.pt
-
-        padding = 10.pt
-
-        bounding_box([0, bounds.top], width: bounds.right, height: 1.in) do
-          stroke_bounds
-          indent(padding, padding) do
-            move_down padding
-            text 'OpenGAS', size: 14.pt, style: :bold, valign: :center
-            text 'Ricevuta nota spese', style: :bold, align: :center, valign: :center
-            text club.full_name_and_address, align: :right, valign: :center
-          end
-          stroke_horizontal_rule
-        end
-      end
-
-      document.render
-    end
+    def to_pdf; end
   end
 end
