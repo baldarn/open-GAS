@@ -4,39 +4,6 @@ module Pdf
   class ReceiptGenerator
     attr_reader :club, :member, :payment
 
-    BODY = <<~TEXT.squish
-      <!DOCTYPE html>
-      <html lang="en">
-        <head>
-          <meta charset="UTF-8">
-          <style>
-            body {
-              background: #6e28d9;
-              padding: 0 24px;
-              margin: 0;
-              height: 100vh;
-              color: white;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              font-family: Arial, Helvetica, sans-serif;
-            }
-          </style>
-        </head>
-        <body>
-
-          <table style="width: 100%;">
-          <tr>
-          <td style="text-align: left;">openGAS</td>
-          <td>RICEVUTA</td>
-          <td style="width: 100px; text-align: right">club 1</td>
-          </tr>
-          </table>
-
-        </body>
-      </html>
-    TEXT
-
     def initialize(payment:)
       @payment = payment
       @member = payment.member
@@ -46,7 +13,12 @@ module Pdf
     def call
       path = Rails.root.join('tmp', filename)
 
-      kit = PDFKit.new(BODY, page_size: 'A4', orientation: 'portrait')
+      kit = PDFKit.new(
+        body,
+        page_size: 'A4', orientation: 'portrait',
+        margin_top: '5mm', margin_bottom: '5mm',
+        margin_left: '5mm', margin_right: '5mm'
+      )
       kit.to_file(path)
 
       path
@@ -58,6 +30,38 @@ module Pdf
 
     private
 
-    def to_pdf; end
+    def body
+      <<~TEXT.squish
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <style>
+              body {
+                padding: 0;
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 12px;
+              }
+            </style>
+          </head>
+          <body>
+
+            <table style="width: 100%;">
+              <tr>
+                <td style="width: 200px; text-align: left;">openGAS</td>
+                <td style="text-align: center; font-size: 2em; font-weight: bold;">RICEVUTA NOTA SPESE</td>
+                <td style="width: 200px; text-align: right;">#{club.full_name_and_address_for_receipt}</td>
+              </tr>
+              <tr><td colspan="3"><hr/></td></tr>
+            </table>
+
+          </body>
+        </html>
+      TEXT
+    end
   end
 end
