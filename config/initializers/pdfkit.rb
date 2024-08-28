@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 PDFKit.configure do |config|
   config.wkhtmltopdf = ENV.fetch('WKHTMLTOPDF_PATH', '/usr/local/bin/wkhtmltopdf')
   config.default_options = {
