@@ -15,4 +15,19 @@ class BaseController < ApplicationController
   def current_user_is_admin?
     head :unauthorized unless current_user.admin?
   end
+
+  def resize_image(picture_param, height, width)
+    return unless picture_param
+
+    begin
+      ImageProcessing::MiniMagick
+        .source(picture_param)
+        .resize_to_fit(width, height)
+        .call(destination: picture_param.tempfile.path)
+    rescue StandardError => _e
+      # Do nothing. If this is catching, it probably means the
+      # file type is incorrect, which can be caught later by
+      # model validations.
+    end
+  end
 end

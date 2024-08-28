@@ -2,6 +2,7 @@
 
 class UsersController < BaseController
   before_action :current_user_is_admin?
+  before_action -> { resize_image(user_params[:picture], 250, 200) }, only: %i[create update]
 
   def index
     @users = @club.users.page(params[:page])

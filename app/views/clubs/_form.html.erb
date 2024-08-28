@@ -10,10 +10,9 @@
   <%= f.input :province %>
   <%= f.input :tax_code %>
   <%= f.input :telephone %>
-  <%=
-    if club.picture.present?
-      image_tag club.picture, class: 'img-fluid img-thumbnail rounded mx-auto d-block', style: 'max-width: 200px'
-    end
-    %>
+  <%= f.input :picture, as: :file %>
+  <% if club.errors[:picture].blank? && club.picture.present? %>
+    <%= image_tag club.picture, class: 'img-fluid img-thumbnail rounded mx-auto d-block', style: "max-width: 200px" %>
+  <% end %>
   <%= f.submit 'Save', class: 'btn btn-primary' %>
 <% end %>

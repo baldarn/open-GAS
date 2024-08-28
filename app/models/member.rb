@@ -2,6 +2,7 @@
 
 class Member < ApplicationRecord
   has_one_attached :picture
+  validates :picture, content_type: ['image/png', 'image/jpeg']
 
   belongs_to :club
 
