@@ -33,6 +33,10 @@ gem 'simple_form', '~> 5.3'
 gem 'stimulus-rails'
 gem 'turbo-rails'
 
+# Security
+gem 'rack-attack'
+gem 'rucaptcha'
+
 # Pagination
 gem 'kaminari'
 gem 'kaminari-i18n'
