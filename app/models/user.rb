@@ -26,6 +26,7 @@ class User < ApplicationRecord
 
   validates :club_name, :club_email, :club_address, :club_postal_code, :club_municipality, :club_province,
             :club_tax_code, presence: true, if: -> { registering == true }
+  validates :club_email, format: { with: URI::MailTo::EMAIL_REGEXP }, if: -> { registering == true }
 
   def admin?
     role == 'admin'
