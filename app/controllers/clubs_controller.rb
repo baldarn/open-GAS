@@ -2,6 +2,7 @@
 
 class ClubsController < BaseController
   before_action :current_user_is_admin?
+  before_action -> { resize_image(club_params[:picture], 300, 300) }, only: [:update]
 
   def edit
     @club = current_user.club
@@ -20,6 +21,6 @@ class ClubsController < BaseController
   private
 
   def club_params
-    params.require(:club).permit(:name, :email, :address, :postal_code, :province, :tax_code, :telephone)
+    params.require(:club).permit(:name, :email, :address, :postal_code, :province, :tax_code, :telephone, :picture)
   end
 end

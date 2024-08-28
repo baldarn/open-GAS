@@ -12,6 +12,7 @@ it:
       default_message: "Rivedere gli errori:"
     labels:
       user:
+        picture: Foto
         first_name: Nome
         last_name: Cognome
         email: Email
@@ -23,6 +24,7 @@ it:
         club_province: Provincia Club
         club_tax_code: Codice Fiscale/PIva Club
       member:
+        picture: Foto
         first_name: Nome
         last_name: Cognome
         born_at: Nato il
@@ -56,6 +58,7 @@ it:
       group:
         name: Nome
       club:
+        picture: Immagine
         name: Nome
         email: Nome
         address: Indirizzo

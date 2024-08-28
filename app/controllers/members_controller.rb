@@ -2,12 +2,13 @@
 
 class MembersController < BaseController
   before_action :current_user_is_admin?
+  before_action -> { resize_image(member_params[:picture], 250, 200) }, only: %i[create update]
 
   def index
     @group = params[:group_id] ? @club.groups.find(params[:group_id]) : nil
     @tag = params[:tag_id] ? @club.tags.find(params[:tag_id]) : nil
 
-    @members = @club.members
+    @members = @club.members.order(:last_name)
     @members = @members.joins(:groups).where(groups: { id: @group.id }) if @group
     @members = @members.joins(:tags).where(tags: { id: @tag.id }) if @tag
     @members = @members.page(params[:page])

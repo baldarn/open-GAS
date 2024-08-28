@@ -8,6 +8,7 @@ class User < ApplicationRecord
          :confirmable, :lockable, :timeoutable
 
   has_one_attached :picture
+  validates :picture, content_type: ['image/png', 'image/jpeg']
 
   has_many :user_groups, dependent: :destroy
   has_many :groups, through: :user_groups, dependent: :nullify
