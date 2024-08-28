@@ -8,6 +8,7 @@ gem 'rails', '~> 7.2.0'
 
 # Drivers
 gem 'pg', '~> 1.5.7'
+gem 'sqlite3', '~> 1.4'
 
 # Deployment
 gem 'puma', '>= 5.0'
@@ -55,6 +56,7 @@ gem 'useragent', github: 'basecamp/useragent'
 
 group :development, :test do
   gem 'debug'
+  gem 'dotenv-rails'
   gem 'faker', require: false
   gem 'rubocop', '~> 1.65', require: false
   gem 'rubocop-capybara', require: false
