@@ -22,8 +22,8 @@ class Club < ApplicationRecord
   normalizes :email, with: ->(v) { v.strip.downcase }
   normalizes :province, with: ->(v) { v.upcase }
 
-  def full_name_and_address
-    [name, full_address, email].join('\n')
+  def full_name_and_address_for_receipt
+    [name, full_address, email].join('<br/>')
   end
 
   # TODO
