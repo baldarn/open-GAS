@@ -19,11 +19,15 @@ class Club < ApplicationRecord
   validates :name, :email, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
-  # TODO
+  normalizes :email, with: ->(v) { v.strip.downcase }
+  normalizes :province, with: ->(v) { v.upcase }
+
   def full_name_and_address
-    'Jakukai ASDC \
-via Fieschi 20A canc. \
-Genova (GE) \
-segreteria@jakukai.it'
+    [name, full_address, email].join('\n')
+  end
+
+  # TODO
+  def full_address
+    'via Roma 139, Livorno'
   end
 end
