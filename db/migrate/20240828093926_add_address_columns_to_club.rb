@@ -2,10 +2,12 @@
 
 class AddAddressColumnsToClub < ActiveRecord::Migration[7.2]
   def change
-    add_column :clubs, :address, :string, null: false
-    add_column :clubs, :postal_code, :string, null: false
-    add_column :clubs, :municipality, :string, null: false
-    add_column :clubs, :province, :string, null: false
-    add_column :clubs, :telephone, :string
+    change_table :clubs, bulk: true do |t|
+      t.string :address, null: false
+      t.string :postal_code, null: false
+      t.string :municipality, null: false
+      t.string :province, null: false
+      t.string :telephone
+    end
   end
 end
