@@ -52,7 +52,15 @@ end
 
 Faker::Config.locale = 'it'
 
-club = Club.create!(name: 'The Club', email: 'club@email.com')
+club = Club.create!(
+  name: 'The Club',
+  email: 'club@email.com',
+  address: 'via Roma',
+  postal_code: '57100',
+  municipality: 'Livorno',
+  province: 'LI',
+  tax_code: '12345678901'
+)
 
 admin = User.new(
   club:,

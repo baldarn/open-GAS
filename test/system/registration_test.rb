@@ -9,6 +9,13 @@ class RegistrationTest < ApplicationSystemTestCase
     fill_in 'user_email', with: 'email@email.com'
     fill_in 'user_first_name', with: 'Name'
     fill_in 'user_last_name', with: 'Cognome'
+    fill_in 'user_club_name', with: 'Club Name'
+    fill_in 'user_club_email', with: 'email@club.com'
+    fill_in 'user_club_address', with: 'via delle vie'
+    fill_in 'user_club_postal_code', with: '12345'
+    fill_in 'user_club_municipality', with: 'comune'
+    fill_in 'user_club_province', with: 'RO'
+    fill_in 'user_club_tax_code', with: '123432123'
     fill_in 'user_password', with: 'password'
     fill_in 'user_password_confirmation', with: 'password'
 
