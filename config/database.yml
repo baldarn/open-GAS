@@ -1,21 +1,18 @@
 default: &default
-  adapter: postgresql
-  pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 10 } %>
-  host: <%= ENV.fetch('PG_HOST', 'localhost') %>
-  port: <%= ENV.fetch('PG_PORT', '5432') %>
-  username: <%= ENV.fetch('PG_USER', 'opengas') %>
-  password: <%= ENV.fetch('PG_PASSWORD', 'opengas') %>
-  database: <%= ENV.fetch('PG_DATABASE', "opengas_#{Rails.env}") %>
-  encoding: unicode
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 10 } %>
+  retries: 100
+  default_transaction_mode: immediate
 
 development:
   primary:
     <<: *default
+    database: storage/db/development.sqlite3
 
 test:
   primary:
     <<: *default
-    database: <%= ENV.fetch('PG_DATABASE', 'opengas_test') %>
+    database: storage/db/test.sqlite3
 
 production:
   primary:
