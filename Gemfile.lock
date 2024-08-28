@@ -275,8 +275,19 @@ GEM
     parser (3.3.3.0)
       ast (~> 2.4.1)
       racc
+    pdf-core (0.10.0)
     pg (1.5.7)
     popper_js (2.11.8)
+    prawn (2.5.0)
+      matrix (~> 0.4)
+      pdf-core (~> 0.10.0)
+      ttfunk (~> 1.8)
+    prawn-rails (1.4.2)
+      actionview (>= 3.1.0)
+      prawn
+      prawn-table
+    prawn-table (0.2.2)
+      prawn (>= 1.3.0, < 3.0.0)
     prometheus-client (4.2.3)
       base64
     psych (5.1.2)
@@ -401,6 +412,12 @@ GEM
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
+    sqlite3 (1.7.3-aarch64-linux)
+    sqlite3 (1.7.3-arm-linux)
+    sqlite3 (1.7.3-arm64-darwin)
+    sqlite3 (1.7.3-x86-linux)
+    sqlite3 (1.7.3-x86_64-darwin)
+    sqlite3 (1.7.3-x86_64-linux)
     sshkit (1.23.0)
       base64
       net-scp (>= 1.1.2)
@@ -413,6 +430,8 @@ GEM
     thor (1.3.1)
     tilt (2.3.0)
     timeout (0.4.1)
+    ttfunk (1.8.0)
+      bigdecimal (~> 3.1)
     turbo-rails (2.0.5)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
@@ -483,6 +502,7 @@ DEPENDENCIES
   logtail-rails (~> 0.2.7)
   mission_control-jobs (~> 0.3.1)
   pg (~> 1.5.7)
+  prawn-rails
   puma (>= 5.0)
   rails (~> 7.2.0)
   rails-i18n (~> 7.0.0)
@@ -498,6 +518,7 @@ DEPENDENCIES
   simple_form (~> 5.3)
   solid_queue (~> 0.5.0)
   sprockets-rails
+  sqlite3 (~> 1.4)
   stimulus-rails
   turbo-rails
   useragent!
