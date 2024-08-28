@@ -4,6 +4,12 @@
   </h3>
   <%= f.input :name %>
   <%= f.input :email %>
+  <%= f.input :address %>
+  <%= f.input :postal_code %>
+  <%= f.input :municipality %>
+  <%= f.input :province %>
+  <%= f.input :tax_code %>
+  <%= f.input :telephone %>
   <%=
     if club.picture.present?
       image_tag club.picture, class: 'img-fluid img-thumbnail rounded mx-auto d-block', style: 'max-width: 200px'

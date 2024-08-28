@@ -25,7 +25,8 @@ module Users
         postal_code: @user.club_postal_code,
         municipality: @user.club_municipality,
         province: @user.club_province,
-        tax_code: @user.club_tax_code
+        tax_code: @user.club_tax_code,
+        telephone: @user.club_telephone
       )
       @user.club = @club
       @user.save
@@ -61,9 +62,11 @@ module Users
 
     # If you have extra params to permit, append them to the sanitizer.
     def configure_sign_up_params
-      devise_parameter_sanitizer.permit(:sign_up,
-                                        keys: %i[first_name last_name registering club_name club_email club_address
-                                                 club_postal_code club_municipality club_province club_tax_code])
+      devise_parameter_sanitizer.permit(
+        :sign_up,
+        keys: %i[first_name last_name registering club_name club_email club_address club_postal_code club_municipality
+                 club_province club_tax_code club_telephone]
+      )
     end
 
     # If you have extra params to permit, append them to the sanitizer.

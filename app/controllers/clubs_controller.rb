@@ -20,6 +20,6 @@ class ClubsController < BaseController
   private
 
   def club_params
-    params.require(:club).permit(:name, :email)
+    params.require(:club).permit(:name, :email, :address, :postal_code, :province, :tax_code, :telephone)
   end
 end

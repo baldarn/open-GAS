@@ -16,6 +16,7 @@ it:
         last_name: Cognome
         email: Email
         club_name: Nome Club
+        club_email: Nome Club
         club_address: Indirizzo Club
         club_postal_code: CAP Club
         club_municipality: Comune Club
@@ -54,6 +55,15 @@ it:
         name: Nome
       group:
         name: Nome
+      club:
+        name: Nome
+        email: Nome
+        address: Indirizzo
+        postal_code: CAP
+        municipality: Comune
+        province: Provincia
+        tax_code: Codice Fiscale/PIva
+        telephone: Telefono
     #   user:
     #     new:
     #       email: 'E-mail to sign in.'

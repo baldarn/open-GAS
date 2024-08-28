@@ -16,7 +16,7 @@ class Club < ApplicationRecord
   has_many :expenses, dependent: :destroy
   has_many :expense_reasons, dependent: :destroy
 
-  validates :name, :email, presence: true
+  validates :name, :email, :address, :postal_code, :municipality, :province, :tax_code, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   normalizes :email, with: ->(v) { v.strip.downcase }
