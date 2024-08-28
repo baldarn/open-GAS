@@ -8,6 +8,7 @@ class AddAddressColumnsToClub < ActiveRecord::Migration[7.2]
       t.string :municipality, null: false
       t.string :province, null: false
       t.string :telephone
+      t.string :tax_code, null: false
     end
   end
 end

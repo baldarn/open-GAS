@@ -58,7 +58,8 @@ club = Club.create!(
   address: 'via Roma',
   postal_code: '57100',
   municipality: 'Livorno',
-  province: 'LI'
+  province: 'LI',
+  tax_code: '12345678901'
 )
 
 admin = User.new(

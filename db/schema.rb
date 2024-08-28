@@ -52,6 +52,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_28_093926) do
     t.string "municipality", null: false
     t.string "province", null: false
     t.string "telephone"
+    t.string "tax_code", null: false
   end
 
   create_table "event_groups", force: :cascade do |t|
