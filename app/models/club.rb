@@ -22,4 +22,12 @@ class Club < ApplicationRecord
 
   normalizes :email, with: ->(v) { v.strip.downcase }
   normalizes :province, with: ->(v) { v.upcase }
+
+  # TODO
+  def full_name_and_address
+    'Jakukai ASDC \
+via Fieschi 20A canc. \
+Genova (GE) \
+segreteria@jakukai.it'
+  end
 end

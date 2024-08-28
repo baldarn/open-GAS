@@ -47,6 +47,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'front_matter_parser'
 gem 'image_processing', '~> 1.2'
 gem 'jbuilder'
+gem "prawn-rails"
 gem 'rails-i18n', '~> 7.0.0'
 gem 'redcarpet', '~> 3.6'
 gem 'rouge', '~> 4.2'
