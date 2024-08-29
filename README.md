@@ -1,5 +1,6 @@
 [![ci](https://github.com/baldarn/open-GAS/actions/workflows/ci.yml/badge.svg)](https://github.com/baldarn/open-GAS/actions/workflows/ci.yml)
 [![Code Climate](https://codeclimate.com/github/baldarn/open-GAS/badges/gpa.svg)](https://codeclimate.com/github/baldarn/open-GAS)
+[![Better Stack Badge](https://uptime.betterstack.com/status-badges/v2/monitor/1ijm0.svg)](https://uptime.betterstack.com/?utm_source=status_badge)
 
 # Open GAS
 ### The open source software for sports associations
