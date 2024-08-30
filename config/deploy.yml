@@ -33,6 +33,7 @@ registry:
 env:
   clear:
     PG_HOST: host.docker.internal
+    REDIS_URL: redis://host.docker.internal
     APP_HOST: opengas.eu
     SMTP_PORT: 587
     SMTP_ADDRESS: smtp.ionos.it
@@ -72,12 +73,12 @@ accessories:
         - POSTGRES_PASSWORD
     directories:
       - data:/var/lib/postgresql/data
-#   redis:
-#     image: redis:7.0
-#     host: 192.168.0.2
-#     port: 6379
-#     directories:
-#       - data:/data
+  redis:
+    image: redis:7.4
+    host: opengas.eu
+    port: 6379
+    directories:
+      - data:/data
 
 # Configure custom arguments for Traefik. Be sure to reboot traefik when you modify it.
 traefik:
