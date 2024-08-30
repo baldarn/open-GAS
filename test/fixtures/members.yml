@@ -1,13 +1,58 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-gino:
+adult:
+  club: club
+  groups: [group]
   first_name: gino
   last_name: ginetti
   email: gino.ginetti@email.com
-  born_at: 2000-01-02
+  born_at: <%= Time.zone.today - 20.years %>
   born_in: comunino
   citizenship: italiano
   address: via delle vie 123 R
   postal_code: 12345
+  tax_code: TAXCODE
   province: provinciona
   municipality: comunone
+
+minor_with_no_parents:
+  club: club
+  groups: [group]
+  first_name: gino
+  last_name: ginetti
+  email: gino.ginetti@email.com
+  born_at: <%= Time.zone.today - 17.years %>
+  born_in: comunino
+  citizenship: italiano
+  address: via delle vie 123 R
+  postal_code: 12345
+  tax_code: TAXCODE
+  province: provinciona
+  municipality: comunone
+
+minor_with_first_parent:
+  club: club
+  groups: [group]
+  first_name: gino
+  last_name: ginetti
+  email: gino.ginetti@email.com
+  born_at: <%= Time.zone.today - 17.years %>
+  born_in: comunino
+  citizenship: italiano
+  address: via delle vie 123 R
+  postal_code: 12345
+  tax_code: TAXCODE
+  province: provinciona
+  municipality: comunone
+  first_parent_first_name: gino
+  first_parent_last_name: ginetti
+  first_parent_email: gino.ginetti@email.com
+  first_parent_telephone: 123123213
+  first_parent_born_at: <%= Time.zone.today - 30.years %>
+  first_parent_born_in: comunino
+  first_parent_tax_code: TAX_CODE
+  first_parent_citizenship: italiano
+  first_parent_address: via delle vie 123 R
+  first_parent_postal_code: 12345
+  first_parent_province: provinciona
+  first_parent_municipality: comunone

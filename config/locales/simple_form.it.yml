@@ -12,10 +12,19 @@ it:
       default_message: "Rivedere gli errori:"
     labels:
       user:
+        picture: Foto
         first_name: Nome
         last_name: Cognome
         email: Email
+        club_name: Nome Club
+        club_email: Nome Club
+        club_address: Indirizzo Club
+        club_postal_code: CAP Club
+        club_municipality: Comune Club
+        club_province: Provincia Club
+        club_tax_code: Codice Fiscale/PIva Club
       member:
+        picture: Foto
         first_name: Nome
         last_name: Cognome
         born_at: Nato il
@@ -48,6 +57,16 @@ it:
         name: Nome
       group:
         name: Nome
+      club:
+        picture: Immagine
+        name: Nome
+        email: Nome
+        address: Indirizzo
+        postal_code: CAP
+        municipality: Comune
+        province: Provincia
+        tax_code: Codice Fiscale/PIva
+        telephone: Telefono
     #   user:
     #     new:
     #       email: 'E-mail to sign in.'

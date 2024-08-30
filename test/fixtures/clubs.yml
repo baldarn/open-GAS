@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+club:
+  name: the club
+  email: club@email.com
+  address: via Roma
+  postal_code: 51011
+  municipality: Buggiano
+  province: PT
+  telephone: 3336781234
+  tax_code: 98765434123

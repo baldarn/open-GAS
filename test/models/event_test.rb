@@ -3,7 +3,7 @@
 require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
-  test 'valudates presence' do
+  test 'validates presence' do
     event = Event.create
 
     assert(event.errors.key?('title'))

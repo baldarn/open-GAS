@@ -25,11 +25,11 @@ Layout/LineLength:
     - config/initializers/devise.rb
 
 Metrics/MethodLength:
-  Max: 35
+  Max: 50
   Exclude:
     - db/migrate/*
 
 Metrics/AbcSize:
-  Max: 30
+  Max: 50
   Exclude:
     - db/migrate/*

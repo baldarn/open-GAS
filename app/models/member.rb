@@ -2,6 +2,7 @@
 
 class Member < ApplicationRecord
   has_one_attached :picture
+  validates :picture, content_type: ['image/png', 'image/jpeg']
 
   belongs_to :club
 
@@ -21,7 +22,19 @@ class Member < ApplicationRecord
             :address,
             :postal_code,
             :email,
+            :tax_code,
             :municipality, presence: true
+
+  validates :first_parent_first_name,
+            :first_parent_last_name,
+            :first_parent_born_at,
+            :first_parent_born_in,
+            :first_parent_citizenship,
+            :first_parent_address,
+            :first_parent_postal_code,
+            :first_parent_email,
+            :first_parent_tax_code,
+            :first_parent_municipality, presence: true, if: -> { child? }
 
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :groups, length: { minimum: 1 }
@@ -43,6 +56,10 @@ class Member < ApplicationRecord
 
   def full_name
     "#{last_name} #{first_name}".capitalize
+  end
+
+  def child?
+    born_at ? born_at >= 18.years.ago : false
   end
 
   def status
