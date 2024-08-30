@@ -13,6 +13,14 @@ module Users
 
     # POST /resource
     def create
+      build_resource(sign_up_params)
+      # TODO: fix this in tests
+      if !Rails.env.test? && !verify_rucaptcha?(nil, captcha: params[:user][:_rucaptcha])
+        clean_up_passwords resource
+        resource.errors.add(:_rucaptcha, '')
+        return respond_with resource
+      end
+
       params[:user][:registering] = true
       super
 
@@ -65,7 +73,7 @@ module Users
       devise_parameter_sanitizer.permit(
         :sign_up,
         keys: %i[first_name last_name registering club_name club_email club_address club_postal_code club_municipality
-                 club_province club_tax_code club_telephone]
+                 club_province club_tax_code club_telephone _rucaptcha]
       )
     end
 

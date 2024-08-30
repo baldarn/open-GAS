@@ -296,6 +296,8 @@ GEM
     raabro (1.4.0)
     racc (1.8.1)
     rack (3.1.7)
+    rack-attack (6.7.0)
+      rack (>= 1.0, < 4)
     rack-session (2.0.0)
       rack (>= 3.0.0)
     rack-test (2.1.0)
@@ -337,9 +339,14 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.2.1)
+    rb_sys (0.9.102)
     rdoc (6.7.0)
       psych (>= 4.0.0)
     redcarpet (3.6.0)
+    redis (5.3.0)
+      redis-client (>= 0.22.0)
+    redis-client (0.22.2)
+      connection_pool
     regexp_parser (2.9.2)
     reline (0.5.9)
       io-console (~> 0.5)
@@ -378,6 +385,21 @@ GEM
     ruby-vips (2.2.1)
       ffi (~> 1.12)
     rubyzip (2.3.2)
+    rucaptcha (3.2.3)
+      railties (>= 3.2)
+      rb_sys (>= 0.9.86)
+    rucaptcha (3.2.3-aarch64-linux)
+      railties (>= 3.2)
+      rb_sys (>= 0.9.86)
+    rucaptcha (3.2.3-arm64-darwin)
+      railties (>= 3.2)
+      rb_sys (>= 0.9.86)
+    rucaptcha (3.2.3-x86_64-darwin)
+      railties (>= 3.2)
+      rb_sys (>= 0.9.86)
+    rucaptcha (3.2.3-x86_64-linux)
+      railties (>= 3.2)
+      rb_sys (>= 0.9.86)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -502,14 +524,17 @@ DEPENDENCIES
   pdfkit
   pg (~> 1.5.7)
   puma (>= 5.0)
+  rack-attack
   rails (~> 7.2.0)
   rails-i18n (~> 7.0.0)
   redcarpet (~> 3.6)
+  redis (~> 5.3)
   rouge (~> 4.2)
   rqrcode
   rubocop (~> 1.65)
   rubocop-capybara
   rubocop-rails
+  rucaptcha
   sassc-rails
   selenium-webdriver
   simple_calendar

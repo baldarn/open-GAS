@@ -15,6 +15,16 @@
     <%= f.input :club_telephone, autofocus: true %>
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
+    <%= f.input :_rucaptcha, required: true do %>
+      <div class="row">
+        <div class="col-sm-6">
+          <%= f.input_field :_rucaptcha, name: 'user[_rucaptcha]', class: 'form-control' %>
+        </div>
+        <div class="col-sm-4">
+          <a class="rucaptcha-image-box" href="#"><%= rucaptcha_image_tag(alt: 'Captcha') %></a>
+        </div>
+      </div>
+    <% end %>
   </div>
   <div class="form-actions">
     <%= f.button :submit, "Sign up" %>
