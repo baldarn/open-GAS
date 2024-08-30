@@ -8,6 +8,7 @@ gem 'rails', '~> 7.2.0'
 
 # Drivers
 gem 'pg', '~> 1.5.7'
+gem 'redis', '~> 5.3'
 gem 'sqlite3', '~> 1.4'
 
 # Deployment
@@ -32,6 +33,10 @@ gem 'simple_calendar'
 gem 'simple_form', '~> 5.3'
 gem 'stimulus-rails'
 gem 'turbo-rails'
+
+# Security
+gem 'rack-attack'
+gem 'rucaptcha'
 
 # Pagination
 gem 'kaminari'

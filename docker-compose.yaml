@@ -12,3 +12,9 @@ services:
     environment:
       - POSTGRES_USER=opengas
       - POSTGRES_PASSWORD=opengas
+
+  redis:
+    image: redis:7.4
+    restart: unless-stopped
+    ports:
+      - ${REDIS_PORT:-6379}:6379
