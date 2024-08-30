@@ -30,13 +30,5 @@ module Pdf
     def filename
       "pdf_#{Time.current.to_i}.pdf"
     end
-
-    private
-
-    def body
-      <<~TEXT.squish
-        #{'        '}
-      TEXT
-    end
   end
 end
