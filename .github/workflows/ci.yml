@@ -79,6 +79,12 @@ jobs:
         run: bin/brakeman -q -w2
       - name: Lint Ruby files
         run: bin/rubocop --parallel
+      - name: Install Hadolint
+        run: |
+          wget -O ./hadolint https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64
+          chmod +x ./hadolint
+      - name: Lint Dockerfile with Hadolint
+        run: ./hadolint Dockerfile
 
   build:
     needs: [tests, system-tests, lint]
