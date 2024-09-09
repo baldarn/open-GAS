@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt</title>
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          line-height: 1.6;
+      }
+      .container {
+          margin: auto;
+          border: 1px solid #ccc;
+      }
+      .header {
+          text-align: center;
+          margin-bottom: 30px;
+      }
+      .header h1 {
+          font-size: 24px;
+          margin-bottom: 5px;
+      }
+      .header p {
+          margin: 5px 0;
+      }
+      .content {
+          margin-bottom: 20px;
+      }
+      .content p {
+          margin: 10px 0;
+      }
+      .footer {
+          margin-top: 30px;
+          text-align: center;
+      }
+      .footer p {
+          margin: 5px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>JAKU KAI</h1>
+        <p>ASSOCIAZIONE SPORTIVA DILETTANTISTICA CULTURALE</p>
+        <p>Cod. Fisc. 95084300102</p>
+        <p>Via Fieschi 20° canc., 16128 GENOVA</p>
+        <p>Tel. 010 9845366</p>
+        <p>e-mail: info@jakukai.it | www.jakukai.it</p>
+      </div>
+      <hr/>
+      <div class="content">
+        <p><strong>RICEVUTA n.°</strong></p>
+        <p><strong>Genova</strong></p>
+        <p>Riceviamo da: <strong><%= member.full_name %></strong></p>
+        <p>CF: <strong><%= member.tax_code %></strong></p>
+        <p>La somma di: <strong><%= payment.in_eur %></strong></p>
+        <p>causale: <strong><%= payment.payment_reason.reason %></strong></p>
+        <p>Si ricorda che il predetto importo totale è da considerare onere detraibile dall'Irpef, nei limiti di cui all'articolo 15, comma 1, lett. I-quinquies, del Tuir 917/96:</p>
+        <p>Data: <strong><%= payment.created_at %></strong></p>
+      </div>
+      <div class="footer">
+        <p><strong>VERSAMENTO ESEGUITO DA:</strong> <%= member.full_name %></p>
+        <p><strong>CODICE FISCALE:</strong> <%= member.tax_code %></p>
+        <p><strong>Tipo di Pagamento:</strong> <%= payment.kind  %></p>
+        <p>Nota:</p>
+      </div>
+    </div>
+  </body>
+</html>

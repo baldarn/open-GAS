@@ -38,10 +38,15 @@
         <td><%= expense.expense_reason.reason %></td>
         <td><%= expense.created_at %></td>
         <td>
-          <%= link_to edit_club_expense_path(@club, expense) do %>
+          <% if expense.user.present? %>
+            <%= link_to club_expense_send_receipt_path(@club, expense), data: { turbo_method: :get, turbo_confirm: I18n.t('expenses.confirm_send')}, class: 'text-decoration-none' do %>
+              <%= image_tag "send.svg", aria: { hidden: true }, size: 24 %>
+            <% end %>
+          <% end %>
+          <%= link_to edit_club_expense_path(@club, expense), class: 'text-decoration-none' do %>
             <%= image_tag "edit.svg", aria: { hidden: true }, size: 24 %>
           <% end %>
-          <%= link_to club_expense_path(@club, expense), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
+          <%= link_to club_expense_path(@club, expense), data: { turbo_method: :delete, turbo_confirm: I18n.t('expenses.confirm_destroy')}, class: 'text-decoration-none' do %>
             <%= image_tag "trash.svg", aria: { hidden: true }, size: 24 %>
           <% end %>
         </td>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <style>
+      body {
+          padding: 0;
+          margin: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <table style="width: 100%;">
+        <tr>
+          <td style="width: 200px; text-align: left;">
+            <% if club.errors[:picture].blank? && club.picture.present? %>
+              <img src="data:<%= club.picture_blob.content_type %>;base64,<%= Base64.encode64(club.picture.download) %>" style="max-width: 200px;">
+            <% end %>
+          </td>
+          <td style="text-align: center; font-size: 2em; font-weight: bold;">RICEVUTA NOTA SPESE</td>
+          <td style="width: 200px; text-align: right;"><%= club.full_name_and_address_for_receipt %></td>
+        </tr>
+      </table>
+      <hr/>
+      <p>Ricevuta n. MISSING del <%= expense.created_at.strftime('%d/%m/%Y') %></p>
+      <br/>
+      <p><%= user.full_name %></p>
+      <p><%= club.name %></p>
+      <p>Per il periodo: MISSING</p>
+      <br/>
+      <p>RICEVUTA COMPENSO PER PRESTAZIONE SPORTIVA DILETTANTISTICA</p>
+      <p>Sull'importo di seguito esposto, non viene effettuata alcuna ritenuta in base al disposto dell'Art. 69, Comma 2,
+        del D.P.R. 917/1986.</p>
+      <br/>
+      <p>Si rilascia per pagamento della somma di euro <%= expense.in_eur %></p>
+      <p>Tipo di pagamento: MISSING</p>
+      <hr/>
+      <p><%= club.municipality %>, <%= expense.created_at.strftime('%d/%m/%Y') %></p>
+    </div>
+  </body>
+</html>

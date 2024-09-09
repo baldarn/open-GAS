@@ -27,7 +27,7 @@ def random_member(club, groups: [], tags: [])
     address: Faker::Address.full_address,
     postal_code: Faker::Address.postcode,
     municipality: Faker::Address.community,
-    tax_code: Faker::Alphanumeric::ALPHANUMS,
+    tax_code: Faker::Alphanumeric.alpha(number: 16),
     province: Faker::Address.community.first(2),
     telephone: Faker::PhoneNumber.cell_phone,
     email: Faker::Internet.email,
@@ -43,7 +43,7 @@ def random_member(club, groups: [], tags: [])
     first_parent_address: minor ? Faker::Address.full_address : nil,
     first_parent_postal_code: minor ? Faker::Address.postcode : nil,
     first_parent_municipality: minor ? Faker::Address.community : nil,
-    first_parent_tax_code: minor ? Faker::Alphanumeric::ALPHANUMS : nil,
+    first_parent_tax_code: minor ? Faker::Alphanumeric.alpha(number: 16) : nil,
     first_parent_province: minor ? Faker::Address.community.first(2) : nil,
     first_parent_telephone: minor ? Faker::PhoneNumber.cell_phone : nil,
     first_parent_email: minor ? Faker::Internet.email : nil
@@ -95,33 +95,45 @@ payment_reason_fruizione = PaymentReason.create!(club:, reason: 'Fruizione corso
 
 expense_reason_affitto = ExpenseReason.create!(club:, reason: 'Pagamento affitto')
 expense_reason_materiali = ExpenseReason.create!(club:, reason: 'Materiali')
+expense_reason_compenso = ExpenseReason.create!(club:, reason: 'Compenso')
+
+payment_number = 0
 
 10.times do
   member = random_member(club, groups: [children_group], tags: [white_belt_tag])
 
-  Payment.create!(member:, payment_reason: payment_reason_quota, amount: 50)
+  Payment.create!(member:, payment_reason: payment_reason_quota, amount: 50, number: payment_number, kind: :bank)
+  payment_number += 1
 end
 
 10.times do
   member = random_member(club, groups: [adults_group], tags: [black_belt_tag])
 
-  Payment.create!(member:, payment_reason: payment_reason_quota, amount: 50)
+  Payment.create!(member:, payment_reason: payment_reason_quota, amount: 50, number: payment_number, kind: :bank)
+  payment_number += 1
 end
 
 5.times do
   member = random_member(club, groups: [adults_group, children_group])
 
-  Payment.create!(member:, payment_reason: payment_reason_quota, amount: 50)
+  Payment.create!(member:, payment_reason: payment_reason_quota, amount: 50, number: payment_number, kind: :bank)
+  payment_number += 1
 end
 
 5.times do
   member = random_member(club, groups: [children_group], tags: [white_belt_tag, black_belt_tag])
 
-  Payment.create!(member:, payment_reason: payment_reason_quota, amount: 50)
-  Payment.create!(member:, payment_reason: payment_reason_fruizione, amount: 80)
+  Payment.create!(member:, payment_reason: payment_reason_quota, amount: 50, number: payment_number, kind: :bank)
+  payment_number += 1
+  Payment.create!(member:, payment_reason: payment_reason_fruizione, amount: 80, number: payment_number, kind: :bank)
+  payment_number += 1
 end
 
 3.times do
   Expense.create!(club:, expense_reason: expense_reason_affitto, amount: 1000)
   Expense.create!(club:, expense_reason: expense_reason_materiali, amount: 30)
+end
+
+4.times do
+  Expense.create!(club:, expense_reason: expense_reason_compenso, user: collaborator, amount: 500)
 end

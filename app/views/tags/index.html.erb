@@ -18,10 +18,10 @@
       <tr>
         <td><%= tag.name %></td>
         <td>
-          <%= link_to edit_club_tag_path(@club, tag) do %>
+          <%= link_to edit_club_tag_path(@club, tag), class: 'text-decoration-none' do %>
             <%= image_tag "edit.svg", aria: { hidden: true }, size: 24 %>
           <% end %>
-          <%= link_to club_tag_path(@club, tag), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
+          <%= link_to club_tag_path(@club, tag), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'text-decoration-none' do %>
             <%= image_tag "trash.svg", aria: { hidden: true }, size: 24 %>
           <% end %>
         </td>

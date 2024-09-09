@@ -46,6 +46,14 @@ class ExpensesController < BaseController
     redirect_to club_expenses_url(@club), flash: { success: I18n.t('expenses.destroyed') }
   end
 
+  def send_receipt
+    @expense = @club.expenses.find(params[:expense_id])
+
+    ReceiptMailer.with(expense: @expense).collaborator_receipt_email.deliver_later
+
+    redirect_to club_expenses_url(@club), flash: { notice: I18n.t('expenses.receipt_sent') }
+  end
+
   private
 
   def expense_params

@@ -1,6 +1,11 @@
 <%= simple_form_for [@club, member, payment] do |f| %>
   <%= f.input :amount, as: :integer %>
+  <%= f.input :number, as: :integer %>
   <%= f.association :payment_reason, required: true, label_method: :reason, collection: @club.payment_reasons %>
+  <%= f.input :kind, 
+      prompt: 'Seleziona tipo', 
+      collection: Payment.kinds.map { |kind, v| [Payment.human_attribute_name("kind.#{kind}"), kind] }
+  %>
   <% if payment.created_at %>
     <%= f.input :created_at, disabled: true, as: :date %>
   <% end %>

@@ -18,3 +18,26 @@ services:
     restart: unless-stopped
     ports:
       - ${REDIS_PORT:-6379}:6379
+
+  app:
+    profiles:
+      - app
+    build:
+      context: .
+      dockerfile: Dockerfile.development
+    stdin_open: true
+    tty: true
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    ports:
+      - ${PORT:-3000}:3000
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - .:/rails
+    environment:
+      - PARALLEL_TEST_PROCESSORS=4
+      - PG_HOST=db
+      - PG_PORT=5432
+      - APP_VERSION=dockerDev
+    

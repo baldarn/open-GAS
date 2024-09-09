@@ -2,7 +2,7 @@
 
 class Club < ApplicationRecord
   has_one_attached :picture
-  validates :picture, content_type: ['image/png', 'image/jpeg']
+  validates :picture, content_type: ['image/png', 'image/jpeg', 'image/webp']
 
   has_many :users, dependent: :destroy
 

@@ -80,6 +80,10 @@ it:
     created: Pagamento creato
     updated: Pagamento aggiornato
     destroyed: Pagamento cancellato
+    confirm_destroy: Sei sicuro di voler cancellare?
+    confirm_send: Sei sicuro di voler inviare la notifica?
+    member_email:
+      subject: Ecco la tua ricevuta
   payment_reasons:
     header: Causali pagamenti
     select: Seleziona causale
@@ -92,7 +96,14 @@ it:
     new: Nuova spesa
     created: Spesa creata
     updated: Spesa aggiornata
+    receipt_sent: Ricevuta inviata
     destroyed: Spesa cancellata
+    confirm_destroy: Sei sicuro di voler cancellare?
+    confirm_send: Sei sicuro di voler inviare la notifica?
+    collaborator_email:
+      hello: Ciao
+      subject: Ecco la tua ricevuta
+      body: In allegato la tua ricevuta.
   expense_reasons:
     header: Causali spese
     select: Seleziona causale
@@ -206,6 +217,10 @@ it:
         amount: Quota
         payment_reason: Causale
         created_at: Data
+      payment/kind:
+        cash: Contanti
+        bank: Banca
+        other: Altro
       payment_reason:
         reason: Causale
       expense:

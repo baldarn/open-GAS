@@ -1,18 +1,18 @@
 # frozen_string_literal: true
 
 module Pdf
-  class ReceiptGenerator
+  class MembersReceiptGenerator
     attr_reader :club, :member, :payment
 
     def initialize(payment:)
       @payment = payment
       @member = payment.member
-      @club = payment.member.club
+      @club = @member.club
     end
 
     def call
       path = Rails.root.join('tmp', filename)
-      template = Rails.root.join("app/views/pdf/payments/#{payment.payment_reason.id}.html.erb")
+      template = Rails.root.join('app/views/pdf/payments/receipt.html.erb')
 
       html = ERB.new(template.read).result(binding)
 
@@ -28,7 +28,7 @@ module Pdf
     end
 
     def filename
-      "pdf_#{Time.current.to_i}.pdf"
+      "pdf_#{payment.id}.pdf"
     end
   end
 end
