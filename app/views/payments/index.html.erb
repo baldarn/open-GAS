@@ -64,10 +64,13 @@
         <td><%= payment.payment_reason.reason %></td>
         <td><%= payment.created_at %></td>
         <td>
-          <%= link_to edit_club_payment_path(@club, payment, member_id: payment.member.id) do %>
+          <%= link_to club_payment_send_receipt_path(@club, payment), data: { turbo_method: :get, turbo_confirm: I18n.t('payments.confirm_send')}, class: 'text-decoration-none' do %>
+            <%= image_tag "send.svg", aria: { hidden: true }, size: 24 %>
+          <% end %>
+          <%= link_to edit_club_payment_path(@club, payment, member_id: payment.member.id), class: 'text-decoration-none' do %>
             <%= image_tag "edit.svg", aria: { hidden: true }, size: 24 %>
           <% end %>
-          <%= link_to club_payment_path(@club, payment), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
+          <%= link_to club_payment_path(@club, payment), data: { turbo_method: :delete, turbo_confirm: I18n.t('payments.confirm_destroy')}, class: 'text-decoration-none' do %>
             <%= image_tag "trash.svg", aria: { hidden: true }, size: 24 %>
           <% end %>
         </td>

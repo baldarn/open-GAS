@@ -37,7 +37,7 @@ FROM base
 
 # Install packages needed for deployment
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl=7* libjemalloc2=5* libpq-dev=15* libvips42=8* nodejs=18* && \
+    apt-get install --no-install-recommends -y curl=7* libjemalloc2=5* libpq-dev=15* libvips42=8* wkhtmltopdf=0* nodejs=18* && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Copy built artifacts: gems, application

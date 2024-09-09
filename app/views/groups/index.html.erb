@@ -23,10 +23,10 @@
         <td><%= number_to_currency(group.default_amount) %></td>
         <td><%= group.mandatory_medical_certificate %></td>
         <td>
-          <%= link_to edit_club_group_path(@club, group) do %>
+          <%= link_to edit_club_group_path(@club, group), class: 'text-decoration-none' do %>
             <%= image_tag "edit.svg", aria: { hidden: true }, size: 24 %>
           <% end %>
-          <%= link_to club_group_path(@club, group), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
+          <%= link_to club_group_path(@club, group), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'text-decoration-none' do %>
             <%= image_tag "trash.svg", aria: { hidden: true }, size: 24 %>
           <% end %>
         </td>

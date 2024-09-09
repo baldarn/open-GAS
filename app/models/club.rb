@@ -2,7 +2,7 @@
 
 class Club < ApplicationRecord
   has_one_attached :picture
-  validates :picture, content_type: ['image/png', 'image/jpeg']
+  validates :picture, content_type: ['image/png', 'image/jpeg', 'image/webp']
 
   has_many :users, dependent: :destroy
 
@@ -22,4 +22,13 @@ class Club < ApplicationRecord
 
   normalizes :email, with: ->(v) { v.strip.downcase }
   normalizes :province, with: ->(v) { v.upcase }
+
+  def full_name_and_address_for_receipt
+    [name, full_address, email].join('<br/>')
+  end
+
+  # TODO
+  def full_address
+    'via Roma 139, Livorno'
+  end
 end

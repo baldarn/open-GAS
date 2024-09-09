@@ -18,9 +18,16 @@ Rails.application.routes.draw do
     resources :tags
     resources :users
 
-    resources :payments
+    resources :payments do
+      get 'send_receipt'
+    end
+
     resources :payment_reasons
-    resources :expenses
+
+    resources :expenses do
+      get 'send_receipt'
+    end
+
     resources :expense_reasons
     resources :events
     resources :presences, only: [:index]

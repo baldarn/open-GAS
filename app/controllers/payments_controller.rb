@@ -15,7 +15,7 @@ class PaymentsController < BaseController
   end
 
   def new
-    @payment = @member.payments.new
+    @payment = @member.payments.new(number: @club.payments.maximum(:number))
   end
 
   def edit
@@ -47,6 +47,14 @@ class PaymentsController < BaseController
     @payment.destroy
 
     redirect_to club_payments_url(@club), flash: { success: I18n.t('payments.destroyed') }
+  end
+
+  def send_receipt
+    @payment = @club.payments.find(params[:payment_id])
+
+    ReceiptMailer.with(payment: @payment).member_receipt_email.deliver_later
+
+    redirect_to club_payments_url(@club), flash: { notice: I18n.t('payments.receipt_sent') }
   end
 
   private

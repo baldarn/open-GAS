@@ -55,13 +55,13 @@
         <td><%= member.groups.map(&:name).join(', ') %></td>
         <td><%= member.tags.map(&:name).join(', ') %></td>
         <td>
-          <%= link_to new_club_member_payment_path(@club, member) do %>
+          <%= link_to new_club_member_payment_path(@club, member), class: 'text-decoration-none' do %>
             <%= image_tag "cash.svg", aria: { hidden: true }, size: 24 %>
           <% end %>
-          <%= link_to edit_club_member_path(@club, member) do %>
+          <%= link_to edit_club_member_path(@club, member), class: 'text-decoration-none' do %>
             <%= image_tag "edit.svg", aria: { hidden: true }, size: 24 %>
           <% end %>
-          <%= link_to club_member_path(@club, member), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
+          <%= link_to club_member_path(@club, member), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'text-decoration-none' do %>
             <%= image_tag "trash.svg", aria: { hidden: true }, size: 24 %>
           <% end %>
         </td>

@@ -27,10 +27,10 @@
         <td><%= User.human_attribute_name("role.#{user.role}") %></td>
         <td><%= user.blsd_expires_at %></td>
         <td>
-          <%= link_to edit_club_user_path(@club, user) do %>
+          <%= link_to edit_club_user_path(@club, user), class: 'text-decoration-none' do %>
             <%= image_tag "edit.svg", aria: { hidden: true }, size: 24 %>
           <% end %>
-          <%= link_to club_user_path(@club, user), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
+          <%= link_to club_user_path(@club, user), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'text-decoration-none' do %>
             <%= image_tag "trash.svg", aria: { hidden: true }, size: 24 %>
           <% end %>
         </td>

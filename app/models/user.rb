@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
   has_many :user_groups, dependent: :destroy
   has_many :groups, through: :user_groups, dependent: :nullify
+  has_many :expenses, dependent: :nullify
 
   enum :role, %i[admin collaborator]
 
@@ -31,5 +32,9 @@ class User < ApplicationRecord
 
   def admin?
     role == 'admin'
+  end
+
+  def full_name
+    "#{last_name} #{first_name}".capitalize
   end
 end

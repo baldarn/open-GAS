@@ -45,6 +45,9 @@ gem 'kaminari-i18n'
 gem 'devise', '~> 4.9'
 gem 'devise-i18n'
 
+# Pdf
+gem 'pdfkit'
+
 # Other
 gem 'active_storage_validations'
 gem 'aws-sdk-s3'
