@@ -19,7 +19,7 @@ FROM --platform=$TARGETPLATFORM base as build
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential=12* git=1 libpq-dev=15* libvips42=8* pkg-config=1* nodejs=18*
+    apt-get install --no-install-recommends -y build-essential=12* git=1* libpq-dev=15* libvips42=8* pkg-config=1* nodejs=18*
 
 # Install application gems
 COPY Gemfile Gemfile.lock .ruby-version ./
