@@ -27,7 +27,7 @@ jobs:
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3.4
+          ruby-version: 3.3.5
           bundler-cache: true
       - name: Set up database schema
         run: bin/rails db:schema:load
@@ -54,7 +54,7 @@ jobs:
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3.4
+          ruby-version: 3.3.5
           bundler-cache: true
       - name: Set up database schema
         run: bin/rails db:schema:load
@@ -69,7 +69,7 @@ jobs:
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3.4
+          ruby-version: 3.3.5
           bundler-cache: true
       - name: Security audit dependencies
         run: bundle exec bundler-audit --update
@@ -100,7 +100,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3.4
+          ruby-version: 3.3.5
           bundler-cache: true
       - name: Set up Docker Buildx
         id: buildx
@@ -144,7 +144,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3.4
+          ruby-version: 3.3.5
           bundler-cache: true
       - uses: webfactory/ssh-agent@v0.9.0
         with:

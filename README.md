@@ -10,7 +10,7 @@ The software is still a work in progress. Expect huge variations.
 ## Develop
 
 I suggest you to use [asdf](https://asdf-vm.com/)
-Install ruby 3.3.4
+Install ruby 3.3.5
 
 Start the needed services with docker compose:
 
