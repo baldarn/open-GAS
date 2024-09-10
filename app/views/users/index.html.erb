@@ -27,6 +27,9 @@
         <td><%= User.human_attribute_name("role.#{user.role}") %></td>
         <td><%= user.blsd_expires_at %></td>
         <td>
+          <%= link_to new_club_expense_path(@club, user), class: 'text-decoration-none' do %>
+            <%= image_tag "cash.svg", aria: { hidden: true }, size: 24 %>
+          <% end %>
           <%= link_to edit_club_user_path(@club, user), class: 'text-decoration-none' do %>
             <%= image_tag "edit.svg", aria: { hidden: true }, size: 24 %>
           <% end %>

@@ -1,4 +1,5 @@
 <%= simple_form_for [@club, expense] do |f| %>
+  <%= f.association :user, label_method: :full_name, collection: @club.users %>
   <%= f.input :amount, as: :integer %>
   <%= f.association :expense_reason, required: true, label_method: :reason, collection: @club.expense_reasons %>
   <%= f.button :submit, 'Salva spesa' %>

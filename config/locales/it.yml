@@ -226,6 +226,7 @@ it:
       expense:
         amount: Quota
         expense_reason: Causale
+        user: Collaboratore
         created_at: Data
       expense_reason:
         reason: Causale
