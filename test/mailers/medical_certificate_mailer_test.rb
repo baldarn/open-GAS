@@ -11,7 +11,7 @@ class MedicalCertificateMailerTest < ActionMailer::TestCase
       email.deliver_now
     end
 
-    assert_equal ['from@example.com'], email.from
+    assert_equal ['info@opengas.eu'], email.from
     assert_equal [member.email], email.to
   end
 end
