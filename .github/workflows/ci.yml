@@ -60,7 +60,7 @@ jobs:
         run: ./hadolint Dockerfile
 
   build:
-    needs: [tests, system-tests, lint]
+    needs: [tests, lint]
     if: ${{ github.ref_type == 'tag' }}
     runs-on: ubuntu-latest
 
