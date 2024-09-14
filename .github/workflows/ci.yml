@@ -32,34 +32,7 @@ jobs:
       - name: Set up database schema
         run: bin/rails db:schema:load
       - name: Run tests
-        run: bin/rails test
-
-  system-tests:
-    runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:16.4-alpine
-        ports:
-          - "5432:5432"
-        env:
-          POSTGRES_DB: opengas_test
-          POSTGRES_USER: opengas
-          POSTGRES_PASSWORD: opengas
-    env:
-      RAILS_ENV: test
-      DATABASE_URL: "postgres://opengas:opengas@localhost:5432/opengas_test"
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Install Ruby and gems
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.3.5
-          bundler-cache: true
-      - name: Set up database schema
-        run: bin/rails db:schema:load
-      - name: Run tests
-        run: bin/rails test:system
+        run: bin/rails test:all
 
   lint:
     runs-on: ubuntu-latest

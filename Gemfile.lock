@@ -148,6 +148,7 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.12.1)
       devise (>= 4.9.0)
+    docile (1.4.1)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
@@ -419,6 +420,12 @@ GEM
     simple_form (5.3.1)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
+    simplecov (0.22.0)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.13.1)
+    simplecov_json_formatter (0.1.4)
     solid_queue (0.5.0)
       activejob (>= 7.1)
       activerecord (>= 7.1)
@@ -539,6 +546,7 @@ DEPENDENCIES
   selenium-webdriver
   simple_calendar
   simple_form (~> 5.3)
+  simplecov
   solid_queue (~> 0.5.0)
   sprockets-rails
   sqlite3 (~> 1.4)

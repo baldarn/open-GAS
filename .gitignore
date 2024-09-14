@@ -38,4 +38,9 @@
 /app/assets/builds/*
 !/app/assets/builds/.keep
 
+# coverage
+/coverage/*
+!/coverage
+!/coverage/.keep
+
 .DS_Store
