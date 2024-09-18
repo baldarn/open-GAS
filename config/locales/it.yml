@@ -216,6 +216,7 @@ it:
       payment:
         amount: Quota
         payment_reason: Causale
+        note: Note
         created_at: Data
       payment/kind:
         cash: Contanti

@@ -27,8 +27,7 @@ class Club < ApplicationRecord
     [name, full_address, email].join('<br/>')
   end
 
-  # TODO
   def full_address
-    'via Roma 139, Livorno'
+    [address, municipality, postal_code, province].join(', ')
   end
 end

@@ -60,7 +60,7 @@ class PaymentsController < BaseController
   private
 
   def payment_params
-    params.require(:payment).permit(:amount, :number, :kind, :payment_reason_id)
+    params.require(:payment).permit(:amount, :number, :kind, :note, :payment_reason_id)
   end
 
   def set_member

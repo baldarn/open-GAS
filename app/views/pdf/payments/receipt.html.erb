@@ -13,17 +13,6 @@
           margin: auto;
           border: 1px solid #ccc;
       }
-      .header {
-          text-align: center;
-          margin-bottom: 30px;
-      }
-      .header h1 {
-          font-size: 24px;
-          margin-bottom: 5px;
-      }
-      .header p {
-          margin: 5px 0;
-      }
       .content {
           margin-bottom: 20px;
       }
@@ -41,18 +30,21 @@
   </head>
   <body>
     <div class="container">
-      <div class="header">
-        <h1>JAKU KAI</h1>
-        <p>ASSOCIAZIONE SPORTIVA DILETTANTISTICA CULTURALE</p>
-        <p>Cod. Fisc. 95084300102</p>
-        <p>Via Fieschi 20° canc., 16128 GENOVA</p>
-        <p>Tel. 010 9845366</p>
-        <p>e-mail: info@jakukai.it | www.jakukai.it</p>
-      </div>
+      <table style="width: 100%;">
+        <tr>
+          <td style="width: 200px; text-align: left;">
+            <% if club.errors[:picture].blank? && club.picture.present? %>
+              <img src="data:<%= club.picture_blob.content_type %>;base64,<%= Base64.encode64(club.picture.download) %>" style="max-width: 200px;">
+            <% end %>
+          </td>
+          <td style="text-align: center; font-size: 2em; font-weight: bold;">RICEVUTA NOTA SPESE</td>
+          <td style="width: 200px; text-align: right;"><%= club.full_name_and_address_for_receipt %></td>
+        </tr>
+      </table>
       <hr/>
       <div class="content">
-        <p><strong>RICEVUTA n.°</strong></p>
-        <p><strong>Genova</strong></p>
+        <p><strong>RICEVUTA n.°<%= payment.number %></strong></p>
+        <p><strong><%= club.municipality %></strong></p>
         <p>Riceviamo da: <strong><%= member.full_name %></strong></p>
         <p>CF: <strong><%= member.tax_code %></strong></p>
         <p>La somma di: <strong><%= payment.in_eur %></strong></p>
@@ -64,8 +56,11 @@
         <p><strong>VERSAMENTO ESEGUITO DA:</strong> <%= member.full_name %></p>
         <p><strong>CODICE FISCALE:</strong> <%= member.tax_code %></p>
         <p><strong>Tipo di Pagamento:</strong> <%= payment.kind  %></p>
-        <p>Nota:</p>
+        <% if payment.note? %>
+          <p>Nota:</p>
+          <p><%= payment.note %>
+          <% end %>
+        </div>
       </div>
-    </div>
-  </body>
-</html>
+    </body>
+  </html>

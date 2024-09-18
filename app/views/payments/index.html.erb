@@ -53,6 +53,7 @@
       <th scope="col"><%= I18n.t('activerecord.attributes.payment.amount') %></th>
       <th scope="col"><%= I18n.t('activerecord.attributes.payment.payment_reason') %></th>
       <th scope="col"><%= I18n.t('activerecord.attributes.payment.created_at') %></th>
+      <th scope="col"><%= I18n.t('activerecord.attributes.payment.note') %></th>
       <th scope="col"><%= I18n.t('actions') %></th>
     </tr>
   </thead>
@@ -63,6 +64,7 @@
         <td><%= number_to_currency(payment.amount) %></td>
         <td><%= payment.payment_reason.reason %></td>
         <td><%= payment.created_at %></td>
+        <td><%= truncate(payment.note, length: 25) %></td>
         <td>
           <%= link_to club_payment_send_receipt_path(@club, payment), data: { turbo_method: :get, turbo_confirm: I18n.t('payments.confirm_send')}, class: 'text-decoration-none' do %>
             <%= image_tag "send.svg", aria: { hidden: true }, size: 24 %>

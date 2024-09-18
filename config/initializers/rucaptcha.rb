@@ -14,7 +14,7 @@ RuCaptcha.configure do
 
   # If you wants disable `cache_store` check warning, you can do it, default: false
   # 如果想要 disable cache_store 的 warning，就设置为 true，default false
-  # self.skip_cache_store_check = true
+  self.skip_cache_store_check = true
 
   # Chars length, default: 5, allows: [3 - 7]
   # self.length = 5

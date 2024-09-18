@@ -9,5 +9,6 @@
   <% if payment.created_at %>
     <%= f.input :created_at, disabled: true, as: :date %>
   <% end %>
+  <%= f.input :note %>
   <%= f.button :submit, 'Salva pagamento' %>
 <% end %>
