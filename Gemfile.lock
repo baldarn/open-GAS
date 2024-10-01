@@ -286,7 +286,7 @@ GEM
       ast (~> 2.4.1)
       racc
     pdfkit (0.8.7.3)
-    pg (1.5.7)
+    pg (1.5.8)
     popper_js (2.11.8)
     prometheus-client (4.2.3)
       base64
@@ -531,7 +531,7 @@ DEPENDENCIES
   logtail-rails (~> 0.2.7)
   mission_control-jobs (~> 0.3.1)
   pdfkit
-  pg (~> 1.5.7)
+  pg (~> 1.5.8)
   puma (>= 5.0)
   rack-attack
   rails (~> 7.2.0)
