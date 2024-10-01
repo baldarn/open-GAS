@@ -98,6 +98,12 @@ Rails.application.configure do
     enable_starttls: true
   }
 
+  config.logger = Logtail::Logger.create_default_logger(
+    Rails.application.credentials.dig(
+      :vector, :rails_logs_token
+    )
+  )
+
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true

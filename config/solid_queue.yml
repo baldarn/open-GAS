@@ -15,7 +15,7 @@ default: &default
         - urgent
         - default
       threads: 3
-      processes: 1
+      processes: <%= ENV.fetch("JOB_CONCURRENCY", 1) %>
       polling_interval: 1
 
 development:

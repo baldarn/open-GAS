@@ -14,7 +14,6 @@ jobs:
     env:
       RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
       KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
-      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
       POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
 
     steps:
@@ -26,6 +25,6 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3.5
+          ruby-version: .ruby-version
       - name: Run KAMAL command
         run: ${{ github.event.inputs.command }}
