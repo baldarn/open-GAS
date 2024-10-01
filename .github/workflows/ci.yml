@@ -27,7 +27,7 @@ jobs:
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3.5
+          ruby-version: .ruby-version
           bundler-cache: true
       - name: Set up database schema
         run: bin/rails db:schema:load
@@ -42,7 +42,7 @@ jobs:
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3.5
+          ruby-version: .ruby-version
           bundler-cache: true
       - name: Security audit dependencies
         run: bundle exec bundler-audit --update
@@ -50,8 +50,10 @@ jobs:
         run: bundle exec bundle audit
       - name: Security audit application code
         run: bin/brakeman -q -w2
+      - name: Scan for security vulnerabilities in JavaScript dependencies
+        run: bin/importmap audit
       - name: Lint Ruby files
-        run: bin/rubocop --parallel
+        run: bin/rubocop --parallel -f github
       - name: Install Hadolint
         run: |
           wget -O ./hadolint https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64
@@ -73,7 +75,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3.5
+          ruby-version: .ruby-version
           bundler-cache: true
       - name: Set up Docker Buildx
         id: buildx

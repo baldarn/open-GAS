@@ -26,6 +26,6 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3.5
+          ruby-version: .ruby-version
       - name: Run KAMAL command
         run: ${{ github.event.inputs.command }}

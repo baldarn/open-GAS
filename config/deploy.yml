@@ -9,14 +9,14 @@ servers:
   web:
     hosts:
       - opengas.eu
-    labels:
-      traefik.http.routers.open_gas.entrypoints: websecure
-      traefik.http.routers.open_gas.rule: Host(`opengas.eu`)
-      traefik.http.routers.open_gas.tls.certresolver: letsencrypt
     options:
       add-host: host.docker.internal:host-gateway
-      volume:
-        - data:/rails/file_store
+
+# Enable SSL auto certification via Let's Encrypt (and allow for multiple apps on one server).
+# Set ssl: false if using something like Cloudflare to terminate SSL (but keep host!).
+proxy:
+  ssl: true
+  host: opengas.eu
 
 # Credentials for your image host.
 registry:
@@ -24,7 +24,7 @@ registry:
   # server: registry.digitalocean.com / ghcr.io / ...
   username: baldarn
 
-  # Always use an access token rather than real password when possible.
+  # Always use an access token ratherg than real password when possible.
   password:
     - KAMAL_REGISTRY_PASSWORD
 
@@ -38,26 +38,61 @@ env:
     SMTP_PORT: 587
     SMTP_ADDRESS: smtp.ionos.it
     SMTP_USERNAME: info@opengas.eu
+    # Run the Solid Queue Supervisor inside the web server's Puma process to do jobs.
+    # When you start using multiple servers, you should split out job processing to a dedicated machine.
+    SOLID_QUEUE_IN_PUMA: true
+
+    # Set number of processes dedicated to Solid Queue (default: 1)
+    # JOB_CONCURRENCY: 3
+
+    # Set number of cores available to the application on each server (default: 1).
+    # WEB_CONCURRENCY: 2
+
+    # Log everything from Rails
+    # RAILS_LOG_LEVEL: debug
+
   secret:
     - RAILS_MASTER_KEY
-    - POSTGRES_PASSWORD
     - APP_VERSION
+
+# Aliases are triggered with "bin/kamal <alias>". You can overwrite arguments on invocation:
+# "bin/kamal logs -r job" will tail logs from the first server in the job section.
+aliases:
+  console: app exec --interactive --reuse "bin/rails console"
+  shell: app exec --interactive --reuse "bash"
+  logs: app logs -f
+  dbc: app exec --interactive --reuse "bin/rails dbconsole"
+
+
+# Use a persistent storage volume for sqlite database files and local Active Storage files.
+# Recommended to change this to a mounted volume path that is backed up off server.
+volumes:
+  - "open_gas_storage:/rails/storage"
+
+# Bridge fingerprinted assets, like JS and CSS, between versions to avoid
+# hitting 404 on in-flight requests. Combines all files from new and old
+# version inside the asset_path.
+asset_path: /rails/public/assets
+
+# Configure the image builder.
+builder:
+  arch: amd64
+
+  # # Build image via remote server (useful for faster amd64 builds on arm64 computers)
+  # remote: ssh://docker@docker-builder-server
+  #
+  # # Pass arguments and secrets to the Docker build process
+  # args:
+  #   RUBY_VERSION: ruby-3.3.5
+  # secrets:
+  #   - GITHUB_TOKEN
+  #   - RAILS_MASTER_KEY
 
 # Use a different ssh user than root
 # ssh:
 #   user: app
 
-# Configure builder setup.
-# builder:
-#   args:
-#     RUBY_VERSION: 3.2.0
-#   secrets:
-#     - GITHUB_TOKEN
-#   remote:
-#     arch: amd64
-#     host: ssh://app@192.168.0.1
-
-# Use accessory services (secrets come from .env).
+# Use accessory services (secrets come from .kamal/secrets).
 accessories:
   db:
     image: postgres:16.4
@@ -79,55 +114,3 @@ accessories:
     port: 6379
     directories:
       - data:/data
-
-# Configure custom arguments for Traefik. Be sure to reboot traefik when you modify it.
-traefik:
-  options:
-    publish:
-      - "443:443"
-      - "8080:8080"
-    volume:
-      - "/letsencrypt/acme.json:/letsencrypt/acme.json"
-  args:
-    api.dashboard: true
-    api.insecure: true
-    entryPoints.web.address: ":80"
-    entryPoints.websecure.address: ":443"
-    # entryPoints.web.http.redirections.entryPoint.to: websecure
-    # entryPoints.web.http.redirections.entryPoint.scheme: https
-    # entryPoints.web.http.redirections.entrypoint.permanent: true
-    certificatesResolvers.letsencrypt.acme.email: "lorenzo.farnararo@gmail.com"
-    certificatesResolvers.letsencrypt.acme.storage: "/letsencrypt/acme.json"
-    certificatesResolvers.letsencrypt.acme.httpchallenge: true
-    certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: web
-
-# Configure a custom healthcheck (default is /up on port 3000)
-# healthcheck:
-#   path: /healthz
-#   port: 4000
-
-# Bridge fingerprinted assets, like JS and CSS, between versions to avoid
-# hitting 404 on in-flight requests. Combines all files from new and old
-# version inside the asset_path.
-#
-# If your app is using the Sprockets gem, ensure it sets `config.assets.manifest`.
-# See https://github.com/basecamp/kamal/issues/626 for details
-#
-asset_path: /rails/public/assets
-
-# Configure rolling deploys by setting a wait time between batches of restarts.
-# boot:
-#   limit: 10 # Can also specify as a percentage of total hosts, such as "25%"
-#   wait: 2
-
-# Configure the role used to determine the primary_host. This host takes
-# deploy locks, runs health checks during the deploy, and follow logs, etc.
-#
-# Caution: there's no support for role renaming yet, so be careful to cleanup
-#          the previous role on the deployed hosts.
-# primary_role: web
-
-# Controls if we abort when see a role with no hosts. Disabling this may be
-# useful for more complex deploy configurations.
-#
-# allow_empty_roles: false

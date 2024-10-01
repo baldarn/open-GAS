@@ -20,5 +20,4 @@ test:
 production:
   primary:
     <<: *default
-    password: <%= ENV.fetch('POSTGRES_PASSWORD', 'opengas') %>
-
+    password: <%= Rails.application.credentials.dig(:pg, :password) %>
