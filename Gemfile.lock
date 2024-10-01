@@ -226,7 +226,7 @@ GEM
     logtail-rack (0.2.5)
       logtail (~> 0.1)
       rack (>= 1.2, < 4.0)
-    logtail-rails (0.2.7)
+    logtail-rails (0.2.8)
       actionpack (>= 5.0.0)
       activerecord (>= 5.0.0)
       logtail (~> 0.1)
@@ -528,7 +528,7 @@ DEPENDENCIES
   kamal (~> 2.0)
   kaminari
   kaminari-i18n
-  logtail-rails (~> 0.2.7)
+  logtail-rails (~> 0.2.8)
   mission_control-jobs (~> 0.3.1)
   pdfkit
   pg (~> 1.5.7)
