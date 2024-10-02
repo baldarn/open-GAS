@@ -357,7 +357,7 @@ GEM
       railties (>= 5.2)
     rexml (3.3.6)
       strscan
-    rouge (4.3.0)
+    rouge (4.4.0)
     rqrcode (2.2.0)
       chunky_png (~> 1.0)
       rqrcode_core (~> 1.0)
@@ -538,7 +538,7 @@ DEPENDENCIES
   rails-i18n (~> 7.0.0)
   redcarpet (~> 3.6)
   redis (~> 5.3)
-  rouge (~> 4.2)
+  rouge (~> 4.4)
   rqrcode
   rubocop (~> 1.65)
   rubocop-capybara
