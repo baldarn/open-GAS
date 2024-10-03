@@ -193,7 +193,7 @@ GEM
       activesupport (>= 5.0.0)
     jmespath (1.6.2)
     json (2.7.2)
-    kamal (2.1.0)
+    kamal (2.1.1)
       activesupport (>= 7.0)
       base64 (~> 0.2)
       bcrypt_pbkdf (~> 1.0)
@@ -526,7 +526,7 @@ DEPENDENCIES
   image_processing (~> 1.13)
   importmap-rails
   jbuilder
-  kamal (~> 2.0)
+  kamal (~> 2.1)
   kaminari
   kaminari-i18n
   logtail-rails (~> 0.2.7)
