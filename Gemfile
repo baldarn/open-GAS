@@ -76,7 +76,7 @@ group :development do
   gem 'brakeman', require: false
   gem 'bundle-audit', require: false
   gem 'htmlbeautifier'
-  gem 'kamal', '~> 2.0'
+  gem 'kamal', '~> 2.1'
   gem 'web-console'
 end
 
