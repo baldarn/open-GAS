@@ -23,7 +23,7 @@ gem 'yabeda-puma-plugin'
 gem 'yabeda-rails'
 
 # Jobs
-gem 'mission_control-jobs', '~> 0.3.1'
+gem 'mission_control-jobs', '~> 0.3.2'
 gem 'solid_queue', '~> 0.5.0'
 
 # Front-end
