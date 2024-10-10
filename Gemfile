@@ -24,7 +24,7 @@ gem 'yabeda-rails'
 
 # Jobs
 gem 'mission_control-jobs', '~> 0.3.1'
-gem 'solid_queue', '~> 0.5.0'
+gem 'solid_queue', '~> 1.0.0'
 
 # Front-end
 gem 'bootstrap', '~> 5.1'
