@@ -245,9 +245,10 @@ GEM
     mini_magick (4.13.2)
     mini_mime (1.1.5)
     minitest (5.25.1)
-    mission_control-jobs (0.3.1)
+    mission_control-jobs (0.3.2)
       importmap-rails
       irb (~> 1.13)
+      propshaft
       rails (>= 7.1)
       stimulus-rails
       turbo-rails
@@ -290,6 +291,11 @@ GEM
     popper_js (2.11.8)
     prometheus-client (4.2.3)
       base64
+    propshaft (1.1.0)
+      actionpack (>= 7.0.0)
+      activesupport (>= 7.0.0)
+      rack
+      railties (>= 7.0.0)
     psych (5.1.2)
       stringio
     public_suffix (5.0.5)
@@ -530,7 +536,7 @@ DEPENDENCIES
   kaminari
   kaminari-i18n
   logtail-rails (~> 0.2.7)
-  mission_control-jobs (~> 0.3.1)
+  mission_control-jobs (~> 0.3.2)
   pdfkit
   pg (~> 1.5.7)
   puma (>= 5.0)
