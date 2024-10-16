@@ -245,14 +245,14 @@ GEM
     mini_magick (4.13.2)
     mini_mime (1.1.5)
     minitest (5.25.1)
-    mission_control-jobs (0.3.1)
+    mission_control-jobs (0.3.3)
       importmap-rails
       irb (~> 1.13)
       rails (>= 7.1)
       stimulus-rails
       turbo-rails
     msgpack (1.7.2)
-    net-imap (0.4.16)
+    net-imap (0.4.17)
       date
       net-protocol
     net-pop (0.1.2)
@@ -297,7 +297,7 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.8.1)
-    rack (3.1.7)
+    rack (3.1.8)
     rack-attack (6.7.0)
       rack (>= 1.0, < 4)
     rack-session (2.0.0)
@@ -498,7 +498,7 @@ GEM
       anyway_config (>= 1.3, < 3)
       railties
       yabeda (~> 0.8)
-    zeitwerk (2.6.18)
+    zeitwerk (2.7.0)
 
 PLATFORMS
   aarch64-linux
@@ -530,7 +530,7 @@ DEPENDENCIES
   kaminari
   kaminari-i18n
   logtail-rails (~> 0.2.7)
-  mission_control-jobs (~> 0.3.1)
+  mission_control-jobs (~> 0.3.3)
   pdfkit
   pg (~> 1.5.7)
   puma (>= 5.0)
